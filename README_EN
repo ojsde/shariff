@@ -1,0 +1,59 @@
+================================
+=== OJS Shariff Plugin
+=== Version: 1.0
+=== Author: Božana Bokan <bozana.bokan@fu-berlin.de>
+    Center for Digital Systems (CeDiS), Freie Universität Berlin
+=== Last update: September 17, 2015
+================================
+
+About
+-----
+The Shariff plugin adds social media buttons to the journal without compromising the privacy of website users, using Shariff (https://github.com/heiseonline/shariff) solution.
+
+License
+-------
+This plugin is licensed under the GNU General Public License v2. See the OJS file docs/COPYING for the complete terms of this license.
+
+System Requirements
+-------------------
+Same requirements as the OJS 2.4.6 core.
+
+Installation
+------------
+To install the plugin:
+ - copy the plugin tar.gz or zip file to your OJS/plugins/generic directory
+ - unzip the plugin inside the plugins/generic directory
+ - from your OJS directory execute :
+    $ php tools/upgrade.php upgrade
+ - enable the plugin by going to:  Home > User > Journal Management > Plugin Management > Generic Plugins and selecting "ENABLE" under "Shariff"
+
+Settings
+--------
+The following settings are available ( Home > User > Journal Management > Plugin Management > Generic Plugins > select "SETTINGS" under "Shariff"):
+-- choose the services you would like to provide on the journal pages
+-- order the services by drag-and-drop i.e. determine the display order of the social media buttons
+-- choose a provided theme for the social media buttons
+-- determine the orientation of the social media buttons (how they should be displayed: horizontally or vertically)
+-- determine the position of the social media buttons on your journal web site
+-- insert the backend URL: see Shariff PHP Backend (https://github.com/heiseonline/shariff-backend-php) and the next part 'Shariff PHP Backend' in this README file for more details
+
+Shariff PHP Backend
+-------------------
+If you would like to determine and display the numbers how often a page is shared in social media, please see the Shariff PHP Backend (https://github.com/heiseonline/shariff-backend-php), i.e.:
+-- Create directory shariff-backend/ under the document root of your web server (e.g. in your OJS directory)
+-- Download the Shariff PHP Backend release zip file and unzip it
+-- Put/copy the content of the folder build/ to the directory shariff-backend/
+-- Create the directory cache/ in the directory shariff-backend/
+-- Make the directory shariff-backend/ writable for the web user
+-- Add the 'cacheDir' setting to the 'cache' part in shariff.json
+-- Change the 'domain' in shariff.json to your domain
+-- Insert the backend URL (e.g. http://your-journal.org/shariff-backend) on the plugin settings page. 
+
+Contact/Support
+---------------
+Please email the author for support, bugfixes, or comments.
+
+Version History
+---------------
+1.0	- Initial Release
+

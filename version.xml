@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE version SYSTEM "../../../lib/pkp/dtd/pluginVersion.dtd">
+
+<!--
+  * version.xml
+  *
+  * Author: Božana Bokan, Center for Digital Systems (CeDiS), Freie Universität Berlin
+  * Last update: September 17, 2015
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Plugin Meta Pages.
+  -->
+<version>
+	<application>shariff</application>
+	<type>plugins.generic</type>
+	<release>1.0.0.0</release>
+	<date>2015-17-09</date>
+	<lazy-load>1</lazy-load>
+	<class>ShariffPlugin</class>
+</version>
