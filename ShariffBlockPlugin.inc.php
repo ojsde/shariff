@@ -1,14 +1,14 @@
 <?php
 
 /**
- * @file plugins/generic/shariff/ShariffBlockPlugin.inc.php
+ * @file ShariffBlockPlugin.inc.php
  *
  * Author: Božana Bokan, Center for Digital Systems (CeDiS), Freie Universität Berlin
- * Last update: September 17, 2015
+ * Last update: September 24, 2015
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
+ * @package plugins.generic.shariff
  * @class ShariffBlockPlugin
- * @ingroup plugins_generic_shariff
  *
  * @brief Shariff social media buttons as block plug-in.
  */

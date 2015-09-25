@@ -1,8 +1,8 @@
 {**
- * plugins/generic/shariff/templates/settingsForm.tpl
+ * templates/settingsForm.tpl
  *
  * Author: Božana Bokan, Center for Digital Systems (CeDiS), Freie Universität Berlin
- * Last update: September 17, 2015
+ * Last update: September 24, 2015
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * The settings form for the Shariff plugin.
@@ -30,7 +30,7 @@ $(document).ready(function() { setupTableDND("#servicesTable", ''); });
 	<tr valign="top" id="formelt-{$id|escape}" class="data">
 		<input type="hidden" name="services[][{$id|escape}]" value="{$title|escape}" />
 		<td width="20%" class="label">{if $smarty.foreach.services.index == 0}{fieldLabel name="selectedServices" required="true" key="plugins.generic.shariff.settings.services"}{/if}</td>
-		<td class="drag"><input type="checkbox" name="selectedServices[]" value="{$id|escape}"{if in_array($id, $selectedServices)} checked="checked"{/if}}/> {translate key=$title|escape}</td>
+		<td class="drag"><input type="checkbox" id="{$id|escape}" name="selectedServices[]" value="{$id|escape}"{if in_array($id, $selectedServices)} checked="checked"{/if}/> {translate key=$title|escape}</td>
 	</tr>
 	{/foreach}
 {/foreach}

@@ -1,14 +1,14 @@
 <?php
 
 /**
- * @file plugins/generic/shariff/ShariffSettingsForm.inc.php
+ * @file ShariffSettingsForm.inc.php
  *
  * Author: Božana Bokan, Center for Digital Systems (CeDiS), Freie Universität Berlin
- * Last update: September 17, 2015
+ * Last update: September 24, 2015
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
+ * @package plugins.generic.shariff
  * @class ShariffSettingsForm
- * @ingroup plugins_generic_shariff
  *
  * @brief Settings form for the Shariff plugin
  */

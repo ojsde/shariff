@@ -1,8 +1,8 @@
 {**
- * plugins/generic/shariff/templates/shariffBlock.tpl
+ * templates/shariffBlock.tpl
  *
  * Author: Božana Bokan, Center for Digital Systems (CeDiS), Freie Universität Berlin
- * Last update: September 17, 2015
+ * Last update: September 24, 2015
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Shariff social media buttons block.
