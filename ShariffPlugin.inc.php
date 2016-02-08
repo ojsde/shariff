@@ -43,6 +43,14 @@ class ShariffPlugin extends GenericPlugin {
 	}
 
 	/**
+	 * Return the location of the plugin's CSS file
+	 * @return string
+	 */
+	function getStyleSheet() {
+		return $this->getPluginPath() . DIRECTORY_SEPARATOR . 'shariff.complete.css';
+	}
+
+	/**
 	 * @copydoc PKPPlugin::register()
 	 */
 	function register($category, $path) {
@@ -63,8 +71,8 @@ class ShariffPlugin extends GenericPlugin {
 					HookRegistry::register ('Templates::Article::Footer::PageFooter', array(&$this, 'addShariffButtons'));
 					HookRegistry::register ('Templates::Common::Footer::PageFooter', array(&$this, 'addShariffButtons'));
 				}
-				// Hook for article view -- add css in the article header template
-				HookRegistry::register ('TemplateManager::display', array($this, 'handleTemplateDisplay'));
+				$templateMgr =& TemplateManager::getManager();
+				$templateMgr->addStyleSheet(Request::getBaseUrl() . DIRECTORY_SEPARATOR . $this->getStyleSheet());
 			}
 		}
 		return $success;
@@ -129,37 +137,6 @@ class ShariffPlugin extends GenericPlugin {
 		</div>
 		<script src="'. $baseUrl .'/'. $this->getPluginPath().'/shariff.complete.js"></script>';
 
-		return false;
-	}
-
-	/**
-	 * Handle article view header template display.
-	 */
-	function handleTemplateDisplay($hookName, $params) {
-		$smarty =& $params[0];
-		$template =& $params[1];
-		HookRegistry::register ('TemplateManager::include', array($this, 'addCss'));
-		return false;
-	}
-
-	/**
-	 * Add Shariff CSS to the header.
-	 */
-	function addCss($hookName, $args) {
-		$smarty =& $args[0];
-		$params =& $args[1];
-
-		$journal =& Request::getJournal();
-		$journalId = $journal->getId();
-		$position = $this->getSetting($journalId, 'position');
-		$baseUrl = Request::getBaseUrl();
-		if (!isset($params['smarty_include_tpl_file'])) return false;
-		if (($position == SHARIFF_POSITION_ARTICLEFOOTER && $params['smarty_include_tpl_file'] == 'article/header.tpl')
-			|| ((($position == SHARIFF_POSITION_ALLFOOTER) || ($position == SHARIFF_POSITION_BLOCK)) && $params['smarty_include_tpl_file'] == 'core:common/header.tpl')) {
-				$stylesheets = $smarty->get_template_vars('stylesheets');
-				$stylesheets[] = $baseUrl . '/' . $this->getPluginPath() . '/shariff.complete.css';
-				$smarty->assign('stylesheets', $stylesheets);
-		}
 		return false;
 	}
 
