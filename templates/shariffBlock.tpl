@@ -7,11 +7,12 @@
  *
  * Shariff social media buttons block.
  *}
-<div class="shariff block plugins_generic_shariff" data-lang="{$iso1Lang|escape}"
+<link rel="stylesheet" type="text/css" href="{$cssUrl|escape}">
+<div class="shariff pkp_block plugins_generic_shariff" data-lang="{$iso1Lang|escape}"
 	data-services="[{$dataServicesString|escape}]"
 	data-backend-url="{$backendUrl|escape}"
 	data-theme="{$selectedTheme|escape}"
-	data-orientation="{$smarty.const.SHARIFF_ORIENTATION_V}"
+	data-orientation="vertical"
 	data-url="{$requestedUrl|escape}">
-<script src="{$jsUrl|escape}"></script>
 </div>
+<script src="{$jsUrl|escape}"></script>

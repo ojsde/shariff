@@ -1,123 +1,91 @@
 <?php
 
 /**
- * @file ShariffBlockPlugin.inc.php
+ * @file plugins/generic/shariff/ShariffBlockPlugin.inc.php
  *
- * Author: Božana Bokan, Center for Digital Systems (CeDiS), Freie Universität Berlin
- * Last update: September 24, 2015
+ * Copyright (c) 2014-2017 Simon Fraser University
+ * Copyright (c) 2003-2017 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
- * @package plugins.generic.shariff
  * @class ShariffBlockPlugin
+ * @ingroup plugins_generic_shariff
  *
- * @brief Shariff social media buttons as block plug-in.
+ * @brief Class for block component of shariff plugin
  */
 
 import('lib.pkp.classes.plugins.BlockPlugin');
 
 class ShariffBlockPlugin extends BlockPlugin {
+	/** @var string Name of parent plugin */
+	var $parentPluginName;
 
-	/** @var string */
-	var $_parentPluginName;
-
-	/**
-	 * Constructor
-	 * @param $parentPluginName string
-	 */
-	function ShariffBlockPlugin($parentPluginName) {
-		$this->_parentPluginName = $parentPluginName;
-		parent::BlockPlugin();
-	}
-
-	//
-	// Implement template methods from PKPPlugin.
-	//
-	/**
-	 * @copydoc PKPPlugin::getHideManagement()
-	 */
-	function getHideManagement() {
-		return true;
+	function __construct($parentPluginName) {
+		parent::__construct();
+		$this->parentPluginName = $parentPluginName;
 	}
 
 	/**
-	 * @copydoc PKPPlugin::getName()
+	 * Get the name of this plugin. The name must be unique within
+	 * its category.
+	 * @return String name of plugin
 	 */
 	function getName() {
 		return 'ShariffBlockPlugin';
 	}
 
 	/**
-	 * @copydoc PKPPlugin::getDisplayName()
+	 * Hide this plugin from the management interface (it's subsidiary)
+	 */
+	function getHideManagement() {
+		return true;
+	}
+
+	/**
+	 * Get the display name of this plugin.
+	 * @return String
 	 */
 	function getDisplayName() {
 		return __('plugins.generic.shariff.block.displayName');
 	}
 
 	/**
-	 * @copydoc PKPPlugin::getDescription()
+	 * Get a description of the plugin.
 	 */
 	function getDescription() {
 		return __('plugins.generic.shariff.block.description');
 	}
 
 	/**
-	 * @copydoc PKPPlugin::getPluginPath()
+	 * Get the supported contexts (e.g. BLOCK_CONTEXT_...) for this block.
+	 * @return array
+	 */
+	function getSupportedContexts() {
+		return array(BLOCK_CONTEXT_SIDEBAR);
+	}
+
+	/**
+	 * Get the web feed plugin
+	 * @return ShariffPlugin
+	 */
+	function getShariffPlugin() {
+		return PluginRegistry::getPlugin('generic', $this->parentPluginName);
+	}
+
+	/**
+	 * Override the builtin to get the correct plugin path.
+	 * @return string
 	 */
 	function getPluginPath() {
-		$plugin =& $this->_getPlugin();
-		return $plugin->getPluginPath();
+		return $this->getShariffPlugin()->getPluginPath();
 	}
 
 	/**
-	 * @copydoc PKPPlugin::getTemplatePath()
+	 * @copydoc PKPPlugin::getTemplatePath
 	 */
-	function getTemplatePath() {
-		$plugin =& $this->_getPlugin();
-		return $plugin->getTemplatePath();
+	function getTemplatePath($inCore = false) {
+		return $this->getShariffPlugin()->getTemplatePath($inCore);
 	}
 
-	/**
-	 * @copydoc PKPPlugin::getSeq()
-	 */
-	function getSeq() {
-		// Identify the position of the faceting block.
-		$seq = parent::getSeq();
-
-		// If nothing has been configured then show the privacy
-		// block after all other blocks in the context.
-		if (!is_numeric($seq)) $seq = 99;
-
-		return $seq;
-	}
-
-
-	//
-	// Implement template methods from LazyLoadPlugin
-	//
-	/**
-	 * @copydoc LazyLoadPlugin::getEnabled()
-	 */
-	function getEnabled() {
-		$plugin =& $this->_getPlugin();
-		return $plugin->getEnabled();
-	}
-
-	//
-	// Implement template methods from BlockPlugin
-	//
-	/**
-	 * @copydoc BlockPlugin::getBlockContext()
-	 */
-	function getBlockContext() {
-		$blockContext = parent::getBlockContext();
-
-		// Place the block on the right by default.
-		if (!in_array($blockContext, $this->getSupportedContexts())) {
-			$blockContext = BLOCK_CONTEXT_RIGHT_SIDEBAR;
-		}
-
-		return $blockContext;
-	}
 
 	/**
 	 * @copydoc BlockPlugin::getBlockTemplateFilename()
@@ -127,49 +95,47 @@ class ShariffBlockPlugin extends BlockPlugin {
 		return 'shariffBlock.tpl';
 	}
 
-	/**
-	 * @copydoc BlockPlugin::getContents()
-	 */
-	function getContents(&$templateMgr, $request) {
-		$plugin =& $this->_getPlugin();
-		$journal = $request->getJournal();
-		$journalId = $journal->getId();
 
-		// get the selected settings
+	/**
+	 * Get the HTML contents for this block.
+	 * @param $templateMgr object
+	 * @param $request PKPRequest
+	 * @return $string
+	 */
+	function getContents($templateMgr, $request = null) {
+		$context = $request->getContext();
+		$contextId = $context->getId();
+		$plugin = $this->getShariffPlugin();
+
 		// services
-		$selectedServices = $plugin->getSetting($journalId, 'selectedServices');
+		$selectedServices = $plugin->getSetting($contextId, 'selectedServices');
 		$preparedServices = array_map(create_function('$arrayElement', 'return \'"\'.$arrayElement.\'"\';'), $selectedServices);
 		$dataServicesString = implode(",", $preparedServices);
-		// theme
-		$selectedTheme = $plugin->getSetting($journalId, 'selectedTheme');
-		// backend URL
-		$backendUrl = $plugin->getSetting($journalId, 'backendUrl');
 
+		// theme
+		$selectedTheme = $plugin->getSetting($contextId, 'selectedTheme');
+
+		// get language from system
 		$locale = AppLocale::getLocale();
 		$iso1Lang = AppLocale::getIso1FromLocale($locale);
+
+		// javascript, css and backend url
 		$requestedUrl = $request->getCompleteUrl();
 		$baseUrl = $request->getBaseUrl();
 		$jsUrl = $baseUrl .'/'. $this->getPluginPath().'/shariff.complete.js';
+		$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/' . 'shariff.complete.css';
+		$backendUrl = $baseUrl .'/'. 'shariff-backend';
 
+		// assign variables to the templates
 		$templateMgr->assign('dataServicesString', $dataServicesString);
 		$templateMgr->assign('selectedTheme', $selectedTheme);
 		$templateMgr->assign('backendUrl', $backendUrl);
 		$templateMgr->assign('iso1Lang', $iso1Lang);
 		$templateMgr->assign('requestedUrl', $requestedUrl);
 		$templateMgr->assign('jsUrl', $jsUrl);
-		return parent::getContents($templateMgr, $request);
-	}
+		$templateMgr->assign('cssUrl', $cssUrl);
 
-	//
-	// Private helper methods
-	//
-	/**
-	 * Get the plugin object
-	 * @return OasPlugin
-	 */
-	function &_getPlugin() {
-		$plugin =& PluginRegistry::getPlugin('generic', $this->_parentPluginName);
-		return $plugin;
+		return parent::getContents($templateMgr, $request);
 	}
 }
 

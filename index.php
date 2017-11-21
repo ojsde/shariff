@@ -1,19 +1,18 @@
 <?php
 
 /**
- * @defgroup plugins_generic_shariff
+ * @defgroup plugins_generic_shariff Shariff Plugin
  */
 
 /**
- * @file index.php
+ * @file plugins/generic/shariff/index.php
  *
- * Author: Božana Bokan, Center for Digital Systems (CeDiS), Freie Universität Berlin
- * Last update: September 24, 2015
+ * Copyright (c) 2014-2017 Simon Fraser University
+ * Copyright (c) 2003-2017 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
- * @package plugins.generic.shariff
-
- * @brief Wrapper for the shariff social media plugin.
+ * @ingroup plugins_generic_shariff
+ * @brief Wrapper for Shariff plugin.
  *
  */
 require_once('ShariffPlugin.inc.php');

@@ -2,58 +2,40 @@
 <!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
 
 <!--
-  * locale/de_DE/locale.xml
+  * plugins/generic/shariff/locale/de_DE/locale.xml
   *
-  * Author: Božana Bokan, Center for Digital Systems (CeDiS), Freie Universität Berlin
-  * Last update: September 24, 2015
+  * Copyright (c) 2014-2017 Simon Fraser University
+  * Copyright (c) 2003-2017 John Willinsky
   * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
-  *
-  * Localization strings for the de_DE (Deutsch (Deutschland)) locale.
-  * Please contact Marco Tullney, marco.tullney@fu-berlin.de, with any questions regarding this translation.
+  * Localization information: https://pkp.sfu.ca/wiki/index.php?title=OJS:_German_(de_DE)
+  * Localization strings.
   -->
 
 <locale name="de_DE" full_name="Deutsch (Deutschland)">
-	
-	<message key="plugins.generic.shariff.displayName">Shariff-Plug-In</message>
+	<message key="plugins.generic.shariff.displayName">Shariff Plugin</message>
+	<message key="plugins.generic.shariff.block.displayName">Shariff Plugin</message>
 	<message key="plugins.generic.shariff.description"><![CDATA[Füge Social-Media-Buttons zur Zeitschrift hinzu, ohne die Privatsphäre der Besucher/innen der Webseite zu gefährden. Dazu wird der <a href="https://github.com/heiseonline/shariff" target="_blank">Shariff</a>-Ansatz genutzt.]]></message>
-	<message key="plugins.generic.shariff.title">Shariff-Plug-In</message>
 	
-	<message key="plugins.generic.shariff.block.displayName">Shariff-Block-Plug-In</message>
-	<message key="plugins.generic.shariff.block.description"><![CDATA[Füge Social-Media-Buttons zur Zeitschrift hinzu, ohne die Privatsphäre der Besucher/innen der Webseite zu gefährden. Dazu wird der <a href="https://github.com/heiseonline/shariff" target="_blank">Shariff</a>-Ansatz genutzt.]]></message>
-	
-	<message key="plugins.generic.shariff.settings.title">Einstellungen des Shariff-Plug-Ins</message>
-	<message key="plugins.generic.shariff.settings">Einstellungen</message>
-	<message key="plugins.generic.shariff.settings.description"><![CDATA[<p>Bitte wählen Sie aus, welche Dienste angebunden werden sollen, und sortieren Sie die Angebote per Drag-and-Drop. Wählen Sie ein grafisches Thema und legen die Ausrichtung der Social-Media-Knöpfe und ihre Position auf der Webseite fest.</p><p>Wenn Sie anzeigen möchten, wie häufig eine Seite in sozialen Netzwerken geteilt wird, entnehmen Sie die zusätzlichen Anforderungen der README-Datei und den Angaben zum <a href="https://github.com/heiseonline/shariff-backend-php" target="_blank">Shariff PHP Backend</a> und geben Sie dann die URL des Shariff Backend ein.</p>]]></message>
-	
-	<message key="plugins.generic.shariff.settings.services">Dienste</message>
+	<message key="plugins.generic.shariff.settings.service">Dienste</message>
+	<message key="plugins.generic.shariff.settings.service.addthis">AddThis</message>
+	<message key="plugins.generic.shariff.settings.service.facebook">Facebook</message>
+	<message key="plugins.generic.shariff.settings.service.googleplus">Google+</message>
+	<message key="plugins.generic.shariff.settings.service.linkedin">LinkedIn</message>
+	<message key="plugins.generic.shariff.settings.service.mail">Mail</message>
+	<message key="plugins.generic.shariff.settings.service.pinterest">Pinterest</message>
+	<message key="plugins.generic.shariff.settings.service.twitter">Twitter</message>
+	<message key="plugins.generic.shariff.settings.service.whatsapp">Whatsapp</message>
+	<message key="plugins.generic.shariff.settings.service.xing">XING</message>
+	<message key="plugins.generic.shariff.settings.service.info">Info</message>
+
 	<message key="plugins.generic.shariff.settings.theme">Thema</message>
-	<message key="plugins.generic.shariff.settings.orientation">Ausrichtung</message>
-	<message key="plugins.generic.shariff.settings.backend">Backend-URL</message>
-	<message key="plugins.generic.shariff.settings.buttonsPosition">Position</message>
-	<message key="plugins.generic.shariff.settings.buttonsPosition.articleFooter">In der Fußzeile der Artikel-Seiten.</message>
-	<message key="plugins.generic.shariff.settings.buttonsPosition.allFooter">In der Fußzeile aller Seiten.</message>
-	<message key="plugins.generic.shariff.settings.buttonsPosition.block">Als Block in der Sidebar.</message>
+	<message key="plugins.generic.shariff.settings.theme.standard">Standard</message>
+	<message key="plugins.generic.shariff.settings.theme.grey">Grau</message>
+	<message key="plugins.generic.shariff.settings.theme.white">Weiß</message>
 	
-	<message key="plugins.generic.shariff.form.service.addthis">AddThis</message>
-	<message key="plugins.generic.shariff.form.service.facebook">Facebook</message>
-	<message key="plugins.generic.shariff.form.service.googleplus">Google+</message>
-	<message key="plugins.generic.shariff.form.service.info">Info</message>
-	<message key="plugins.generic.shariff.form.service.linkedin">LinkedIn</message>
-	<message key="plugins.generic.shariff.form.service.mail">Mail</message>
-	<message key="plugins.generic.shariff.form.service.pinterest">Pinterest</message>
-	<message key="plugins.generic.shariff.form.service.twitter">Twitter</message>
-	<message key="plugins.generic.shariff.form.service.whatsapp">Whatsapp</message>
-	<message key="plugins.generic.shariff.form.service.xing">XING</message>
-		
-	<message key="plugins.generic.shariff.form.theme">Wählen Sie ein grafisches Thema</message>
-	<message key="plugins.generic.shariff.form.theme.standard">Standard</message>
-	<message key="plugins.generic.shariff.form.theme.grey">Grau</message>
-	<message key="plugins.generic.shariff.form.theme.white">Weiß</message>
+	<message key="plugins.generic.shariff.settings.position">Position</message>
+	<message key="plugins.generic.shariff.settings.position.footer">Fußzeile</message>
+	<message key="plugins.generic.shariff.settings.position.sidebar">Seitenleiste</message>
 	
-	<message key="plugins.generic.shariff.form.orientation">Wählen Sie eine Ausrichtung</message>
-	<message key="plugins.generic.shariff.form.orientation.vertical">vertikal</message>
-	<message key="plugins.generic.shariff.form.orientation.horizontal">horizontal</message>
-		
-	<message key="plugins.generic.shariff.form.selectedServicesRequired">Bitte wählen Sie die Dienste, die Sie ermöglichen möchten.</message>
-	<message key="plugins.generic.shariff.form.positionRequired">Bitte wählen Sie die Position der Social-Media-Buttons.</message>
+	<message key="plugins.generic.shariff.settings.note"><![CDATA[Wenn Sie anzeigen möchten, wie häufig eine Seite in sozialen Netzwerken geteilt wird, entnehmen Sie die zusätzlichen Anforderungen der README-Datei und den Angaben zum <a href="https://github.com/heiseonline/shariff-backend-php" target="_blank">Shariff PHP Backend</a>.]]></message>
 </locale>
