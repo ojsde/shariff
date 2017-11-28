@@ -72,7 +72,8 @@ class ShariffSettingsForm extends Form {
 		// array of possible positions at the website
 		$positions = array(
 			'footer' => 'plugins.generic.shariff.settings.position.footer',
-			'sidebar' => 'plugins.generic.shariff.settings.position.sidebar'
+			'sidebar' => 'plugins.generic.shariff.settings.position.sidebar',
+			'submission' => 'plugins.generic.shariff.settings.position.submission'
 		);
 		$this->setData('positions', $positions);
 		$this->setData('selectedPosition', $plugin->getSetting($contextId, 'selectedPosition'));

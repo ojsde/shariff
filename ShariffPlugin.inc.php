@@ -44,11 +44,12 @@ class ShariffPlugin extends GenericPlugin {
 				switch($this->getSetting($contextId, 'selectedPosition')){
 					case 'footer':
 						HookRegistry::register('Templates::Common::Footer::PageFooter', array($this, 'addShariffButtons'));
-						HookRegistry::register('Templates::Article::Footer::PageFooter', array($this, 'addShariffButtons'));
 						break;
 					case 'sidebar':
 						HookRegistry::register('PluginRegistry::loadCategory', array($this, 'callbackLoadCategory'));
 						break;
+					case 'submission':
+						HookRegistry::register('Templates::Article::Footer::PageFooter', array($this, 'addShariffButtons'));
 				}
 			}
 			return true;
