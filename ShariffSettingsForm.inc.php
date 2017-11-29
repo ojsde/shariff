@@ -77,13 +77,22 @@ class ShariffSettingsForm extends Form {
 		);
 		$this->setData('positions', $positions);
 		$this->setData('selectedPosition', $plugin->getSetting($contextId, 'selectedPosition'));
+
+		// array of possible orientations
+		$orientations = array(
+			'vertical' => 'plugins.generic.shariff.settings.orientation.vertical',
+			'horizontal' => 'plugins.generic.shariff.settings.orientation.horizontal'
+		);
+		$this->setData('orientations', $orientations);
+		$this->setData('selectedOrientation', $plugin->getSetting($contextId, 'selectedOrientation'));
+
 	}
 
 	/**
 	 * Assign form data to user-submitted data.
 	 */
 	function readInputData() {
-		$this->readUserVars(array('selectedTheme', 'selectedPosition', 'selectedServices'));
+		$this->readUserVars(array('selectedTheme', 'selectedPosition', 'selectedServices', 'selectedOrientation'));
 	}
 
 	/**
@@ -105,6 +114,7 @@ class ShariffSettingsForm extends Form {
 
 		$plugin->updateSetting($contextId, 'selectedTheme', $this->getData('selectedTheme'));
 		$plugin->updateSetting($contextId, 'selectedPosition', $this->getData('selectedPosition'));
+		$plugin->updateSetting($contextId, 'selectedOrientation', $this->getData('selectedOrientation'));
 		$plugin->updateSetting($contextId, 'selectedServices', $this->getData('selectedServices'), 'object');
 	}
 }

@@ -17,7 +17,7 @@ Available social media services are:
 
 ![Shariff buttons](https://raw.githubusercontent.com/lilients/img/master/shariff_buttons_footer.PNG)
 
-An info button that links to the heise article can be added. You can select different themes and determine the position of the social media buttons on your web site (footer or sidebar). The plugins will be displayed in the language of the website.
+An info button that links to the heise article can be added. You can select different themes, choose the orientation of the buttons (verticlal or horizontal) and determine the position of the social media buttons on your web site (footer, sidebar or article/book page). The plugins will be displayed in the language of the website.
 
 You can add the Shariff PHP Backend to display the number of likes (see below).
 
@@ -57,6 +57,5 @@ Documentation, bug listings, and updates can be found on this plugin's homepage 
 
 ## Version History
 
-1.0	- Initial Release
-2.0	- Adaption to OJS 3
-
+1.0 - Initial Release
+2.0 - Adaption to OJS 3

@@ -36,6 +36,11 @@
 	<message key="plugins.generic.shariff.settings.position">Position</message>
 	<message key="plugins.generic.shariff.settings.position.footer">Fußzeile</message>
 	<message key="plugins.generic.shariff.settings.position.sidebar">Seitenleiste</message>
-	
+	<message key="plugins.generic.shariff.settings.position.submission">Artikel- bzw. Buchseite</message>
+
+	<message key="plugins.generic.shariff.settings.orientation">Orientierung</message>
+	<message key="plugins.generic.shariff.settings.orientation.vertical">vertikal</message>
+	<message key="plugins.generic.shariff.settings.orientation.horizontal">horizontal</message>
+
 	<message key="plugins.generic.shariff.settings.note"><![CDATA[Wenn Sie anzeigen möchten, wie häufig eine Seite in sozialen Netzwerken geteilt wird, entnehmen Sie die zusätzlichen Anforderungen der README-Datei und den Angaben zum <a href="https://github.com/heiseonline/shariff-backend-php" target="_blank">Shariff PHP Backend</a>.]]></message>
 </locale>

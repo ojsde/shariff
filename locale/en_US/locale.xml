@@ -40,5 +40,9 @@
 	<message key="plugins.generic.shariff.settings.position.sidebar">sidebar</message>
 	<message key="plugins.generic.shariff.settings.position.submission">article / book page</message>
 
+	<message key="plugins.generic.shariff.settings.orientation">Orientation</message>
+	<message key="plugins.generic.shariff.settings.orientation.vertical">vertical</message>
+	<message key="plugins.generic.shariff.settings.orientation.horizontal">horizontal</message>
+
 	<message key="plugins.generic.shariff.settings.note"><![CDATA[If you would like to display the numbers how often a page is shared in social media, please see the <a href="https://github.com/heiseonline/shariff-backend-php" target="_blank">Shariff PHP Backend</a> and the plugin README file for further requirements.]]></message>
 </locale>

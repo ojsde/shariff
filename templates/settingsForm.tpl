@@ -42,6 +42,11 @@
 			{fbvElement type="select" id="selectedPosition" from=$positions  selected=$selectedPosition size=$fbvStyles.size.MEDIUM}
 		{/fbvFormSection}
 
+		{* Choose orientation *}
+		{fbvFormSection label="plugins.generic.shariff.settings.orientation" }
+			{fbvElement type="select" id="selectedOrientation" from=$orientations  selected=$selectedOrientation size=$fbvStyles.size.MEDIUM}
+		{/fbvFormSection}
+
 	{/fbvFormArea}
 
 	{translate key="plugins.generic.shariff.settings.note"}

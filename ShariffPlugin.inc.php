@@ -50,6 +50,7 @@ class ShariffPlugin extends GenericPlugin {
 						break;
 					case 'submission':
 						HookRegistry::register('Templates::Article::Footer::PageFooter', array($this, 'addShariffButtons'));
+						HookRegistry::register('Templates::Catalog::Book::Details', array($this, 'addShariffButtons'));
 				}
 			}
 			return true;
@@ -114,6 +115,9 @@ class ShariffPlugin extends GenericPlugin {
 		// theme
 		$selectedTheme = $this->getSetting($contextId, 'selectedTheme');
 
+		// orientation
+		$selectedOrientation = $this->getSetting($contextId, 'selectedOrientation');
+
 		// get language from system
 		$locale = AppLocale::getLocale();
 		$iso1Lang = AppLocale::getIso1FromLocale($locale);
@@ -131,7 +135,7 @@ class ShariffPlugin extends GenericPlugin {
 				data-services="['.$dataServicesString.']"
 				data-backend-url="'.$backendUrl.'"
 				data-theme="'.$selectedTheme.'"
-				data-orientation="horizontal"
+				data-orientation="'.$selectedOrientation.'"
 				data-url="'. $requestedUrl .'">
 			</div>
 			<script src="'.$jsUrl.'"></script>';
