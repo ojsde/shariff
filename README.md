@@ -13,11 +13,10 @@ Available social media services are:
 - Pinterest
 - Whatsapp
 - XING
-- Mail
 
 ![Shariff buttons](https://raw.githubusercontent.com/lilients/img/master/shariff_buttons_footer.PNG)
 
-An info button that links to the heise article can be added. You can select different themes, choose the orientation of the buttons (verticlal or horizontal) and determine the position of the social media buttons on your web site (footer, sidebar or article/book page). The plugins will be displayed in the language of the website.
+An info button that links to the heise article can be added. You can select different themes, choose the orientation of the buttons (vertical or horizontal) and determine the position of the social media buttons on your web site (footer, sidebar or article/book page). The plugins will be displayed in the language of the website.
 
 You can add the Shariff PHP Backend to display the number of likes (see below).
 
@@ -38,7 +37,8 @@ Clone this repo in your plugin folder (/plugins/generic) or download the code an
 The following settings are available:
 - choose the services you would like to provide on the journal pages (see list above)
 - choose a provided theme for the social media buttons (standard, white, grey)
-- determine the position of the social media buttons on your journal web site (sidebar or footer)
+- determine the position of the social media buttons on your journal web site (footer, sidebar or article/book page)
+- choose the orientation of the social media buttins (vertical or horizontal)
 
 ![Shariff settings](https://raw.githubusercontent.com/lilients/img/master/shariff_settings.PNG)
 

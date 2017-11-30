@@ -21,7 +21,6 @@
 	<message key="plugins.generic.shariff.settings.service.facebook">Facebook</message>
 	<message key="plugins.generic.shariff.settings.service.googleplus">Google+</message>
 	<message key="plugins.generic.shariff.settings.service.linkedin">LinkedIn</message>
-	<message key="plugins.generic.shariff.settings.service.mail">Mail</message>
 	<message key="plugins.generic.shariff.settings.service.pinterest">Pinterest</message>
 	<message key="plugins.generic.shariff.settings.service.twitter">Twitter</message>
 	<message key="plugins.generic.shariff.settings.service.whatsapp">Whatsapp</message>

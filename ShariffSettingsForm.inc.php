@@ -50,7 +50,6 @@ class ShariffSettingsForm extends Form {
 			array("facebook" => "plugins.generic.shariff.settings.service.facebook"),
 			array("googleplus" => "plugins.generic.shariff.settings.service.googleplus"),
 			array("linkedin" => "plugins.generic.shariff.settings.service.linkedin"),
-			array("mail" => "plugins.generic.shariff.settings.service.mail"),
 			array("pinterest" => "plugins.generic.shariff.settings.service.pinterest"),
 			array("whatsapp" => "plugins.generic.shariff.settings.service.whatsapp"),
 			array("xing" => "plugins.generic.shariff.settings.service.xing"),
