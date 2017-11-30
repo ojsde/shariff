@@ -2,10 +2,10 @@
 <!DOCTYPE plugin_settings SYSTEM "../../../lib/pkp/dtd/pluginSettings.dtd">
 
 <!--
-  * settings.xml
+  * plugins/generic/webFeed/settings.xml
   *
-  * Author: Božana Bokan, Center for Digital Systems (CeDiS), Freie Universität Berlin
-  * Last update: September 24, 2015
+  * Copyright (c) 2014-2017 Simon Fraser University
+  * Copyright (c) 2003-2017 John Willinsky
   * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
   *
   * Default plugin settings.
@@ -16,5 +16,13 @@
 	<setting type="bool">
 		<name>enabled</name>
 		<value>true</value>
+	</setting>
+	<setting type="string">
+		<name>displayPage</name>
+		<value>homepage</value>
+	</setting>
+	<setting type="bool">
+		<name>displayItems</name>
+		<value>issue</value>
 	</setting>
 </plugin_settings>

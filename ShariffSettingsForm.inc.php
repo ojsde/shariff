@@ -1,139 +1,120 @@
 <?php
 
 /**
- * @file ShariffSettingsForm.inc.php
+ * @file plugins/generic/shariff/ShariffSettingsForm.inc.php
  *
- * Author: Božana Bokan, Center for Digital Systems (CeDiS), Freie Universität Berlin
- * Last update: September 24, 2015
+ * Copyright (c) 2014-2017 Simon Fraser University
+ * Copyright (c) 2003-2017 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
- * @package plugins.generic.shariff
  * @class ShariffSettingsForm
+ * @ingroup plugins_generic_shariff
  *
- * @brief Settings form for the Shariff plugin
+ * @brief Form for managers to modify web feeds plugin settings
  */
 
 import('lib.pkp.classes.form.Form');
 
 class ShariffSettingsForm extends Form {
-	/** @var $journalId int */
-	var $journalId;
 
-	/** @var $plugin object */
-	var $plugin;
+	/** @var int Associated context ID */
+	private $_contextId;
+
+	/** @var ShariffPlugin Web feed plugin */
+	private $_plugin;
 
 	/**
-	 * Constructor.
-	 * @param $plugin object
-	 * @param $journalId int
+	 * Constructor
+	 * @param $plugin ShariffPlugin Web feed plugin
+	 * @param $contextId int Context ID
 	 */
-	function ShariffSettingsForm($plugin, $journalId) {
-		$this->journalId = $journalId;
-		$this->plugin =& $plugin;
+	function __construct($plugin, $contextId) {
+		$this->_contextId = $contextId;
+		$this->_plugin = $plugin;
 
-		parent::Form($plugin->getTemplatePath() . 'settingsForm.tpl');
-
-		// Validation checks for this form
-		$this->addCheck(new FormValidator($this, 'selectedServices', 'required', 'plugins.generic.shariff.form.selectedServicesRequired'));
-		$this->addCheck(new FormValidator($this, 'position', 'required', 'plugins.generic.shariff.form.positionRequired'));
+		parent::__construct($plugin->getTemplatePath() . 'settingsForm.tpl');
 		$this->addCheck(new FormValidatorPost($this));
+		$this->addCheck(new FormValidatorCSRF($this));
 	}
 
 	/**
-	 * Display the form.
+	 * Initialize form data.
 	 */
-	function display() {
-		$journalId = $this->journalId;
-		$plugin =& $this->plugin;
+	function initData() {
+		$contextId = $this->_contextId;
+		$plugin = $this->_plugin;
+
+		// array of possible social media services
+		$services = array(
+			array("twitter" => "plugins.generic.shariff.settings.service.twitter"),
+			array("facebook" => "plugins.generic.shariff.settings.service.facebook"),
+			array("googleplus" => "plugins.generic.shariff.settings.service.googleplus"),
+			array("linkedin" => "plugins.generic.shariff.settings.service.linkedin"),
+			array("pinterest" => "plugins.generic.shariff.settings.service.pinterest"),
+			array("whatsapp" => "plugins.generic.shariff.settings.service.whatsapp"),
+			array("xing" => "plugins.generic.shariff.settings.service.xing"),
+			array("addthis" => "plugins.generic.shariff.settings.service.addthis"),
+			array("info" => "plugins.generic.shariff.settings.service.info")
+		);
+		$this->setData('services', $services);
+		$this->setData('selectedServices', $plugin->getSetting($contextId, 'selectedServices'));
 
 		// array of available themes
 		$themes = array(
-			SHARIFF_THEME_STANDARD => "plugins.generic.shariff.form.theme.standard",
-			SHARIFF_THEME_GREY => "plugins.generic.shariff.form.theme.grey",
-			SHARIFF_THEME_WHITE => "plugins.generic.shariff.form.theme.white"
+			'standard' => 'plugins.generic.shariff.settings.theme.standard',
+			'grey' => 'plugins.generic.shariff.settings.theme.grey',
+			'white' => 'plugins.generic.shariff.settings.theme.white'
 		);
+		$this->setData('themes', $themes);
+		$this->setData('selectedTheme', $plugin->getSetting($contextId, 'selectedTheme'));
+
+		// array of possible positions at the website
+		$positions = array(
+			'footer' => 'plugins.generic.shariff.settings.position.footer',
+			'sidebar' => 'plugins.generic.shariff.settings.position.sidebar',
+			'submission' => 'plugins.generic.shariff.settings.position.submission'
+		);
+		$this->setData('positions', $positions);
+		$this->setData('selectedPosition', $plugin->getSetting($contextId, 'selectedPosition'));
 
 		// array of possible orientations
 		$orientations = array(
-			SHARIFF_ORIENTATION_V => "plugins.generic.shariff.form.orientation.vertical",
-			SHARIFF_ORIENTATION_H => "plugins.generic.shariff.form.orientation.horizontal"
+			'vertical' => 'plugins.generic.shariff.settings.orientation.vertical',
+			'horizontal' => 'plugins.generic.shariff.settings.orientation.horizontal'
 		);
+		$this->setData('orientations', $orientations);
+		$this->setData('selectedOrientation', $plugin->getSetting($contextId, 'selectedOrientation'));
 
-		$templateMgr =& TemplateManager::getManager();
-		$templateMgr->assign('themes', $themes);
-		$templateMgr->assign('orientations', $orientations);
-		$templateMgr->addJavaScript('lib/pkp/js/lib/jquery/plugins/jquery.tablednd.js');
-		$templateMgr->addJavaScript('lib/pkp/js/functions/tablednd.js');
-		parent::display();
-	}
-
-	/**
-	 * Initialize form data from the plugin.
-	 * @see Form::initData()
-	 */
-	function initData() {
-		$journalId = $this->journalId;
-		$plugin =& $this->plugin;
-		foreach($this->_getFormFields() as $fieldName => $fieldType) {
-			if ($fieldName == 'services') {
-				$services = $plugin->getSetting($journalId, $fieldName);
-				if (empty($services)) {
-					$services = array(
-						array("addthis" => "plugins.generic.shariff.form.service.addthis"),
-						array("facebook" => "plugins.generic.shariff.form.service.facebook"),
-						array("googleplus" => "plugins.generic.shariff.form.service.googleplus"),
-						array("info" => "plugins.generic.shariff.form.service.info"),
-						array("linkedin" => "plugins.generic.shariff.form.service.linkedin"),
-						array("mail" => "plugins.generic.shariff.form.service.mail"),
-						array("piterest" => "plugins.generic.shariff.form.service.pinterest"),
-						array("twitter" => "plugins.generic.shariff.form.service.twitter"),
-						array("whatsapp" => "plugins.generic.shariff.form.service.whatsapp"),
-						array("xing" => "plugins.generic.shariff.form.service.xing")
-					);
-				}
-				$this->setData($fieldName, $services);
-			} else {
-				$this->setData($fieldName, $plugin->getSetting($journalId, $fieldName));
-			}
-		}
 	}
 
 	/**
 	 * Assign form data to user-submitted data.
-	 * @see Form::readInputData()
 	 */
 	function readInputData() {
-		$this->readUserVars(array_keys($this->_getFormFields()));
+		$this->readUserVars(array('selectedTheme', 'selectedPosition', 'selectedServices', 'selectedOrientation'));
 	}
 
 	/**
-	 * Save the plugin's data.
-	 * @see Form::execute()
+	 * Fetch the form.
+	 * @copydoc Form::fetch()
+	 */
+	function fetch($request) {
+		$templateMgr = TemplateManager::getManager($request);
+		$templateMgr->assign('pluginName', $this->_plugin->getName());
+		return parent::fetch($request);
+	}
+
+	/**
+	 * Save settings.
 	 */
 	function execute() {
-		$journalId = $this->journalId;
-		$plugin =& $this->plugin;
-		foreach($this->_getFormFields() as $fieldName => $fieldType) {
-			$plugin->updateSetting($journalId, $fieldName, $this->getData($fieldName), $fieldType);
-		}
-	}
+		$plugin = $this->_plugin;
+		$contextId = $this->_contextId;
 
-	//
-	// Private helper methods
-	//
-	/**
-	 * Get all form fields and their types
-	 * @return array
-	 */
-	function _getFormFields() {
-		return array(
-			'services' => 'object',
-			'selectedServices' => 'object',
-			'selectedTheme' => 'string',
-			'selectedOrientation' => 'string',
-			'backendUrl' => 'string',
-			'position' => 'string'
-		);
+		$plugin->updateSetting($contextId, 'selectedTheme', $this->getData('selectedTheme'));
+		$plugin->updateSetting($contextId, 'selectedPosition', $this->getData('selectedPosition'));
+		$plugin->updateSetting($contextId, 'selectedOrientation', $this->getData('selectedOrientation'));
+		$plugin->updateSetting($contextId, 'selectedServices', $this->getData('selectedServices'), 'object');
 	}
 }
 ?>

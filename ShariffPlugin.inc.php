@@ -1,98 +1,95 @@
 <?php
 
 /**
- * @file ShariffPlugin.inc.php
+ * @file plugins/generic/shariff/ShariffPlugin.inc.php
  *
- * Author: Božana Bokan, Center for Digital Systems (CeDiS), Freie Universität Berlin
- * Last update: September 24, 2015
+ * Copyright (c) 2014-2017 Simon Fraser University
+ * Copyright (c) 2003-2017 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
- * @package plugins.generic.shariff
  * @class ShariffPlugin
+ * @ingroup plugins_block_shariff
  *
  * @brief Shariff plugin class
  */
 
 import('lib.pkp.classes.plugins.GenericPlugin');
 
-define('SHARIFF_POSITION_ARTICLEFOOTER', 'articlefooter');
-define('SHARIFF_POSITION_ALLFOOTER', 'allfooter');
-define('SHARIFF_POSITION_BLOCK', 'block');
-
-define('SHARIFF_THEME_STANDARD', 'standard');
-define('SHARIFF_THEME_GREY', 'grey');
-define('SHARIFF_THEME_WHITE', 'white');
-
-define('SHARIFF_ORIENTATION_V', 'vertical');
-define('SHARIFF_ORIENTATION_H', 'horizontal');
-
 class ShariffPlugin extends GenericPlugin {
-
 	/**
-	 * @copydoc PKPPlugin::getDisplayName()
+	 * Get the display name of this plugin
+	 * @return string
 	 */
 	function getDisplayName() {
 		return __('plugins.generic.shariff.displayName');
 	}
 
 	/**
-	 * @copydoc PKPPlugin::getDescription()
+	 * Get the description of this plugin
+	 * @return string
 	 */
-		function getDescription() {
+	function getDescription() {
 		return __('plugins.generic.shariff.description');
 	}
 
+	function register($category, $path) {
+
+		if (parent::register($category, $path)) {
+			if ($this->getEnabled()) {
+
+				$context = Request::getContext();
+				$contextId = $context->getId();
+
+				// display the buttons depending in the selected position
+				switch($this->getSetting($contextId, 'selectedPosition')){
+					case 'footer':
+						HookRegistry::register('Templates::Common::Footer::PageFooter', array($this, 'addShariffButtons'));
+						break;
+					case 'sidebar':
+						HookRegistry::register('PluginRegistry::loadCategory', array($this, 'callbackLoadCategory'));
+						break;
+					case 'submission':
+						HookRegistry::register('Templates::Article::Footer::PageFooter', array($this, 'addShariffButtons'));
+						HookRegistry::register('Templates::Catalog::Book::Details', array($this, 'addShariffButtons'));
+				}
+			}
+			return true;
+		}
+		return false;
+	}
+
 	/**
-	 * Return the location of the plugin's CSS file
+	 * Get the name of the settings file to be installed on new context
+	 * creation.
 	 * @return string
 	 */
-	function getStyleSheet() {
-		return $this->getPluginPath() . DIRECTORY_SEPARATOR . 'shariff.complete.css';
+	function getContextSpecificPluginSettingsFile() {
+		return $this->getPluginPath() . '/settings.xml';
 	}
 
 	/**
-	 * @copydoc PKPPlugin::register()
+	 * @copydoc PKPPlugin::getTemplatePath
 	 */
-	function register($category, $path) {
-		$success = parent::register($category, $path);
-		if ($success && $this->getEnabled()) {
-			$journal =& Request::getJournal();
-			$journalId = $journal->getId();
-			// If plug-in is set up i.e. services selected
-			if ($this->getSetting($journalId, 'selectedServices')) {
-				if ($this->getSetting($journalId, 'position') == SHARIFF_POSITION_BLOCK) {
-					// Register shariff block plugin
-					HookRegistry::register('PluginRegistry::loadCategory', array($this, 'callbackLoadCategory'));
-				} elseif  ($this->getSetting($journalId, 'position') == SHARIFF_POSITION_ARTICLEFOOTER) {
-					// Register for the article page footer hook
-					HookRegistry::register ('Templates::Article::Footer::PageFooter', array(&$this, 'addShariffButtons'));
-				} else {
-					// Register for the all footer hooks
-					HookRegistry::register ('Templates::Article::Footer::PageFooter', array(&$this, 'addShariffButtons'));
-					HookRegistry::register ('Templates::Common::Footer::PageFooter', array(&$this, 'addShariffButtons'));
-				}
-				$templateMgr =& TemplateManager::getManager();
-				$templateMgr->addStyleSheet(Request::getBaseUrl() . DIRECTORY_SEPARATOR . $this->getStyleSheet());
-			}
-		}
-		return $success;
+	function getTemplatePath($inCore = false) {
+		return parent::getTemplatePath($inCore) . 'templates/';
 	}
 
 	/**
-	* @see PluginRegistry::loadCategory()
-	*/
+	 * Register as a block plugin, even though this is a generic plugin.
+	 * This will allow the plugin to behave as a block plugin, i.e. to
+	 * have layout tasks performed on it.
+	 * @param $hookName string
+	 * @param $args array
+	 */
 	function callbackLoadCategory($hookName, $args) {
-		$plugin = null;
-		$category = $args[0];
-		if ($category ==  'blocks') {
-			$this->import('ShariffBlockPlugin');
-			$plugin = new ShariffBlockPlugin($this->getName());
-		}
-		if ($plugin) {
-			$seq = $plugin->getSeq();
-			$plugins =& $args[1];
-			if (!isset($plugins[$seq])) $plugins[$seq] = array();
-			$plugins[$seq][$this->getPluginPath()] = $plugin;
+		$category =& $args[0];
+		$plugins =& $args[1];
+		switch ($category) {
+			case 'blocks':
+				$this->import('ShariffBlockPlugin');
+				$blockPlugin = new ShariffBlockPlugin($this->getName());
+				$plugins[$blockPlugin->getSeq()][$blockPlugin->getPluginPath()] = $blockPlugin;
+				break;
 		}
 		return false;
 	}
@@ -106,127 +103,93 @@ class ShariffPlugin extends GenericPlugin {
 		$template =& $args[1];
 		$output =& $args[2];
 
-		$journal =& Request::getJournal();
-		$journalId = $journal->getId();
+		$request = $this->getRequest();
+		$context = $request->getContext();
+		$contextId = $context->getId();
 
-		// get the selected settings
 		// services
-		$selectedServices = $this->getSetting($journalId, 'selectedServices');
+		$selectedServices = $this->getSetting($contextId, 'selectedServices');
 		$preparedServices = array_map(create_function('$arrayElement', 'return \'&quot;\'.$arrayElement.\'&quot;\';'), $selectedServices);
 		$dataServicesString = implode(",", $preparedServices);
-		// theme
-		$selectedTheme = $this->getSetting($journalId, 'selectedTheme');
-		// orientation
-		$selectedOrientation = $this->getSetting($journalId, 'selectedOrientation');
-		// backend URL
-		$backendUrl = $this->getSetting($journalId, 'backendUrl');
 
+		// theme
+		$selectedTheme = $this->getSetting($contextId, 'selectedTheme');
+
+		// orientation
+		$selectedOrientation = $this->getSetting($contextId, 'selectedOrientation');
+
+		// get language from system
 		$locale = AppLocale::getLocale();
 		$iso1Lang = AppLocale::getIso1FromLocale($locale);
+
+		// javascript, css and backend url
 		$requestedUrl = Request::getCompleteUrl();
 		$baseUrl = Request::getBaseUrl();
+		$jsUrl = $baseUrl .'/'. $this->getPluginPath().'/shariff.complete.js';
+		$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/' . 'shariff.complete.css';
+		$backendUrl = $baseUrl .'/'. 'shariff-backend';
 
 		$output .= '
-		<br /><br />
-		<div class="shariff" data-lang="'. $iso1Lang.'"
-		data-services="['.$dataServicesString.']"
-		data-backend-url="'.$backendUrl.'"
-		data-theme="'.$selectedTheme.'"
-		data-orientation="' .$selectedOrientation.'"
-		data-url="'. $requestedUrl .'">
-		</div>
-		<script src="'. $baseUrl .'/'. $this->getPluginPath().'/shariff.complete.js"></script>';
+			<link rel="stylesheet" type="text/css" href="'.$cssUrl.'">
+			<div class="shariff pkp_footer_content" data-lang="'. $iso1Lang.'"
+				data-services="['.$dataServicesString.']"
+				data-backend-url="'.$backendUrl.'"
+				data-theme="'.$selectedTheme.'"
+				data-orientation="'.$selectedOrientation.'"
+				data-url="'. $requestedUrl .'">
+			</div>
+			<script src="'.$jsUrl.'"></script>';
 
 		return false;
 	}
 
 	/**
-	 * Set the page's breadcrumbs, given the plugin's tree of items
-	 * to append.
-	 * @param $subclass boolean
+	 * @see Plugin::getActions()
 	 */
-	function setBreadcrumbs($isSubclass = false) {
-		$templateMgr =& TemplateManager::getManager();
-		$pageCrumbs = array(
-			array(
-				Request::url(null, 'user'),
-				'navigation.user'
-			),
-			array(
-				Request::url(null, 'manager'),
-				'user.role.manager'
-			)
+	function getActions($request, $verb) {
+		$router = $request->getRouter();
+		import('lib.pkp.classes.linkAction.request.AjaxModal');
+		return array_merge(
+			$this->getEnabled()?array(
+				new LinkAction(
+					'settings',
+					new AjaxModal(
+						$router->url($request, null, null, 'manage', null, array('verb' => 'settings', 'plugin' => $this->getName(), 'category' => 'generic')),
+						$this->getDisplayName()
+					),
+					__('manager.plugins.settings'),
+					null
+				),
+			):array(),
+			parent::getActions($request, $verb)
 		);
-		if ($isSubclass) $pageCrumbs[] = array(
-			Request::url(null, 'manager', 'plugins'),
-			'manager.plugins'
-		);
-
-		$templateMgr->assign('pageHierarchy', $pageCrumbs);
 	}
 
 	/**
-	 * @copydoc PKPPlugin::getManagementVerbs()
+	 * @see Plugin::manage()
 	 */
-	function getManagementVerbs() {
-		$verbs = array();
-		if ($this->getEnabled()) {
-			$verbs[] = array('settings', __('plugins.generic.shariff.settings'));
-		}
-		return parent::getManagementVerbs($verbs);
-	}
-
-	/**
-	 * @copydoc PKPPlugin::manage()
-	 */
-	function manage($verb, $args, &$message, &$messageParams) {
-		if (!parent::manage($verb, $args, $message, $messageParams)) return false;
-
-		switch ($verb) {
+	function manage($args, $request) {
+		switch ($request->getUserVar('verb')) {
 			case 'settings':
-				$templateMgr =& TemplateManager::getManager();
-				$templateMgr->register_function('plugin_url', array(&$this, 'smartyPluginUrl'));
-				$journal =& Request::getJournal();
-
+				AppLocale::requireComponents(LOCALE_COMPONENT_APP_COMMON,  LOCALE_COMPONENT_PKP_MANAGER);
 				$this->import('ShariffSettingsForm');
-				$form = new ShariffSettingsForm($this, $journal->getId());
-				if (Request::getUserVar('save')) {
+				$form = new ShariffSettingsForm($this, $request->getContext()->getId());
+
+				if ($request->getUserVar('save')) {
 					$form->readInputData();
 					if ($form->validate()) {
 						$form->execute();
-						Request::redirect(null, 'manager', 'plugin');
-						return false;
-					} else {
-						$this->setBreadCrumbs(true);
-						$form->display();
+						$notificationManager = new NotificationManager();
+						$notificationManager->createTrivialNotification($request->getUser()->getId());
+						return new JSONMessage(true);
 					}
 				} else {
-					$this->setBreadCrumbs(true);
 					$form->initData();
-					$form->display();
 				}
-				return true;
-			default:
-				// Unknown management verb
-				assert(false);
-				return false;
+				return new JSONMessage(true, $form->fetch($request));
 		}
+		return parent::manage($args, $request);
 	}
-
-	/**
-	 * @copydoc Plugin::getContextSpecificPluginSettingsFile()
-	 */
-	function getContextSpecificPluginSettingsFile() {
-		return $this->getPluginPath() . '/settings.xml';
-	}
-
-	/**
-	 * @copydoc PKPPlugin::getTemplatePath()
-	 */
-	function getTemplatePath() {
-		return parent::getTemplatePath() . 'templates/';
-	}
-
 }
 
 ?>
