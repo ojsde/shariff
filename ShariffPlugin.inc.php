@@ -133,6 +133,8 @@ class ShariffPlugin extends GenericPlugin {
 			<link rel="stylesheet" type="text/css" href="'.$cssUrl.'">
 			<div class="shariff pkp_footer_content" data-lang="'. $iso1Lang.'"
 				data-services="['.$dataServicesString.']"
+				data-mail-url="mailto:"
+				data-mail-body={url}
 				data-backend-url="'.$backendUrl.'"
 				data-theme="'.$selectedTheme.'"
 				data-orientation="'.$selectedOrientation.'"

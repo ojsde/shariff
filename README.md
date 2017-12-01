@@ -6,17 +6,29 @@ This plugin adds social media buttons to your web site (to the footer of each pa
 
 Available social media services are:
 - AddThis
-- Facebook
-- Twitter
+- diaspora*
+- facebook
+- Flattr
 - Google+
 - LinkedIn
+- Mail
 - Pinterest
-- Whatsapp
+- Print
+- Qzone
+- reddit
+- StumbleUpon
+- Tencent Weibo
+- Threema
+- Tumblr
+- Twitter
+- Weibo
+- WhatsApp
 - XING
+
 
 ![Shariff buttons](https://raw.githubusercontent.com/lilients/img/master/shariff_buttons_footer.PNG)
 
-An info button that links to the heise article can be added. You can select different themes, choose the orientation of the buttons (vertical or horizontal) and determine the position of the social media buttons on your web site (footer, sidebar or article/book page). The plugins will be displayed in the language of the website.
+An info button that links to the heise article can be added. You can select different themes, choose the orientation of the buttons (vertical or horizontal) and determine the position of the social media buttons on your website (footer, sidebar or article/book page). The plugins will be displayed in the language of the website.
 
 You can add the Shariff PHP Backend to display the number of likes (see below).
 

@@ -17,14 +17,25 @@
 	<message key="plugins.generic.shariff.description"><![CDATA[Füge Social-Media-Buttons zur Zeitschrift hinzu, ohne die Privatsphäre der Besucher/innen der Webseite zu gefährden. Dazu wird der <a href="https://github.com/heiseonline/shariff" target="_blank">Shariff</a>-Ansatz genutzt.]]></message>
 	
 	<message key="plugins.generic.shariff.settings.service">Dienste</message>
-	<message key="plugins.generic.shariff.settings.service.addthis">AddThis</message>
+	<message key="plugins.generic.shariff.settings.service.twitter">Twitter</message>
 	<message key="plugins.generic.shariff.settings.service.facebook">Facebook</message>
 	<message key="plugins.generic.shariff.settings.service.googleplus">Google+</message>
 	<message key="plugins.generic.shariff.settings.service.linkedin">LinkedIn</message>
 	<message key="plugins.generic.shariff.settings.service.pinterest">Pinterest</message>
-	<message key="plugins.generic.shariff.settings.service.twitter">Twitter</message>
-	<message key="plugins.generic.shariff.settings.service.whatsapp">Whatsapp</message>
 	<message key="plugins.generic.shariff.settings.service.xing">XING</message>
+	<message key="plugins.generic.shariff.settings.service.whatsapp">Whatsapp</message>
+	<message key="plugins.generic.shariff.settings.service.addthis">AddThis</message>
+	<message key="plugins.generic.shariff.settings.service.tumblr">Tumblr</message>
+	<message key="plugins.generic.shariff.settings.service.flattr">Flattr</message>
+	<message key="plugins.generic.shariff.settings.service.diaspora">diaspora*</message>
+	<message key="plugins.generic.shariff.settings.service.reddit">reddit</message>
+	<message key="plugins.generic.shariff.settings.service.stumbleupon">StumbleUpon</message>
+	<message key="plugins.generic.shariff.settings.service.threema">Threema</message>
+	<message key="plugins.generic.shariff.settings.service.weibo">Weibo</message>
+	<message key="plugins.generic.shariff.settings.service.tencent-weibo">Tencent Weibo</message>
+	<message key="plugins.generic.shariff.settings.service.qzone">Qzone</message>
+	<message key="plugins.generic.shariff.settings.service.mail">Mail</message>
+	<message key="plugins.generic.shariff.settings.service.print">Print</message>
 	<message key="plugins.generic.shariff.settings.service.info">Info</message>
 
 	<message key="plugins.generic.shariff.settings.theme">Thema</message>

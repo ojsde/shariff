@@ -51,9 +51,20 @@ class ShariffSettingsForm extends Form {
 			array("googleplus" => "plugins.generic.shariff.settings.service.googleplus"),
 			array("linkedin" => "plugins.generic.shariff.settings.service.linkedin"),
 			array("pinterest" => "plugins.generic.shariff.settings.service.pinterest"),
-			array("whatsapp" => "plugins.generic.shariff.settings.service.whatsapp"),
 			array("xing" => "plugins.generic.shariff.settings.service.xing"),
+			array("whatsapp" => "plugins.generic.shariff.settings.service.whatsapp"),
 			array("addthis" => "plugins.generic.shariff.settings.service.addthis"),
+			array("tumblr" => "plugins.generic.shariff.settings.service.tumblr"),
+			array("flattr" => "plugins.generic.shariff.settings.service.flattr"),
+			array("diaspora" => "plugins.generic.shariff.settings.service.diaspora"),
+			array("reddit" => "plugins.generic.shariff.settings.service.reddit"),
+			array("stumbleupon" => "plugins.generic.shariff.settings.service.stumbleupon"),
+			array("threema" => "plugins.generic.shariff.settings.service.threema"),
+			array("weibo" => "plugins.generic.shariff.settings.service.weibo"),
+			array("tencent-weibo" => "plugins.generic.shariff.settings.service.tencent-weibo"),
+			array("qzone" => "plugins.generic.shariff.settings.service.qzone"),
+			array("mail" => "plugins.generic.shariff.settings.service.mail"),
+			array("print" => "plugins.generic.shariff.settings.service.print"),
 			array("info" => "plugins.generic.shariff.settings.service.info")
 		);
 		$this->setData('services', $services);

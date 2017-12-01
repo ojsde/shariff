@@ -115,6 +115,9 @@ class ShariffBlockPlugin extends BlockPlugin {
 		// theme
 		$selectedTheme = $plugin->getSetting($contextId, 'selectedTheme');
 
+		// orientation
+		$selectedOrientation = $plugin->getSetting($contextId, 'selectedOrientation');
+
 		// get language from system
 		$locale = AppLocale::getLocale();
 		$iso1Lang = AppLocale::getIso1FromLocale($locale);
@@ -129,6 +132,7 @@ class ShariffBlockPlugin extends BlockPlugin {
 		// assign variables to the templates
 		$templateMgr->assign('dataServicesString', $dataServicesString);
 		$templateMgr->assign('selectedTheme', $selectedTheme);
+		$templateMgr->assign('selectedOrientation', $selectedOrientation);
 		$templateMgr->assign('backendUrl', $backendUrl);
 		$templateMgr->assign('iso1Lang', $iso1Lang);
 		$templateMgr->assign('requestedUrl', $requestedUrl);
