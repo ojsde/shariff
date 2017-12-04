@@ -54,6 +54,9 @@ The following settings are available:
 
 ![Shariff settings](https://raw.githubusercontent.com/lilients/img/master/shariff_settings.PNG)
 
+## Usage
+Install the plugin as described above, activate it and choose the settings you prefer. If you choose the sidebar option, you need to enable the new block under management/settings/website.
+
 ## Display numbers
 
 To display the numbers how often a page is shared in social media, you need to add the Shariff PHP Backend (https://github.com/heiseonline/shariff-backend-php) to you OJS installation. To set up the backend you need to have access to the code. Follow the steps:
