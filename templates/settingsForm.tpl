@@ -27,23 +27,27 @@
 		{fbvFormSection list="true" label="plugins.generic.shariff.settings.service"}
 			{foreach from=$services item=service name=services}
 				{foreach from=$service key=id item=title}
-					{fbvElement type="checkbox" name="selectedServices[]" id=$id value=$id label=$title checked=$id|in_array:$selectedServices inline=true}
+					{assign var=checked value=false}
+					{if $selectedServices && $id|in_array:$selectedServices}
+						{assign var=checked value=true}
+					{/if}
+					{fbvElement type="checkbox" name="selectedServices[]" id=$id value=$id label=$title checked=$checked inline=true}
 				{/foreach}
 			{/foreach}
 		{/fbvFormSection}
 
 		{* Choose theme *}
-		{fbvFormSection label="plugins.generic.shariff.settings.theme" }
+		{fbvFormSection label="plugins.generic.shariff.settings.theme"}
 			{fbvElement type="select" id="selectedTheme" from=$themes selected=$selectedTheme size=$fbvStyles.size.MEDIUM}
 		{/fbvFormSection}
 
 		{* Choose position *}
-		{fbvFormSection label="plugins.generic.shariff.settings.position" }
+		{fbvFormSection label="plugins.generic.shariff.settings.position"}
 			{fbvElement type="select" id="selectedPosition" from=$positions  selected=$selectedPosition size=$fbvStyles.size.MEDIUM}
 		{/fbvFormSection}
 
 		{* Choose orientation *}
-		{fbvFormSection label="plugins.generic.shariff.settings.orientation" }
+		{fbvFormSection label="plugins.generic.shariff.settings.orientation"}
 			{fbvElement type="select" id="selectedOrientation" from=$orientations  selected=$selectedOrientation size=$fbvStyles.size.MEDIUM}
 		{/fbvFormSection}
 

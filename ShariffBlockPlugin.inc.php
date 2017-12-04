@@ -125,8 +125,8 @@ class ShariffBlockPlugin extends BlockPlugin {
 		// javascript, css and backend url
 		$requestedUrl = $request->getCompleteUrl();
 		$baseUrl = $request->getBaseUrl();
-		$jsUrl = $baseUrl .'/'. $this->getPluginPath().'/shariff.complete.js';
-		$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/' . 'shariff.complete.css';
+		$jsUrl = $baseUrl .'/'. $plugin->getPluginPath().'/shariff.complete.js';
+		$cssUrl = $baseUrl .'/' . $plugin->getPluginPath() . '/' . 'shariff.complete.css';
 		$backendUrl = $baseUrl .'/'. 'shariff-backend';
 
 		// assign variables to the templates
