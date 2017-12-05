@@ -59,7 +59,7 @@ Install the plugin as described above, activate it and choose the settings you p
 
 ## Display numbers
 
-To display the numbers how often a page is shared in social media, you need to add the Shariff PHP Backend (https://github.com/heiseonline/shariff-backend-php) to you OJS installation. To set up the backend you need to have access to the code. Follow the steps:
+To display the numbers how often a page is shared in social media, you need to add the Shariff PHP Backend (https://github.com/heiseonline/shariff-backend-php/releases) to you OJS installation. To set up the backend you need to have access to the code. Follow the steps:
 
 1. Download the Shariff PHP Backend release zip file and unzip it.
 2. Copy the folder to the top level of your installation, name it "shariff-backend" and make it writable.
