@@ -25,10 +25,13 @@ Available social media services are:
 - WhatsApp
 - XING
 
-
 ![Shariff buttons](https://raw.githubusercontent.com/lilients/img/master/shariff_buttons_footer.PNG)
 
-An info button that links to the heise article can be added. You can select different themes, choose the orientation of the buttons (vertical or horizontal) and determine the position of the social media buttons on your website (footer, sidebar or article/book page). The plugins will be displayed in the language of the website.
+Additionally an info button that links to the heise article can be added. You can also add a mail icon. 
+
+The plugin offers a selection of settings like themes, orientation and position of the social media buttons (see settings below). 
+
+The plugins will be displayed in the language of the website.
 
 You can add the Shariff PHP Backend to display the number of likes (see below).
 
@@ -38,7 +41,7 @@ This plugin is licensed under the GNU General Public License v2. See the file LI
 
 ## System Requirements
 
-This plugin is compatible with OJS 3.x version.
+This plugin is compatible with OJS 3.x version and OMP 3.x version.
 
 ## Installation
 
@@ -69,8 +72,35 @@ To display the numbers how often a page is shared in social media, you need to a
 ## Contact/Support
 
 Documentation, bug listings, and updates can be found on this plugin's homepage at <http://github.com/ojsde/shariff>.
+Contact us via support@ojs-de.net. Find out more about the project [OJS-de.net](http://www.ojs-de.net/kontakt/index.html).
 
 ## Version History
 
-1.0 - Initial Release
-2.0 - Adaption to OJS 3
+* 2.0 - Adaption to OJS/OMP 3
+* 1.0 - Shariff plugin for OJS 2
+
+## Technical Documentation
+
+This plugin has applies to OJS and OMP 3 (the code is the same). The [shariff solution by heise](https://github.com/heiseonline/shariff) (version v2.0.4) is included in the plugin code. It adds the social media buttons using html, css and js. The plugin uses hooks to add content, no existing templates are being overwritten. No database access is needed.
+
+### Hooks
+
+The buttons are added via template hooks:
+* Templates::Common::Footer::PageFooter
+* Templates::Article::Details 
+* Templates::Catalog::Book::Details
+
+To add the plugin to the sidebar, this plugin is also a [block plugin](https://github.com/ojsde/shariff/blob/master/ShariffBlockPlugin.inc.php).
+
+### Attributes
+
+The shariff solution offers different settings (see data attributes https://github.com/heiseonline/shariff). A selection of them are used in this plugin (some are filled automatically, some can be chosen by the user in the plugin setting):
+
+* data-lang: The plugin reads the selected language of the GUI automatically and uses it to display the buttons in that language.
+* data-services: The user can choose from a list of services in the plugin settings (see above).
+* data-mail-url: The automatically set string "mailto" allows the usage of local mail clients.
+* data-mail-body: The plugin enters the respective url automatically.
+* data-backend-url: The backend url is read automatically if the folder exists. The folder has to be placed at the document root and named "shariff-backend".
+* data-theme: The user can choose between different themes in the plugin settings (see above).
+* data-orientation: The user can choose between two orientation in the plugin settings (see above).
+* data-url: The plugin adds the respective url automatically.
