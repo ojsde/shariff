@@ -64,7 +64,7 @@ class ShariffBlockPlugin extends BlockPlugin {
 	}
 
 	/**
-	 * Get the web feed plugin
+	 * Get the shariff plugin
 	 * @return ShariffPlugin
 	 */
 	function getShariffPlugin() {

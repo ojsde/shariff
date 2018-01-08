@@ -49,7 +49,7 @@ class ShariffPlugin extends GenericPlugin {
 						HookRegistry::register('PluginRegistry::loadCategory', array($this, 'callbackLoadCategory'));
 						break;
 					case 'submission':
-						HookRegistry::register('Templates::Article::Footer::PageFooter', array($this, 'addShariffButtons'));
+						HookRegistry::register('Templates::Article::Details', array($this, 'addShariffButtons'));
 						HookRegistry::register('Templates::Catalog::Book::Details', array($this, 'addShariffButtons'));
 				}
 			}
