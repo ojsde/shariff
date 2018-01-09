@@ -81,7 +81,7 @@ Contact us via support@ojs-de.net. Find out more about the project [OJS-de.net](
 
 ## Technical Documentation
 
-This plugin has applies to OJS and OMP 3 (the code is the same). The [shariff solution by heise](https://github.com/heiseonline/shariff) (version v2.0.4) is included in the plugin code. It adds the social media buttons using html, css and js. The plugin uses hooks to add content, no existing templates are being overwritten. No database access is needed.
+This plugin works for OJS and OMP 3 (the code is the same). The [shariff solution by heise](https://github.com/heiseonline/shariff) (version v2.0.4) is included in the plugin code. It adds the social media buttons using html, css and js. The plugin uses hooks to add content, no existing templates are being overwritten. No database access is needed.
 
 ### Hooks
 
