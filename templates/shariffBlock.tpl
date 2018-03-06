@@ -1,9 +1,8 @@
 {**
  * templates/shariffBlock.tpl
  *
- * Author: Božana Bokan, Center for Digital Systems (CeDiS), Freie Universität Berlin
- * Last update: October 22, 2015
- * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ * Copyright (c) 2018 Free University Berlin
+ * Distributed under the GNU GPL v2. For full terms see the file LICENSE.
  *
  * Shariff social media buttons block.
  *}
