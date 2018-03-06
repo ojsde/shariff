@@ -3,9 +3,8 @@
 /**
  * @file plugins/generic/shariff/ShariffBlockPlugin.inc.php
  *
- * Copyright (c) 2014-2017 Simon Fraser University
- * Copyright (c) 2003-2017 John Willinsky
- * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ * Copyright (c) 2018 Free University Berlin
+ * Distributed under the GNU GPL v2. For full terms see the file LICENSE.
  *
  * @class ShariffBlockPlugin
  * @ingroup plugins_generic_shariff
@@ -19,15 +18,17 @@ class ShariffBlockPlugin extends BlockPlugin {
 	/** @var string Name of parent plugin */
 	var $parentPluginName;
 
+	/**
+	 * Constructor
+	 * @param $parentPluginName string Name of parent plugin.
+	 */
 	function __construct($parentPluginName) {
 		parent::__construct();
 		$this->parentPluginName = $parentPluginName;
 	}
 
 	/**
-	 * Get the name of this plugin. The name must be unique within
-	 * its category.
-	 * @return String name of plugin
+	 * @copydoc Plugin::getName()
 	 */
 	function getName() {
 		return 'ShariffBlockPlugin';
@@ -35,21 +36,21 @@ class ShariffBlockPlugin extends BlockPlugin {
 
 	/**
 	 * Hide this plugin from the management interface (it's subsidiary)
+	 * @return bool
 	 */
 	function getHideManagement() {
 		return true;
 	}
 
 	/**
-	 * Get the display name of this plugin.
-	 * @return String
+	 * @copydoc Plugin::getDisplayName()
 	 */
 	function getDisplayName() {
 		return __('plugins.generic.shariff.block.displayName');
 	}
 
 	/**
-	 * Get a description of the plugin.
+	 * @copydoc Plugin::getDescription()
 	 */
 	function getDescription() {
 		return __('plugins.generic.shariff.block.description');
@@ -72,15 +73,14 @@ class ShariffBlockPlugin extends BlockPlugin {
 	}
 
 	/**
-	 * Override the builtin to get the correct plugin path.
-	 * @return string
+	 * @copydoc Plugin::getPluginPath()
 	 */
 	function getPluginPath() {
 		return $this->getShariffPlugin()->getPluginPath();
 	}
 
 	/**
-	 * @copydoc PKPPlugin::getTemplatePath
+	 * @copydoc Plugin::getTemplatePath()
 	 */
 	function getTemplatePath($inCore = false) {
 		return $this->getShariffPlugin()->getTemplatePath($inCore);
@@ -91,7 +91,7 @@ class ShariffBlockPlugin extends BlockPlugin {
 	 * @copydoc BlockPlugin::getBlockTemplateFilename()
 	 */
 	function getBlockTemplateFilename() {
-		// Return the opt-out template.
+		// Return the shariff block template.
 		return 'shariffBlock.tpl';
 	}
 
@@ -125,8 +125,8 @@ class ShariffBlockPlugin extends BlockPlugin {
 		// javascript, css and backend url
 		$requestedUrl = $request->getCompleteUrl();
 		$baseUrl = $request->getBaseUrl();
-		$jsUrl = $baseUrl .'/'. $plugin->getPluginPath().'/shariff.complete.js';
-		$cssUrl = $baseUrl .'/' . $plugin->getPluginPath() . '/' . 'shariff.complete.css';
+		$jsUrl = $baseUrl .'/'. $plugin->getPluginPath().'/shariff/shariff.complete.js';
+		$cssUrl = $baseUrl .'/' . $plugin->getPluginPath() . '/' . '/shariff/shariff.complete.css';
 		$backendUrl = $baseUrl .'/'. 'shariff-backend';
 
 		// assign variables to the templates

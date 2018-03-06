@@ -4,17 +4,16 @@
 <!--
   * plugins/generic/shariff/version.xml
   *
-  * Copyright (c) 2014-2017 Simon Fraser University
-  * Copyright (c) 2003-2017 John Willinsky
-  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  * Copyright (c) 2018 Free University Berlin
+  * Distributed under the GNU GPL v2. For full terms see the file LICENSE.
   *
   * Plugin version information.
   -->
 <version>
 	<application>shariff</application>
 	<type>plugins.generic</type>
-	<release>2.0.0.0</release>
-	<date>2017-11-21</date>
+	<release>2.0.0.1</release>
+	<date>2018-03-06</date>
 	<lazy-load>1</lazy-load>
 	<class>ShariffPlugin</class>
 </version>

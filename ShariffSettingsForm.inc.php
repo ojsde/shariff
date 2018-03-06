@@ -3,14 +3,12 @@
 /**
  * @file plugins/generic/shariff/ShariffSettingsForm.inc.php
  *
- * Copyright (c) 2014-2017 Simon Fraser University
- * Copyright (c) 2003-2017 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @class ShariffSettingsForm
  * @ingroup plugins_generic_shariff
  *
- * @brief Form for managers to modify web feeds plugin settings
+ * @brief Form for managers to modify shariff plugin settings
  */
 
 import('lib.pkp.classes.form.Form');
@@ -20,12 +18,12 @@ class ShariffSettingsForm extends Form {
 	/** @var int Associated context ID */
 	private $_contextId;
 
-	/** @var ShariffPlugin Web feed plugin */
+	/** @var ShariffPlugin plugin */
 	private $_plugin;
 
 	/**
 	 * Constructor
-	 * @param $plugin ShariffPlugin Web feed plugin
+	 * @param $plugin ShariffPlugin plugin
 	 * @param $contextId int Context ID
 	 */
 	function __construct($plugin, $contextId) {
@@ -39,6 +37,7 @@ class ShariffSettingsForm extends Form {
 
 	/**
 	 * Initialize form data.
+	 * @see Form::initData()
 	 */
 	function initData() {
 		$contextId = $this->_contextId;
@@ -100,6 +99,7 @@ class ShariffSettingsForm extends Form {
 
 	/**
 	 * Assign form data to user-submitted data.
+	 * @see Form::readInputData()
 	 */
 	function readInputData() {
 		$this->readUserVars(array('selectedTheme', 'selectedPosition', 'selectedServices', 'selectedOrientation'));
@@ -107,7 +107,8 @@ class ShariffSettingsForm extends Form {
 
 	/**
 	 * Fetch the form.
-	 * @copydoc Form::fetch()
+	 * @see Form::fetch()
+	 * @param $request PKPRequest
 	 */
 	function fetch($request) {
 		$templateMgr = TemplateManager::getManager($request);
@@ -117,14 +118,15 @@ class ShariffSettingsForm extends Form {
 
 	/**
 	 * Save settings.
+	 * @see Form::execute()
 	 */
 	function execute() {
 		$plugin = $this->_plugin;
 		$contextId = $this->_contextId;
 
-		$plugin->updateSetting($contextId, 'selectedTheme', $this->getData('selectedTheme'));
-		$plugin->updateSetting($contextId, 'selectedPosition', $this->getData('selectedPosition'));
-		$plugin->updateSetting($contextId, 'selectedOrientation', $this->getData('selectedOrientation'));
+		$plugin->updateSetting($contextId, 'selectedTheme', $this->getData('selectedTheme'), 'string');
+		$plugin->updateSetting($contextId, 'selectedPosition', $this->getData('selectedPosition'), 'string');
+		$plugin->updateSetting($contextId, 'selectedOrientation', $this->getData('selectedOrientation'), 'string');
 		$plugin->updateSetting($contextId, 'selectedServices', $this->getData('selectedServices'), 'object');
 	}
 }
