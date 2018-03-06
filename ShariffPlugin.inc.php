@@ -3,12 +3,11 @@
 /**
  * @file plugins/generic/shariff/ShariffPlugin.inc.php
  *
- * Copyright (c) 2014-2017 Simon Fraser University
- * Copyright (c) 2003-2017 John Willinsky
- * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ * Copyright (c) 2018 Center for Digital Systems (CeDiS), Freie Universität Berlin
+ * Distributed under the GNU GPL v2. For full terms see the file LICENSE.
  *
  * @class ShariffPlugin
- * @ingroup plugins_block_shariff
+ * @ingroup plugins_generic_shariff
  *
  * @brief Shariff plugin class
  */
@@ -17,27 +16,29 @@ import('lib.pkp.classes.plugins.GenericPlugin');
 
 class ShariffPlugin extends GenericPlugin {
 	/**
-	 * Get the display name of this plugin
-	 * @return string
+	 * @copydoc Plugin::getDisplayName()
 	 */
 	function getDisplayName() {
 		return __('plugins.generic.shariff.displayName');
 	}
 
 	/**
-	 * Get the description of this plugin
-	 * @return string
+	 * @copydoc Plugin::getDescription()
 	 */
 	function getDescription() {
 		return __('plugins.generic.shariff.description');
 	}
 
+	/**
+	 * @copydoc Plugin::register()
+	 */
 	function register($category, $path) {
 
 		if (parent::register($category, $path)) {
 			if ($this->getEnabled()) {
 
-				$context = Request::getContext();
+				$request = $this->getRequest();
+				$context = $request->getContext();
 				$contextId = $context->getId();
 
 				// display the buttons depending in the selected position
@@ -68,7 +69,7 @@ class ShariffPlugin extends GenericPlugin {
 	}
 
 	/**
-	 * @copydoc PKPPlugin::getTemplatePath
+	 * @copydoc Plugin::getTemplatePath()
 	 */
 	function getTemplatePath($inCore = false) {
 		return parent::getTemplatePath($inCore) . 'templates/';
@@ -80,6 +81,7 @@ class ShariffPlugin extends GenericPlugin {
 	 * have layout tasks performed on it.
 	 * @param $hookName string
 	 * @param $args array
+	 * @return bool
 	 */
 	function callbackLoadCategory($hookName, $args) {
 		$category =& $args[0];
@@ -98,6 +100,7 @@ class ShariffPlugin extends GenericPlugin {
 	 * Hook callback: Handle requests.
 	 * @param $hookName string The name of the hook being invoked
 	 * @param $args array The parameters to the invoked hook
+	 * @return bool
 	 */
 	function addShariffButtons($hookName, $args) {
 		$template =& $args[1];
@@ -123,10 +126,10 @@ class ShariffPlugin extends GenericPlugin {
 		$iso1Lang = AppLocale::getIso1FromLocale($locale);
 
 		// javascript, css and backend url
-		$requestedUrl = Request::getCompleteUrl();
+		$requestedUrl = $request->getCompleteUrl();
 		$baseUrl = Request::getBaseUrl();
-		$jsUrl = $baseUrl .'/'. $this->getPluginPath().'/shariff.complete.js';
-		$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/' . 'shariff.complete.css';
+		$jsUrl = $baseUrl .'/'. $this->getPluginPath().'/shariff/shariff.complete.js';
+		$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/' . 'shariff/shariff.complete.css';
 		$backendUrl = $baseUrl .'/'. 'shariff-backend';
 
 		$output .= '
@@ -146,7 +149,7 @@ class ShariffPlugin extends GenericPlugin {
 	}
 
 	/**
-	 * @see Plugin::getActions()
+	 * @copydoc Plugin::getActions()
 	 */
 	function getActions($request, $verb) {
 		$router = $request->getRouter();
@@ -168,7 +171,7 @@ class ShariffPlugin extends GenericPlugin {
 	}
 
 	/**
-	 * @see Plugin::manage()
+	 * @copydoc Plugin::manage()
 	 */
 	function manage($args, $request) {
 		switch ($request->getUserVar('verb')) {
