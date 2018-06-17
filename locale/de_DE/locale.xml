@@ -11,10 +11,12 @@
   -->
 
 <locale name="de_DE" full_name="Deutsch (Deutschland)">
-	<message key="plugins.generic.shariff.displayName">Shariff Plugin</message>
-	<message key="plugins.generic.shariff.block.displayName">Shariff Plugin</message>
+	<message key="plugins.generic.shariff.displayName">Shariff-Plugin</message>
 	<message key="plugins.generic.shariff.description"><![CDATA[Füge Social-Media-Buttons zur Zeitschrift hinzu, ohne die Privatsphäre der Besucher/innen der Webseite zu gefährden. Dazu wird der <a href="https://github.com/heiseonline/shariff" target="_blank">Shariff</a>-Ansatz genutzt.]]></message>
-	
+
+	<message key="plugins.generic.shariff.block.displayName">Shariff-Block-Plugin</message>
+	<message key="plugins.generic.shariff.block.description"><![CDATA[Füge Social-Media-Buttons zur Zeitschrift hinzu, ohne die Privatsphäre der Besucher/innen der Webseite zu gefährden. Dazu wird der <a href="https://github.com/heiseonline/shariff" target="_blank">Shariff</a>-Ansatz genutzt.]]></message>
+
 	<message key="plugins.generic.shariff.settings.service">Dienste</message>
 	<message key="plugins.generic.shariff.settings.service.twitter">Twitter</message>
 	<message key="plugins.generic.shariff.settings.service.facebook">Facebook</message>
@@ -41,7 +43,7 @@
 	<message key="plugins.generic.shariff.settings.theme.standard">Standard</message>
 	<message key="plugins.generic.shariff.settings.theme.grey">Grau</message>
 	<message key="plugins.generic.shariff.settings.theme.white">Weiß</message>
-	
+
 	<message key="plugins.generic.shariff.settings.position">Position</message>
 	<message key="plugins.generic.shariff.settings.position.footer">Fußzeile</message>
 	<message key="plugins.generic.shariff.settings.position.sidebar">Seitenleiste</message>
