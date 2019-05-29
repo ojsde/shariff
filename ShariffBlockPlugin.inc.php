@@ -22,9 +22,9 @@ class ShariffBlockPlugin extends BlockPlugin {
 	 * Constructor
 	 * @param $parentPluginName string Name of parent plugin.
 	 */
-	function __construct($parentPluginName) {
+	function __construct($parentPlugin) {
 		parent::__construct();
-		$this->parentPluginName = $parentPluginName;
+		$this->parentPlugin = $parentPlugin;
 	}
 
 	/**
@@ -69,7 +69,7 @@ class ShariffBlockPlugin extends BlockPlugin {
 	 * @return ShariffPlugin
 	 */
 	function getShariffPlugin() {
-		return PluginRegistry::getPlugin('generic', $this->parentPluginName);
+		return $this->parentPlugin;
 	}
 
 	/**

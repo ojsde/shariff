@@ -32,7 +32,7 @@ class ShariffPlugin extends GenericPlugin {
 	/**
 	 * @copydoc Plugin::register()
 	 */
-	function register($category, $path) {
+	function register($category, $path, $mainContextId = NULL) {
 
 		if (parent::register($category, $path)) {
 			if ($this->getEnabled()) {
@@ -47,8 +47,12 @@ class ShariffPlugin extends GenericPlugin {
 						HookRegistry::register('Templates::Common::Footer::PageFooter', array($this, 'addShariffButtons'));
 						break;
 					case 'sidebar':
-						HookRegistry::register('PluginRegistry::loadCategory', array($this, 'callbackLoadCategory'));
-						break;
+						$this->import('ShariffBlockPlugin');
+						PluginRegistry::register(
+							'blocks',
+							new ShariffBlockPlugin($this),
+							$this->getPluginPath()
+						);
 					case 'submission':
 						HookRegistry::register('Templates::Article::Details', array($this, 'addShariffButtons'));
 						HookRegistry::register('Templates::Catalog::Book::Details', array($this, 'addShariffButtons'));
@@ -73,27 +77,6 @@ class ShariffPlugin extends GenericPlugin {
 	 */
 	function getTemplatePath($inCore = false) {
 		return parent::getTemplatePath($inCore) . 'templates/';
-	}
-
-	/**
-	 * Register as a block plugin, even though this is a generic plugin.
-	 * This will allow the plugin to behave as a block plugin, i.e. to
-	 * have layout tasks performed on it.
-	 * @param $hookName string
-	 * @param $args array
-	 * @return bool
-	 */
-	function callbackLoadCategory($hookName, $args) {
-		$category =& $args[0];
-		$plugins =& $args[1];
-		switch ($category) {
-			case 'blocks':
-				$this->import('ShariffBlockPlugin');
-				$blockPlugin = new ShariffBlockPlugin($this->getName());
-				$plugins[$blockPlugin->getSeq()][$blockPlugin->getPluginPath()] = $blockPlugin;
-				break;
-		}
-		return false;
 	}
 
 	/**
