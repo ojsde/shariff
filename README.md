@@ -41,7 +41,7 @@ This plugin is licensed under the GNU General Public License v2. See the file LI
 
 ## System Requirements
 
-This plugin is compatible with OJS 3.x version and OMP 3.x version.
+This plugin is compatible with OJS 3 up to 3.1.1
 
 ## Installation
 
