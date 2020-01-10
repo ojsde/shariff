@@ -15,16 +15,19 @@
 import('lib.pkp.classes.plugins.BlockPlugin');
 
 class ShariffBlockPlugin extends BlockPlugin {
-	/** @var string Name of parent plugin */
+	/** @var string Name an Path of parent plugin */
 	var $parentPluginName;
+	var $parentPluginPath;
 
 	/**
 	 * Constructor
 	 * @param $parentPluginName string Name of parent plugin.
+	 * @param $parentPluginPath string Path of parent plugin.
 	 */
-	function __construct($parentPluginName) {
+	function __construct($parentPluginName, $parentPluginPath) {
 		parent::__construct();
 		$this->parentPluginName = $parentPluginName;
+		$this->parentPluginPath = $parentPluginPath;
 	}
 
 	/**
@@ -76,23 +79,16 @@ class ShariffBlockPlugin extends BlockPlugin {
 	 * @copydoc Plugin::getPluginPath()
 	 */
 	function getPluginPath() {
-		return $this->getShariffPlugin()->getPluginPath();
+	    return $this->parentPluginPath;
 	}
-
-	/**
-	 * @copydoc Plugin::getTemplatePath()
-	 */
-	function getTemplatePath($inCore = false) {
-		return $this->getShariffPlugin()->getTemplatePath($inCore);
-	}
-
 
 	/**
 	 * @copydoc BlockPlugin::getBlockTemplateFilename()
 	 */
 	function getBlockTemplateFilename() {
-		// Return the shariff block template.
-		return 'shariffBlock.tpl';
+		// Return the shariff block template.		
+	    $plugin = $this->getShariffPlugin();
+	    return (method_exists($plugin, 'getTemplateResource') ? '' : 'templates'.DIRECTORY_SEPARATOR) . 'shariffBlock.tpl';
 	}
 
 
@@ -106,38 +102,41 @@ class ShariffBlockPlugin extends BlockPlugin {
 		$context = $request->getContext();
 		$contextId = $context->getId();
 		$plugin = $this->getShariffPlugin();
-
-		// services
-		$selectedServices = $plugin->getSetting($contextId, 'selectedServices');
-		$preparedServices = array_map(create_function('$arrayElement', 'return \'"\'.$arrayElement.\'"\';'), $selectedServices);
-		$dataServicesString = implode(",", $preparedServices);
-
-		// theme
-		$selectedTheme = $plugin->getSetting($contextId, 'selectedTheme');
-
-		// orientation
-		$selectedOrientation = $plugin->getSetting($contextId, 'selectedOrientation');
-
-		// get language from system
-		$locale = AppLocale::getLocale();
-		$iso1Lang = AppLocale::getIso1FromLocale($locale);
-
-		// javascript, css and backend url
-		$requestedUrl = $request->getCompleteUrl();
-		$baseUrl = $request->getBaseUrl();
-		$jsUrl = $baseUrl .'/'. $plugin->getPluginPath().'/shariff/shariff.complete.js';
-		$cssUrl = $baseUrl .'/' . $plugin->getPluginPath() . '/' . '/shariff/shariff.complete.css';
-		$backendUrl = $baseUrl .'/'. 'shariff-backend';
-
-		// assign variables to the templates
-		$templateMgr->assign('dataServicesString', $dataServicesString);
-		$templateMgr->assign('selectedTheme', $selectedTheme);
-		$templateMgr->assign('selectedOrientation', $selectedOrientation);
-		$templateMgr->assign('backendUrl', $backendUrl);
-		$templateMgr->assign('iso1Lang', $iso1Lang);
-		$templateMgr->assign('requestedUrl', $requestedUrl);
-		$templateMgr->assign('jsUrl', $jsUrl);
-		$templateMgr->assign('cssUrl', $cssUrl);
+		
+		if (strcmp($this->getShariffPlugin()->getSetting($contextId, 'selectedPosition'),'sidebar') == 0) {
+		
+    		// services
+    		$selectedServices = $plugin->getSetting($contextId, 'selectedServices');
+    		$preparedServices = array_map(create_function('$arrayElement', 'return \'"\'.$arrayElement.\'"\';'), $selectedServices);
+    		$dataServicesString = implode(",", $preparedServices);
+    		
+    		// theme
+    		$selectedTheme = $plugin->getSetting($contextId, 'selectedTheme');
+    
+    		// orientation
+    		$selectedOrientation = $plugin->getSetting($contextId, 'selectedOrientation');
+    
+    		// get language from system
+    		$locale = AppLocale::getLocale();
+    		$iso1Lang = AppLocale::getIso1FromLocale($locale);
+    
+    		// javascript, css and backend url
+    		$requestedUrl = $request->getCompleteUrl();
+    		$baseUrl = $request->getBaseUrl();
+    		$jsUrl = $baseUrl .'/'. $plugin->getPluginPath().'/shariff-3.2.1/shariff.complete.js';
+    		$cssUrl = $baseUrl .'/' . $plugin->getPluginPath() . '/' . '/shariff-3.2.1/shariff.complete.css';
+    		$backendUrl = $baseUrl .'/'. 'shariff-backend';
+    
+    		// assign variables to the templates
+    		$templateMgr->assign('dataServicesString', $dataServicesString);
+    		$templateMgr->assign('selectedTheme', $selectedTheme);
+    		$templateMgr->assign('selectedOrientation', $selectedOrientation);
+    		$templateMgr->assign('backendUrl', $backendUrl);
+    		$templateMgr->assign('iso1Lang', $iso1Lang);
+    		$templateMgr->assign('requestedUrl', $requestedUrl);
+    		$templateMgr->assign('jsUrl', $jsUrl);
+    		$templateMgr->assign('cssUrl', $cssUrl);
+		}
 
 		return parent::getContents($templateMgr, $request);
 	}

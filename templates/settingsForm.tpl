@@ -23,7 +23,10 @@
 	{fbvFormArea id="shariffSettingsFormArea"}
 
 		{* Choose social media services *}
-		{fbvFormSection list="true" label="plugins.generic.shariff.settings.service"}
+		{fbvFormSection label="plugins.generic.shariff.settings.service"}
+			{translate key="plugins.generic.shariff.settings.service.note"}
+		{/fbvFormSection}			
+		{fbvFormSection list="true"}
 			{foreach from=$services item=service name=services}
 				{foreach from=$service key=id item=title}
 					{assign var=checked value=false}
@@ -33,6 +36,9 @@
 					{fbvElement type="checkbox" name="selectedServices[]" id=$id value=$id label=$title checked=$checked inline=true}
 				{/foreach}
 			{/foreach}
+		{/fbvFormSection}
+		{fbvFormSection}
+			{translate key="plugins.generic.shariff.settings.service.shared_content.note"}
 		{/fbvFormSection}
 
 		{* Choose theme *}
@@ -55,5 +61,4 @@
 	{translate key="plugins.generic.shariff.settings.note"}
 
 	{fbvFormButtons}
-	<p><span class="formRequired">{translate key="common.requiredField"}</span></p>
 </form>
