@@ -4,28 +4,36 @@ This plugin adds social media buttons to your web site (to the footer of each pa
 
 ## Features
 
-Available social media services are:
-- AddThis
-- diaspora*
-- facebook
-- Flattr
-- Google+
+Available social media services (as of Shariff 3.2.1) are:
+
+- Twitter
+- Facebook
 - LinkedIn
-- Mail
 - Pinterest
-- Print
-- Qzone
+- XING
+- Whatsapp
+- AddThis
+- Tumblr
+- Flattr
+- diaspora*
 - reddit
 - StumbleUpon
-- Tencent Weibo
 - Threema
-- Tumblr
-- Twitter
 - Weibo
-- WhatsApp
-- XING
+- Qzone
+- Mail
+- Print
+- Buffer
+- Flipboard
+- Tencent-Weibo
+- Pocket
+- Telegram
+- vk
+- Info
 
-![Shariff buttons](https://raw.githubusercontent.com/lilients/img/master/shariff_buttons_footer.PNG)
+
+
+![Shariff buttons](resources/shariff_buttons_example.PNG)
 
 Additionally an info button that links to the heise article can be added. You can also add a mail icon. 
 
@@ -41,7 +49,7 @@ This plugin is licensed under the GNU General Public License v2. See the file LI
 
 ## System Requirements
 
-This plugin is compatible with OJS 3.x version and OMP 3.x version.
+This plugin is compatible with OJS 3.1.x version and OMP ???3.x??? version.
 
 ## Installation
 
@@ -55,14 +63,14 @@ The following settings are available:
 - determine the position of the social media buttons on your journal web site (footer, sidebar or article/book page)
 - choose the orientation of the social media buttins (vertical or horizontal)
 
-![Shariff settings](https://raw.githubusercontent.com/lilients/img/master/shariff_settings.PNG)
+![Shariff settings](resources/shariff_settings.PNG)
 
 ## Usage
 Install the plugin as described above, activate it and choose the settings you prefer. If you choose the sidebar option, you need to enable the new block under management/settings/website.
 
 ## Display numbers
 
-To display the numbers how often a page is shared in social media, you need to add the Shariff PHP Backend (https://github.com/heiseonline/shariff-backend-php/releases) to you OJS installation. To set up the backend you need to have access to the code. Follow the steps:
+To display the numbers how often a page is shared in social media, you need to add the Shariff PHP Backend (<https://github.com/heiseonline/shariff-backend-php/releases>) to you OJS installation. To set up the backend you need to have access to the code. Follow the steps:
 
 1. Download the Shariff PHP Backend release zip file and unzip it.
 2. Copy the folder to the top level of your installation, name it "shariff-backend" and make it writable.
@@ -76,12 +84,13 @@ Contact us via support@ojs-de.net. Find out more about the project [OJS-de.net](
 
 ## Version History
 
+* 3.0 - Adaption to OJS 3.1.2, update to Shariff Version 3.2.1
 * 2.0 - Adaption to OJS/OMP 3
 * 1.0 - Shariff plugin for OJS 2
 
 ## Technical Documentation
 
-This plugin works for OJS and OMP 3 (the code is the same). The [shariff solution by heise](https://github.com/heiseonline/shariff) (version v2.0.4) is included in the plugin code (MIT License). It adds the social media buttons using html, css and js. The plugin uses hooks to add content, no existing templates are being overwritten. No database access is needed.
+This plugin works for OJS and OMP 3 (the code is the same). The [shariff solution by heise](https://github.com/heiseonline/shariff) (version v3.2.1) is included in the plugin code (MIT License). It adds the social media buttons using html, css and js. The plugin uses hooks to add content, no existing templates are being overwritten. No database access is needed.
 
 ### Hooks
 
