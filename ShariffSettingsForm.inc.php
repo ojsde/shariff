@@ -30,8 +30,9 @@ class ShariffSettingsForm extends Form {
 	function __construct($plugin, $contextId) {
 		$this->_contextId = $contextId;
 		$this->_plugin = $plugin;
+		
+		parent::__construct(method_exists($plugin, 'getTemplateResource') ? $plugin->getTemplateResource('settingsForm.tpl') : $plugin->getTemplatePath() . 'settingsForm.tpl');
 
-		parent::__construct($plugin->getTemplatePath() . 'settingsForm.tpl');
 		$this->addCheck(new FormValidatorPost($this));
 		$this->addCheck(new FormValidatorCSRF($this));
 	}
@@ -48,7 +49,6 @@ class ShariffSettingsForm extends Form {
 		$services = array(
 			array("twitter" => "plugins.generic.shariff.settings.service.twitter"),
 			array("facebook" => "plugins.generic.shariff.settings.service.facebook"),
-			array("googleplus" => "plugins.generic.shariff.settings.service.googleplus"),
 			array("linkedin" => "plugins.generic.shariff.settings.service.linkedin"),
 			array("pinterest" => "plugins.generic.shariff.settings.service.pinterest"),
 			array("xing" => "plugins.generic.shariff.settings.service.xing"),
@@ -61,10 +61,15 @@ class ShariffSettingsForm extends Form {
 			array("stumbleupon" => "plugins.generic.shariff.settings.service.stumbleupon"),
 			array("threema" => "plugins.generic.shariff.settings.service.threema"),
 			array("weibo" => "plugins.generic.shariff.settings.service.weibo"),
-			array("tencent-weibo" => "plugins.generic.shariff.settings.service.tencent-weibo"),
 			array("qzone" => "plugins.generic.shariff.settings.service.qzone"),
 			array("mail" => "plugins.generic.shariff.settings.service.mail"),
 			array("print" => "plugins.generic.shariff.settings.service.print"),
+		    array("buffer" => "plugins.generic.shariff.settings.service.buffer"),
+		    array("flipboard" => "plugins.generic.shariff.settings.service.flipboard"),
+		    array("tencent" => "plugins.generic.shariff.settings.service.tencentweibo"),
+		    array("pocket" => "plugins.generic.shariff.settings.service.pocket"),
+		    array("telegram" => "plugins.generic.shariff.settings.service.telegram"),
+		    array("vk" => "plugins.generic.shariff.settings.service.vk"),
 			array("info" => "plugins.generic.shariff.settings.service.info")
 		);
 		$this->setData('services', $services);

@@ -12,8 +12,8 @@
 <version>
 	<application>shariff</application>
 	<type>plugins.generic</type>
-	<release>2.0.0.1</release>
-	<date>2018-03-06</date>
+	<release>2.1.0.0</release> <!-- @RS Version anpassen -->
+	<date>2019-12-20</date>
 	<lazy-load>1</lazy-load>
 	<class>ShariffPlugin</class>
 </version>

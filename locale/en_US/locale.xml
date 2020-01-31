@@ -20,7 +20,6 @@
 	<message key="plugins.generic.shariff.settings.service">Services</message>
 	<message key="plugins.generic.shariff.settings.service.twitter">Twitter</message>
 	<message key="plugins.generic.shariff.settings.service.facebook">Facebook</message>
-	<message key="plugins.generic.shariff.settings.service.googleplus">Google+</message>
 	<message key="plugins.generic.shariff.settings.service.linkedin">LinkedIn</message>
 	<message key="plugins.generic.shariff.settings.service.pinterest">Pinterest</message>
 	<message key="plugins.generic.shariff.settings.service.xing">XING</message>
@@ -33,11 +32,16 @@
 	<message key="plugins.generic.shariff.settings.service.stumbleupon">StumbleUpon</message>
 	<message key="plugins.generic.shariff.settings.service.threema">Threema</message>
 	<message key="plugins.generic.shariff.settings.service.weibo">Weibo</message>
-	<message key="plugins.generic.shariff.settings.service.tencent-weibo">Tencent Weibo</message>
+	<message key="plugins.generic.shariff.settings.service.tencentweibo">Tencent-Weibo</message>
 	<message key="plugins.generic.shariff.settings.service.qzone">Qzone</message>
+	<message key="plugins.generic.shariff.settings.service.buffer">Buffer</message>
 	<message key="plugins.generic.shariff.settings.service.mail">Mail</message>
 	<message key="plugins.generic.shariff.settings.service.print">Print</message>
 	<message key="plugins.generic.shariff.settings.service.info">Info</message>
+	<message key="plugins.generic.shariff.settings.service.flipboard">Flipboard</message>
+	<message key="plugins.generic.shariff.settings.service.pocket">Pocket</message>
+	<message key="plugins.generic.shariff.settings.service.telegram">Telegram</message>
+	<message key="plugins.generic.shariff.settings.service.vk">vk</message>
 
 	<message key="plugins.generic.shariff.settings.theme">Theme</message>
 	<message key="plugins.generic.shariff.settings.theme.standard">standard</message>
@@ -54,4 +58,6 @@
 	<message key="plugins.generic.shariff.settings.orientation.horizontal">horizontal</message>
 
 	<message key="plugins.generic.shariff.settings.note"><![CDATA[If you would like to display the numbers how often a page is shared in social media, please see the <a href="https://github.com/heiseonline/shariff-backend-php" target="_blank">Shariff PHP Backend</a> and the plugin README file for further requirements.]]></message>
+	<message key="plugins.generic.shariff.settings.service.note"><![CDATA[<p>This plugin implements services as provided by <a href="https://github.com/heiseonline/shariff/releases" target="_blank">Shariff version 3.2.1</a>. As availability of these services might change without notice, it is advisable to verify availability on a regular basis.</p> <p> It should also be considered that some services might only be available on specific devices or platforms (e.g. mobile devices) or with specific apps installed (e.g. Whatsapp). This plugin will include share buttons into the OJS frontend for all services selected below, independent of the availability of the service on the specific device or platform.</p>]]></message>
+	<message key="plugins.generic.shariff.settings.service.shared_content.note">This plugin only shares the page URL with the selected service provider. The type of content presented to the public depends on the selected service provider and is usually extracted from the HTML headers metadata. Please verify what metadata you share in your HTML header.</message>	
 </locale>

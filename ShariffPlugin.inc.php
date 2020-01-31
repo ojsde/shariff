@@ -32,7 +32,7 @@ class ShariffPlugin extends GenericPlugin {
 	/**
 	 * @copydoc Plugin::register()
 	 */
-	function register($category, $path) {
+	function register($category, $path, $mainContextId = NULL) {
 
 		if (parent::register($category, $path)) {
 			if ($this->getEnabled()) {
@@ -46,13 +46,18 @@ class ShariffPlugin extends GenericPlugin {
 					case 'footer':
 						HookRegistry::register('Templates::Common::Footer::PageFooter', array($this, 'addShariffButtons'));
 						break;
-					case 'sidebar':
-						HookRegistry::register('PluginRegistry::loadCategory', array($this, 'callbackLoadCategory'));
-						break;
 					case 'submission':
 						HookRegistry::register('Templates::Article::Details', array($this, 'addShariffButtons'));
 						HookRegistry::register('Templates::Catalog::Book::Details', array($this, 'addShariffButtons'));
 				}
+				
+				// Load this plugin as a block plugin as well (for sidebar)
+				$this->import('ShariffBlockPlugin');
+				PluginRegistry::register(
+				    'blocks',
+				    new ShariffBlockPlugin($this->getName(), $this->getPluginPath()),
+				    $this->getPluginPath()
+				);
 			}
 			return true;
 		}
@@ -76,27 +81,6 @@ class ShariffPlugin extends GenericPlugin {
 	}
 
 	/**
-	 * Register as a block plugin, even though this is a generic plugin.
-	 * This will allow the plugin to behave as a block plugin, i.e. to
-	 * have layout tasks performed on it.
-	 * @param $hookName string
-	 * @param $args array
-	 * @return bool
-	 */
-	function callbackLoadCategory($hookName, $args) {
-		$category =& $args[0];
-		$plugins =& $args[1];
-		switch ($category) {
-			case 'blocks':
-				$this->import('ShariffBlockPlugin');
-				$blockPlugin = new ShariffBlockPlugin($this->getName());
-				$plugins[$blockPlugin->getSeq()][$blockPlugin->getPluginPath()] = $blockPlugin;
-				break;
-		}
-		return false;
-	}
-
-	/**
 	 * Hook callback: Handle requests.
 	 * @param $hookName string The name of the hook being invoked
 	 * @param $args array The parameters to the invoked hook
@@ -112,6 +96,7 @@ class ShariffPlugin extends GenericPlugin {
 
 		// services
 		$selectedServices = $this->getSetting($contextId, 'selectedServices');
+		
 		$preparedServices = array_map(create_function('$arrayElement', 'return \'&quot;\'.$arrayElement.\'&quot;\';'), $selectedServices);
 		$dataServicesString = implode(",", $preparedServices);
 
@@ -128,12 +113,19 @@ class ShariffPlugin extends GenericPlugin {
 		// javascript, css and backend url
 		$requestedUrl = $request->getCompleteUrl();
 		$baseUrl = Request::getBaseUrl();
-		$jsUrl = $baseUrl .'/'. $this->getPluginPath().'/shariff/shariff.complete.js';
-		$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/' . 'shariff/shariff.complete.css';
+		$jsUrl = $baseUrl .'/'. $this->getPluginPath().'/shariff-3.2.1/shariff.complete.js';
+		$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/' . 'shariff-3.2.1/shariff.complete.css';
 		$backendUrl = $baseUrl .'/'. 'shariff-backend';
 
+		$selectedPositon = $this->getSetting($contextId, 'selectedPosition');
+		if ($selectedPositon == 'footer') {
+		    $divWrapper = '<div class="pkp_structure_footer_wrapper">';
+		} elseif ($selectedPositon == 'submission') {
+		    $divWrapper = '<div>';
+		}
+		
 		$output .= '
-			<link rel="stylesheet" type="text/css" href="'.$cssUrl.'">
+			<link rel="stylesheet" type="text/css" href="'.$cssUrl.'">'.$divWrapper.'
 			<div class="shariff pkp_footer_content" data-lang="'. $iso1Lang.'"
 				data-services="['.$dataServicesString.']"
 				data-mail-url="mailto:"
@@ -143,6 +135,7 @@ class ShariffPlugin extends GenericPlugin {
 				data-orientation="'.$selectedOrientation.'"
 				data-url="'. $requestedUrl .'">
 			</div>
+            </div>
 			<script src="'.$jsUrl.'"></script>';
 
 		return false;
