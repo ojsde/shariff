@@ -117,9 +117,16 @@ class ShariffPlugin extends GenericPlugin {
 		$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/' . 'shariff-3.2.1/shariff.complete.css';
 		$backendUrl = $baseUrl .'/'. 'shariff-backend';
 
+		$selectedPositon = $this->getSetting($contextId, 'selectedPosition');
+		if ($selectedPositon == 'footer') {
+		    $divWrapper = '<div class="pkp_structure_footer_wrapper"><div class="shariff pkp_structure_footer"';
+		} elseif ($selectedPositon == 'submission') {
+		    $divWrapper = '<div><div class="shariff item"';
+		}
+
 		$output .= '
-			<link rel="stylesheet" type="text/css" href="'.$cssUrl.'">
-			<div class="shariff pkp_footer_content" data-lang="'. $iso1Lang.'"
+			<link rel="stylesheet" type="text/css" href="'.$cssUrl.'">'
+			.$divWrapper.'data-lang="'. $iso1Lang.'"
 				data-services="['.$dataServicesString.']"
 				data-mail-url="mailto:"
 				data-mail-body={url}
@@ -128,6 +135,7 @@ class ShariffPlugin extends GenericPlugin {
 				data-orientation="'.$selectedOrientation.'"
 				data-url="'. $requestedUrl .'">
 			</div>
+            </div>
 			<script src="'.$jsUrl.'"></script>';
 
 		return false;
