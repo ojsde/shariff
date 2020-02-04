@@ -1,8 +1,8 @@
 # Shariff plugin
 
-Use branch ojs-stable-3 only for OJS up to version 3.1.1!
+This plugin adds social media buttons to your web site (to the footer of each page, the article page or the sidebar) without compromising the privacy of website users. It implements shariff by heise ([Github](https://github.com/heiseonline/shariff), [article](http://ct.de/shariff)) in [Open Journal Systems](https://pkp.sfu.ca/ojs/).
 
-This plugin adds social media buttons to your web site (to the footer of each page or the sidebar) without compromising the privacy of website users. It implements shariff by heise ([Github](https://github.com/heiseonline/shariff), [article](http://ct.de/shariff)) in [Open Journal Systems](https://pkp.sfu.ca/ojs/).
+This plugin has been tested with OJS version 3.1.1 and 3.1.2!
 
 ## Features
 
@@ -43,7 +43,7 @@ The plugin offers a selection of settings like themes, orientation and position 
 
 The plugins will be displayed in the language of the website.
 
-You can add the Shariff PHP Backend to display the number of likes (see below).
+You can add the Shariff PHP Backend to display the number of likes (not tested, see below).
 
 ## License
 
@@ -51,7 +51,7 @@ This plugin is licensed under the GNU General Public License v2. See the file LI
 
 ## System Requirements
 
-This plugin is compatible with OJS 3.1.x version and OMP ???3.x??? version.
+This plugin is compatible with OJS version 3.1.1 and 3.1.2.
 
 ## Installation
 
@@ -68,7 +68,7 @@ The following settings are available:
 ![Shariff settings](resources/shariff_settings.PNG)
 
 ## Usage
-Install the plugin as described above, activate it and choose the settings you prefer. If you choose the sidebar option, you need to enable the new block under management/settings/website.
+Install the plugin as described above, activate it and choose the settings you prefer. If you choose the sidebar option, you need to enable the new Shariff-block under management/settings/website.
 
 ## Display numbers
 
