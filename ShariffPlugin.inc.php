@@ -97,7 +97,7 @@ class ShariffPlugin extends GenericPlugin {
 		// services
 		$selectedServices = $this->getSetting($contextId, 'selectedServices');
 		
-		$preparedServices = array_map(create_function('$arrayElement', 'return \'&quot;\'.$arrayElement.\'&quot;\';'), $selectedServices);
+		$preparedServices = array_map(function($arrayElement){return $arrayElement;}, $selectedServices);
 		$dataServicesString = implode(",", $preparedServices);
 
 		// theme
@@ -112,7 +112,8 @@ class ShariffPlugin extends GenericPlugin {
 
 		// javascript, css and backend url
 		$requestedUrl = $request->getCompleteUrl();
-		$baseUrl = Request::getBaseUrl();
+		$request = new PKPRequest();
+		$baseUrl = $request->getBaseUrl();
 		$jsUrl = $baseUrl .'/'. $this->getPluginPath().'/shariff-3.2.1/shariff.complete.js';
 		$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/' . 'shariff-3.2.1/shariff.complete.css';
 		$backendUrl = $baseUrl .'/'. 'shariff-backend';
