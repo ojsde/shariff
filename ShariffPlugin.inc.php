@@ -53,9 +53,10 @@ class ShariffPlugin extends GenericPlugin {
 				
 				// Load this plugin as a block plugin as well (for sidebar)
 				$this->import('ShariffBlockPlugin');
+				$shariffBlockPlugin = new ShariffBlockPlugin($this->getName(), $this->getPluginPath());
 				PluginRegistry::register(
 				    'blocks',
-				    new ShariffBlockPlugin($this->getName(), $this->getPluginPath()),
+				    $shariffBlockPlugin,
 				    $this->getPluginPath()
 				);
 			}

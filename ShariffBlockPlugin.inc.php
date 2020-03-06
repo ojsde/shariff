@@ -107,7 +107,7 @@ class ShariffBlockPlugin extends BlockPlugin {
 		
     		// services
     		$selectedServices = $plugin->getSetting($contextId, 'selectedServices');
-    		$preparedServices = array_map(create_function('$arrayElement', 'return \'"\'.$arrayElement.\'"\';'), $selectedServices);
+    		$preparedServices = array_map(function($arrayElement){return $arrayElement;}, $selectedServices);
     		$dataServicesString = implode(",", $preparedServices);
     		
     		// theme
