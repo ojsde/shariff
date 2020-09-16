@@ -1,0 +1,123 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-08-31T13:21:02+00:00\n"
+"PO-Revision-Date: 2020-08-31T13:21:02+00:00\n"
+"Language: \n"
+
+msgid "plugins.generic.shariff.displayName"
+msgstr "إضافة Shariff"
+
+msgid "plugins.generic.shariff.description"
+msgstr "إضافة زر لمواقع التواصل الاجتماعي إلى المجلة بدون الإخلال بخصوصيات مستخدمي الموقع، عبر استعمال برنامج <a href=\"https://github.com/heiseonline/shariff\" target=\"_blank\">Shariff</a>."
+
+msgid "plugins.generic.shariff.block.displayName"
+msgstr "إضافة كتلة Shariff"
+
+msgid "plugins.generic.shariff.block.description"
+msgstr "إضافة زر لمواقع التواصل الاجتماعي إلى المجلة بدون الإخلال بخصوصيات مستخدمي الموقع، عبر استعمال برنامج <a href=\"https://github.com/heiseonline/shariff\" target=\"_blank\">Shariff</a>."
+
+msgid "plugins.generic.shariff.settings.service"
+msgstr "مواقع التواصل"
+
+msgid "plugins.generic.shariff.settings.service.twitter"
+msgstr "Twitter"
+
+msgid "plugins.generic.shariff.settings.service.facebook"
+msgstr "Facebook"
+
+msgid "plugins.generic.shariff.settings.service.googleplus"
+msgstr "Google+"
+
+msgid "plugins.generic.shariff.settings.service.linkedin"
+msgstr "LinkedIn"
+
+msgid "plugins.generic.shariff.settings.service.pinterest"
+msgstr "Pinterest"
+
+msgid "plugins.generic.shariff.settings.service.xing"
+msgstr "XING"
+
+msgid "plugins.generic.shariff.settings.service.whatsapp"
+msgstr "Whatsapp"
+
+msgid "plugins.generic.shariff.settings.service.addthis"
+msgstr "AddThis"
+
+msgid "plugins.generic.shariff.settings.service.tumblr"
+msgstr "Tumblr"
+
+msgid "plugins.generic.shariff.settings.service.flattr"
+msgstr "Flattr"
+
+msgid "plugins.generic.shariff.settings.service.diaspora"
+msgstr "diaspora*"
+
+msgid "plugins.generic.shariff.settings.service.reddit"
+msgstr "reddit"
+
+msgid "plugins.generic.shariff.settings.service.stumbleupon"
+msgstr "StumbleUpon"
+
+msgid "plugins.generic.shariff.settings.service.threema"
+msgstr "Threema"
+
+msgid "plugins.generic.shariff.settings.service.weibo"
+msgstr "Weibo"
+
+msgid "plugins.generic.shariff.settings.service.tencent-weibo"
+msgstr "Tencent Weibo"
+
+msgid "plugins.generic.shariff.settings.service.qzone"
+msgstr "Qzone"
+
+msgid "plugins.generic.shariff.settings.service.mail"
+msgstr "Mail"
+
+msgid "plugins.generic.shariff.settings.service.print"
+msgstr "Print"
+
+msgid "plugins.generic.shariff.settings.service.info"
+msgstr "Info"
+
+msgid "plugins.generic.shariff.settings.theme"
+msgstr "النمط"
+
+msgid "plugins.generic.shariff.settings.theme.standard"
+msgstr "القياسي"
+
+msgid "plugins.generic.shariff.settings.theme.grey"
+msgstr "رمادي"
+
+msgid "plugins.generic.shariff.settings.theme.white"
+msgstr "أبيض"
+
+msgid "plugins.generic.shariff.settings.position"
+msgstr "الموضع"
+
+msgid "plugins.generic.shariff.settings.position.footer"
+msgstr "التذييل"
+
+msgid "plugins.generic.shariff.settings.position.sidebar"
+msgstr "الشريط الجانبي"
+
+msgid "plugins.generic.shariff.settings.position.submission"
+msgstr "صفحة المقالة/الكتاب"
+
+msgid "plugins.generic.shariff.settings.orientation"
+msgstr "المحاذاة"
+
+msgid "plugins.generic.shariff.settings.orientation.vertical"
+msgstr "عمودية"
+
+msgid "plugins.generic.shariff.settings.orientation.horizontal"
+msgstr "أفقية"
+
+msgid "plugins.generic.shariff.settings.note"
+msgstr "إذا أردت عرض عدد المرات التي جرت فيها مشاركة الصفحة في مواقع التواصل الاجتماعي، لطفاً أنظر <a href=\"https://github.com/heiseonline/shariff-backend-php\" target=\"_blank\">خلفية برمجة Shariff بلغة PHP</a> مع ملف README الخاص بهذه الإضافة لمعرفة متطلبات عمل ذلك."
