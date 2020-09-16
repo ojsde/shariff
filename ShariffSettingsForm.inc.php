@@ -116,7 +116,7 @@ class ShariffSettingsForm extends Form {
 	 * @see Form::fetch()
 	 * @param $request PKPRequest
 	 */
-	function fetch($request) {
+	function fetch($request, $template = NULL, $display = false){
 		$templateMgr = TemplateManager::getManager($request);
 		$templateMgr->assign('pluginName', $this->_plugin->getName());
 		return parent::fetch($request);
@@ -126,7 +126,7 @@ class ShariffSettingsForm extends Form {
 	 * Save settings.
 	 * @see Form::execute()
 	 */
-	function execute() {
+	function execute(...$functionArgs) {
 		$plugin = $this->_plugin;
 		$contextId = $this->_contextId;
 
