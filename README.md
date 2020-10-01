@@ -60,10 +60,10 @@ Clone this repo in your plugin folder (/plugins/generic) or download the code an
 ## Settings
 
 The following settings are available:
-- choose the services you would like to provide on the journal pages (see list above)
-- choose a provided theme for the social media buttons (standard, white, grey)
-- determine the position of the social media buttons on your journal web site (footer, sidebar or article/book page)
-- choose the orientation of the social media buttins (vertical or horizontal)
+- Choose the services you would like to provide on the journal pages (see list above)
+- Choose a provided theme for the social media buttons (standard, white, grey)
+- Determine the position of the social media buttons on your journal web site (footer, sidebar or article/book page)
+- Choose the orientation of the social media buttins (vertical or horizontal)
 
 ![Shariff settings](resources/shariff_settings.PNG)
 
