@@ -32,7 +32,6 @@ class ShariffPlugin extends GenericPlugin {
 	/**
 	 * @copydoc Plugin::register()
 	 */
-	
 	function register($category, $path, $mainContextId = null) {
 		$success = parent::register($category, $path, $mainContextId);
 			if ($success && $this->getEnabled($mainContextId)) {
