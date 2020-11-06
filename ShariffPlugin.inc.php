@@ -39,26 +39,28 @@ class ShariffPlugin extends GenericPlugin {
 
 				$request = $this->getRequest();
 				$context = $request->getContext();
-				$contextId = $context->getId();
+				if ($context) {
+					$contextId = $context->getId();
 
-				// display the buttons depending in the selected position
-				switch($this->getSetting($contextId, 'selectedPosition')){
-					case 'footer':
-						HookRegistry::register('Templates::Common::Footer::PageFooter', array($this, 'addShariffButtons'));
-						break;
-					case 'submission':
-						HookRegistry::register('Templates::Article::Details', array($this, 'addShariffButtons'));
-						HookRegistry::register('Templates::Catalog::Book::Details', array($this, 'addShariffButtons'));
-				}
+					// display the buttons depending in the selected position
+					switch($this->getSetting($contextId, 'selectedPosition')){
+						case 'footer':
+							HookRegistry::register('Templates::Common::Footer::PageFooter', array($this, 'addShariffButtons'));
+							break;
+						case 'submission':
+							HookRegistry::register('Templates::Article::Details', array($this, 'addShariffButtons'));
+							HookRegistry::register('Templates::Catalog::Book::Details', array($this, 'addShariffButtons'));
+					}
 				
-				// Load this plugin as a block plugin as well (for sidebar)
-				$this->import('ShariffBlockPlugin');
-				$shariffBlockPlugin = new ShariffBlockPlugin($this->getName(), $this->getPluginPath());
-				PluginRegistry::register(
-				    'blocks',
-				    $shariffBlockPlugin,
-				    $this->getPluginPath()
-				);
+					// Load this plugin as a block plugin as well (for sidebar)
+					$this->import('ShariffBlockPlugin');
+					$shariffBlockPlugin = new ShariffBlockPlugin($this->getName(), $this->getPluginPath());
+					PluginRegistry::register(
+				    		'blocks',
+				    		$shariffBlockPlugin,
+				    		$this->getPluginPath()
+						);
+				}
 			}
 			return true;
 		}
