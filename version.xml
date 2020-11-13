@@ -13,7 +13,7 @@
 	<application>shariff</application>
 	<type>plugins.generic</type>
 	<release>3.2.1.0</release>
-	<date>2020-06-11</date>
+	<date>2020-11-06</date>
 	<sitewide>0</sitewide>
 	<lazy-load>1</lazy-load>
 	<class>ShariffPlugin</class>
