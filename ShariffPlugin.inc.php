@@ -121,7 +121,7 @@ class ShariffPlugin extends GenericPlugin {
 		if ($selectedPositon == 'footer') {
 		    $divWrapper = '<div class="pkp_structure_footer_wrapper"><div class="pkp_structure_footer">';
 		} elseif ($selectedPositon == 'submission') {
-		    $divWrapper = '<div><div>';
+		    $divWrapper = '<div class="shariffblock"><div>';
 		}
 		
 		$output .= '
