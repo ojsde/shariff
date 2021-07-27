@@ -47,6 +47,7 @@ class ShariffPlugin extends GenericPlugin {
 							break;
 						case 'submission':
 							HookRegistry::register('Templates::Article::Details', array($this, 'addShariffButtons'));
+							HookRegistry::register('Templates::Preprint::Details', array($this, 'addShariffButtons'));
 							HookRegistry::register('Templates::Catalog::Book::Details', array($this, 'addShariffButtons'));
 					}
 
