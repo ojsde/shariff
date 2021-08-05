@@ -120,7 +120,7 @@ msgid "plugins.generic.shariff.settings.position.sidebar"
 msgstr "sidebar"
 
 msgid "plugins.generic.shariff.settings.position.submission"
-msgstr "submission page"
+msgstr "publication page"
 
 msgid "plugins.generic.shariff.settings.orientation"
 msgstr "Orientation"
