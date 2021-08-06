@@ -12,19 +12,19 @@ msgstr ""
 "Language: \n"
 
 msgid "plugins.generic.shariff.displayName"
-msgstr "Shariff Plugin"
+msgstr "Plugin Shariff"
 
 msgid "plugins.generic.shariff.description"
-msgstr "Add social media buttons to your site without compromising the privacy of website users, using <a href=\"https://github.com/heiseonline/shariff\" target=\"_blank\">Shariff</a> solution."
+msgstr "Adiciona botões de redes sociais ao seu site sem comprometer a privacidade dos usuários. Para isso, utiliza a ferramenta <a href=\"https://github.com/heiseonline/shariff\" target=\"_blank\">Shariff</a>."
 
 msgid "plugins.generic.shariff.block.displayName"
-msgstr "Shariff Block Plugin"
+msgstr "Plugin de bloco Shariff"
 
 msgid "plugins.generic.shariff.block.description"
-msgstr "Add social media buttons to your site without compromising the privacy of website users, using <a href=\"https://github.com/heiseonline/shariff\" target=\"_blank\">Shariff</a> solution."
+msgstr "Adiciona botões de redes sociais ao seu site sem comprometer a privacidade dos usuários. Para isso, utiliza a ferramenta <a href=\"https://github.com/heiseonline/shariff\" target=\"_blank\">Shariff</a>."
 
 msgid "plugins.generic.shariff.settings.service"
-msgstr "Services"
+msgstr "Serviços"
 
 msgid "plugins.generic.shariff.settings.service.twitter"
 msgstr "Twitter"
@@ -42,7 +42,7 @@ msgid "plugins.generic.shariff.settings.service.xing"
 msgstr "XING"
 
 msgid "plugins.generic.shariff.settings.service.whatsapp"
-msgstr "Whatsapp"
+msgstr "WhatsApp"
 
 msgid "plugins.generic.shariff.settings.service.addthis"
 msgstr "AddThis"
@@ -57,7 +57,7 @@ msgid "plugins.generic.shariff.settings.service.diaspora"
 msgstr "diaspora*"
 
 msgid "plugins.generic.shariff.settings.service.reddit"
-msgstr "reddit"
+msgstr "Reddit"
 
 msgid "plugins.generic.shariff.settings.service.stumbleupon"
 msgstr "StumbleUpon"
@@ -78,13 +78,13 @@ msgid "plugins.generic.shariff.settings.service.buffer"
 msgstr "Buffer"
 
 msgid "plugins.generic.shariff.settings.service.mail"
-msgstr "Mail"
+msgstr "E-mail"
 
 msgid "plugins.generic.shariff.settings.service.print"
-msgstr "Print"
+msgstr "Impressão"
 
 msgid "plugins.generic.shariff.settings.service.info"
-msgstr "Info"
+msgstr "Mais informações"
 
 msgid "plugins.generic.shariff.settings.service.flipboard"
 msgstr "Flipboard"
@@ -99,31 +99,31 @@ msgid "plugins.generic.shariff.settings.service.vk"
 msgstr "vk"
 
 msgid "plugins.generic.shariff.settings.theme"
-msgstr "Theme"
+msgstr "Tema"
 
 msgid "plugins.generic.shariff.settings.theme.standard"
-msgstr "standard"
+msgstr "padrão"
 
 msgid "plugins.generic.shariff.settings.theme.grey"
-msgstr "grey"
+msgstr "cinza"
 
 msgid "plugins.generic.shariff.settings.theme.white"
-msgstr "white"
+msgstr "branco"
 
 msgid "plugins.generic.shariff.settings.position"
-msgstr "Position"
+msgstr "Posição"
 
 msgid "plugins.generic.shariff.settings.position.footer"
-msgstr "footer"
+msgstr "rodapé"
 
 msgid "plugins.generic.shariff.settings.position.sidebar"
-msgstr "sidebar"
+msgstr "barra lateral"
 
 msgid "plugins.generic.shariff.settings.position.submission"
-msgstr "publication page"
+msgstr "página da submissão"
 
 msgid "plugins.generic.shariff.settings.orientation"
-msgstr "Orientation"
+msgstr "Orientação"
 
 msgid "plugins.generic.shariff.settings.orientation.vertical"
 msgstr "vertical"
@@ -132,10 +132,10 @@ msgid "plugins.generic.shariff.settings.orientation.horizontal"
 msgstr "horizontal"
 
 msgid "plugins.generic.shariff.settings.note"
-msgstr "If you would like to display the numbers how often a page is shared in social media, please see the <a href=\"https://github.com/heiseonline/shariff-backend-php\" target=\"_blank\">Shariff PHP Backend</a> and the plugin README file for further requirements."
+msgstr "Se desejar exibir os números da frequência com que uma página é compartilhada nas mídias sociais, consulte <a href =\"https://github.com/heiseonline/shariff-backend-php\" target=\"_blank\">Shariff PHP Backend</a> e o arquivo README do plugin para requisitos adicionais."
 
 msgid "plugins.generic.shariff.settings.service.note"
-msgstr "<p>This plugin implements services as provided by <a href=\"https://github.com/heiseonline/shariff/releases\" target=\"_blank\">Shariff version 3.2.1</a>. As availability of these services might change without notice, it is advisable to verify availability on a regular basis.</p> <p> It should also be considered that some services might only be available on specific devices or platforms (e.g. mobile devices) or with specific apps installed (e.g. Whatsapp). This plugin will include share buttons into the OJS frontend for all services selected below, independent of the availability of the service on the specific device or platform.</p>"
+msgstr "<p>Esse plugin implementa serviços fornecidos por <a href=\"https://github.com/heiseonline/shariff/releases\" target=\"_blank\">Shariff version 3.2.1</a>. Como a disponibilidade desses serviços pode mudar sem aviso prévio, é aconselhável verificar a disponibilidade regularmente.</p> <p> Também deve ser considerado que alguns serviços podem estar disponíveis apenas em dispositivos ou plataformas específicas (como dispositivos móveis) ou com aplicativos específicos instalados (como WhatsApp). Este plugin incluirá botões de compartilhamento no frontend da aplicação para todos os serviços selecionados abaixo, independentemente da disponibilidade do serviço no dispositivo ou plataforma específica.</p>"
 
 msgid "plugins.generic.shariff.settings.service.shared_content.note"
-msgstr "This plugin only shares the page URL with the selected service provider. The type of content presented to the public depends on the selected service provider and is usually extracted from the HTML headers metadata. Please verify what metadata you share in your HTML header."
+msgstr "Esse plugin compartilha a URL da página apenas com o serviço selecionado. O tipo de conteúdo mostrado ao público depende do serviço selecionado e normalmente é extraído do cabeçalho HTML dos metadados. Por favor, verifique quais metadados você compartilha no seu cabeçalho HTML."
