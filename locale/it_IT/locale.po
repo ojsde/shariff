@@ -135,7 +135,10 @@ msgid "plugins.generic.shariff.settings.note"
 msgstr "Se si desidera visualizzare i numeri di quanto spesso una pagina viene condivisa nei social media, si prega di consultare il <a href=\"https://github.com/heiseonline/shariff-backend-php\" target=\"_blank\">Shariff PHP Backend</a> e il file README del plugin per ulteriori requisiti."
 
 msgid "plugins.generic.shariff.settings.service.note"
-msgstr "<p>Questo plugin implementa i servizi forniti da <a href=\"https://github.com/heiseonline/shariff/releases\" target=\"_blank\">Shariff versione 3.2.1</a>. Poiché la disponibilità di questi servizi potrebbe cambiare senza preavviso, è consigliabile verificare la disponibilità su base regolare.</p> <p>Va inoltre considerato che alcuni servizi potrebbero essere disponibili solo su specifici dispositivi o piattaforme (ad es. dispositivi mobili) o con specifiche app installate (ad es. Whatsapp). Questo plugin includerà dei bottoni di condivisione nel frontend OJS per tutti i servizi selezionati di seguito, indipendentemente dalla disponibilità del servizio sul dispositivo o sulla piattaforma specifica.</p>"
+msgstr "Questo plugin implementa i servizi forniti da <a href=\"https://github.com/heiseonline/shariff/releases\" target=\"_blank\">Shariff versione 3.2.1</a>. Poiché la disponibilità di questi servizi potrebbe cambiare senza preavviso, è consigliabile verificare la disponibilità su base regolare."
+
+msgid "plugins.generic.shariff.settings.service.note"
+msgstr "Va inoltre considerato che alcuni servizi potrebbero essere disponibili solo su specifici dispositivi o piattaforme (ad es. dispositivi mobili) o con specifiche app installate (ad es. Whatsapp). Questo plugin includerà dei bottoni di condivisione nel frontend OJS per tutti i servizi selezionati di seguito, indipendentemente dalla disponibilità del servizio sul dispositivo o sulla piattaforma specifica."
 
 msgid "plugins.generic.shariff.settings.service.shared_content.note"
 msgstr "Questo plugin condivide l'URL della pagina solo con il fornitore di servizi selezionato. Il tipo di contenuto presentato al pubblico dipende dal fornitore di servizi selezionato e viene solitamente estratto dai metadati delle intestazioni HTML. Si prega di verificare quali metadati si condividono nell'intestazione HTML."

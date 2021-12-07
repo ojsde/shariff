@@ -15,13 +15,13 @@ msgid "plugins.generic.shariff.displayName"
 msgstr "Shariff Plugin"
 
 msgid "plugins.generic.shariff.description"
-msgstr "Add social media buttons to your journal without compromising the privacy of website users, using <a href=\"https://github.com/heiseonline/shariff\" target=\"_blank\">Shariff</a> solution."
+msgstr "Add social media buttons to your site without compromising the privacy of website users, using <a href=\"https://github.com/heiseonline/shariff\" target=\"_blank\">Shariff</a> solution."
 
 msgid "plugins.generic.shariff.block.displayName"
 msgstr "Shariff Block Plugin"
 
 msgid "plugins.generic.shariff.block.description"
-msgstr "Add social media buttons to your journal without compromising the privacy of website users, using <a href=\"https://github.com/heiseonline/shariff\" target=\"_blank\">Shariff</a> solution."
+msgstr "Add social media buttons to your site without compromising the privacy of website users, using <a href=\"https://github.com/heiseonline/shariff\" target=\"_blank\">Shariff</a> solution."
 
 msgid "plugins.generic.shariff.settings.service"
 msgstr "Services"
@@ -120,7 +120,7 @@ msgid "plugins.generic.shariff.settings.position.sidebar"
 msgstr "sidebar"
 
 msgid "plugins.generic.shariff.settings.position.submission"
-msgstr "article / book page"
+msgstr "publication page"
 
 msgid "plugins.generic.shariff.settings.orientation"
 msgstr "Orientation"
@@ -134,8 +134,11 @@ msgstr "horizontal"
 msgid "plugins.generic.shariff.settings.note"
 msgstr "If you would like to display the numbers how often a page is shared in social media, please see the <a href=\"https://github.com/heiseonline/shariff-backend-php\" target=\"_blank\">Shariff PHP Backend</a> and the plugin README file for further requirements."
 
+msgid "plugins.generic.shariff.settings.service.description"
+msgstr "This plugin implements services as provided by <a href=\"https://github.com/heiseonline/shariff/releases\" target=\"_blank\">Shariff version 3.2.1</a>. As availability of these services might change without notice, it is advisable to verify availability on a regular basis."
+
 msgid "plugins.generic.shariff.settings.service.note"
-msgstr "<p>This plugin implements services as provided by <a href=\"https://github.com/heiseonline/shariff/releases\" target=\"_blank\">Shariff version 3.2.1</a>. As availability of these services might change without notice, it is advisable to verify availability on a regular basis.</p> <p> It should also be considered that some services might only be available on specific devices or platforms (e.g. mobile devices) or with specific apps installed (e.g. Whatsapp). This plugin will include share buttons into the OJS frontend for all services selected below, independent of the availability of the service on the specific device or platform.</p>"
+msgstr "It should also be considered that some services might only be available on specific devices or platforms (e.g. mobile devices) or with specific apps installed (e.g. Whatsapp). This plugin will include share buttons into the OJS frontend for all services selected below, independent of the availability of the service on the specific device or platform."
 
 msgid "plugins.generic.shariff.settings.service.shared_content.note"
 msgstr "This plugin only shares the page URL with the selected service provider. The type of content presented to the public depends on the selected service provider and is usually extracted from the HTML headers metadata. Please verify what metadata you share in your HTML header."

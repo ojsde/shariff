@@ -7,8 +7,8 @@
 /**
  * @file plugins/generic/shariff/index.php
  *
- * Copyright (c) 2018 Center for Digital Systems (CeDiS), Freie Universität Berlin
- * Distributed under the GNU GPL v2. For full terms see the file LICENSE.
+ * Copyright (c) 2021 Universitätsbibliothek Freie Universität Berlin
+ * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * @ingroup plugins_generic_shariff
  * @brief Wrapper for Shariff plugin.
