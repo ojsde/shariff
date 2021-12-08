@@ -82,40 +82,40 @@ class ShariffSettingsForm extends FormComponent {
 				['value' => 'vk', 'label' => __('plugins.generic.shariff.settings.service.vk')],
 				['value' => 'info', 'label' => __('plugins.generic.shariff.settings.service.info')]
 			],
-			'value' => $context->getData('shariffServicesSelected'),
+			'value' => $context->getData('shariffServicesSelected') ?: [],
 			'isOrderable' => true,
 			'groupId' => 'shariffsettings'
 		]))
 		->addField(new FieldOptions('shariffThemeSelected', [
 			'label' => __('plugins.generic.shariff.settings.theme'),
-			'type' => 'dropdown',
+			'type' => 'radio',
 			'options' => [
 				['value' => 'standard', 'label' => __('plugins.generic.shariff.settings.theme.standard')],
 				['value' => 'grey', 'label' => __('plugins.generic.shariff.settings.theme.grey')],
 				['value' => 'white', 'label' => __('plugins.generic.shariff.settings.theme.white')],
 			],
-			'value' => $context->getData('shariffThemeSelected'),
+			'value' => $context->getData('shariffThemeSelected') ?: "standard",
 			'groupId' => 'shariffsettings'
 		]))
 		->addField(new FieldOptions('shariffPositionSelected', [
 			'label' => __('plugins.generic.shariff.settings.position'),
-			'type' => 'dropdown',
+			'type' => 'radio',
 			'options' => [
+				['value' => 'submission', 'label' => __('plugins.generic.shariff.settings.position.submission')],
 				['value' => 'footer', 'label' => __('plugins.generic.shariff.settings.position.footer')],
 				['value' => 'sidebar', 'label' => __('plugins.generic.shariff.settings.position.sidebar')],
-				['value' => 'submission', 'label' => __('plugins.generic.shariff.settings.position.submission')],
 			],
-			'value' => $context->getData('shariffPositionSelected'),
+			'value' => $context->getData('shariffPositionSelected') ?: "submission",
 			'groupId' => 'shariffsettings'
 		]))
 		->addField(new FieldOptions('shariffOrientationSelected', [
 			'label' => __('plugins.generic.shariff.settings.orientation'),
-			'type' => 'dropdown',
+			'type' => 'radio',
 			'options' => [
-				['value' => 'vertical', 'label' => __('plugins.generic.shariff.settings.orientation.vertical')],
 				['value' => 'horizontal', 'label' => __('plugins.generic.shariff.settings.orientation.horizontal')],
+				['value' => 'vertical', 'label' => __('plugins.generic.shariff.settings.orientation.vertical')],
 			],
-			'value' => $context->getData('shariffOrientationSelected'),
+			'value' => $context->getData('shariffOrientationSelected') ?: "horizontal",
 			'groupId' => 'shariffsettings'
 		]));
 	}

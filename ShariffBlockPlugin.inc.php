@@ -122,7 +122,7 @@ class ShariffBlockPlugin extends BlockPlugin {
     		$requestedUrl = $request->getCompleteUrl();
     		$baseUrl = $request->getBaseUrl();
     		$jsUrl = $baseUrl .'/'. $this->getShariffPlugin()->getPluginPath().'/shariff-3.2.1/shariff.complete.js';
-    		$cssUrl = $baseUrl .'/' . $this->getShariffPlugin()->getPluginPath() . '/' . '/shariff-3.2.1/shariff.complete.css';
+    		$cssUrl = $baseUrl .'/' . $this->getShariffPlugin()->getPluginPath() . '/shariff-3.2.1/shariff.complete.css';
     		$backendUrl = $baseUrl .'/'. 'shariff-backend';
     
     		// assign variables to the templates
