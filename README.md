@@ -35,7 +35,7 @@ Available social media services (as of Shariff 3.2.1) are:
 
 
 
-![Shariff buttons](resources/shariff_buttons_example.PNG)
+![Shariff buttons](resources/shariff_buttons_example.png)
 
 Additionally an info button that links to the heise article can be added. You can also add a mail icon. 
 
@@ -65,7 +65,7 @@ The following settings are available:
 - determine the position of the social media buttons on your journal web site (footer, sidebar or article/book page)
 - choose the orientation of the social media buttins (vertical or horizontal)
 
-![Shariff settings](resources/shariff_settings.PNG)
+![Shariff settings](resources/shariff_settings.png)
 
 ## Usage
 Install the plugin as described above, activate it and choose the settings you prefer. If you choose the sidebar option, you need to enable the new Shariff-block under management/settings/website.
