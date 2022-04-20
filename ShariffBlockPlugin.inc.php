@@ -134,6 +134,7 @@ class ShariffBlockPlugin extends BlockPlugin {
     		$templateMgr->assign('requestedUrl', $requestedUrl);
     		$templateMgr->assign('jsUrl', $jsUrl);
     		$templateMgr->assign('cssUrl', $cssUrl);
+    		$templateMgr->assign('enableShariffBlock', true);
 		}
 
 		return parent::getContents($templateMgr, $request);
