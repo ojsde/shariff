@@ -110,7 +110,7 @@ class ShariffPlugin extends GenericPlugin {
 
 		// instantinate settings form
 		$this->import('ShariffSettingsForm');
-		$shariffSettingsForm = new ShariffSettingsForm($contextApiUrl, $locales, $context);
+		$shariffSettingsForm = new ShariffSettingsForm($contextApiUrl, $context->getSupportedLocaleNames(), $context);
 
 		// setup template
 		$templateMgr->setConstants([
