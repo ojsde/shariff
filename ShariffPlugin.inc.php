@@ -11,6 +11,9 @@
  *
  * @brief Shariff plugin class
  */
+use PKP\core\JSONMessage;
+use APP\notification\NotificationManager;
+use APP\i18n\AppLocale;
 
 import('lib.pkp.classes.plugins.GenericPlugin');
 
@@ -185,7 +188,6 @@ class ShariffPlugin extends GenericPlugin {
 
 		// get language from system
 		$locale = AppLocale::getLocale();
-		$iso1Lang = AppLocale::getIso1FromLocale($locale);
 
 		// javascript, css and backend url
 		$requestedUrl = $request->getCompleteUrl();
@@ -204,7 +206,7 @@ class ShariffPlugin extends GenericPlugin {
 		
 		$output .= '
 			<link rel="stylesheet" type="text/css" href="'.$cssUrl.'">'.$divWrapper.'
-			<div class="shariff item" data-lang="'. $iso1Lang.'"
+			<div class="shariff item" data-lang="'. str_split($locale, 2)[0] .'"
 				data-services="['.$dataServicesString.']"
 				data-mail-url="mailto:"
 				data-mail-body={url}

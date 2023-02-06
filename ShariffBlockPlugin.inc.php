@@ -12,6 +12,8 @@
  * @brief Class for block component of shariff plugin
  */
 
+use APP\i18n\AppLocale;
+
 import('lib.pkp.classes.plugins.BlockPlugin');
 
 class ShariffBlockPlugin extends BlockPlugin {
@@ -116,7 +118,6 @@ class ShariffBlockPlugin extends BlockPlugin {
     
     		// get language from system
     		$locale = AppLocale::getLocale();
-    		$iso1Lang = AppLocale::getIso1FromLocale($locale);
     
     		// javascript, css and backend url
     		$requestedUrl = $request->getCompleteUrl();
