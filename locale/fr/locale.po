@@ -2,29 +2,30 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: \n"
+"Last-Translator: Martin Brändle <martin.braendle@uzh.ch>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-08-31T13:21:47+00:00\n"
-"PO-Revision-Date: 2020-08-31T13:21:47+00:00\n"
-"Language: \n"
+"POT-Creation-Date: 2020-11-24T10:00:00+00:00\n"
+"PO-Revision-Date: 2020-11-24T10:00:00+00:00\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"Language: fr_FR\n"
 
 msgid "plugins.generic.shariff.displayName"
-msgstr "Shariff-Plugin"
+msgstr "Module Shariff"
 
 msgid "plugins.generic.shariff.description"
-msgstr "Füge Social-Media-Buttons zur Zeitschrift hinzu, ohne die Privatsphäre der Besucher/innen der Webseite zu gefährden. Dazu wird der <a href=\"https://github.com/heiseonline/shariff\" target=\"_blank\">Shariff</a>-Ansatz genutzt."
+msgstr "Ajoutez des boutons de médias sociaux à votre journal sans compromettre la vie privée des utilisateurs du site web, en utilisant la solution <a href=\"https://github.com/heiseonline/shariff\" target=\"_blank\">Shariff</a>."
 
 msgid "plugins.generic.shariff.block.displayName"
-msgstr "Shariff-Block-Plugin"
+msgstr "Bloc \"Shariff\""
 
 msgid "plugins.generic.shariff.block.description"
-msgstr "Füge Social-Media-Buttons zur Zeitschrift hinzu, ohne die Privatsphäre der Besucher/innen der Webseite zu gefährden. Dazu wird der <a href=\"https://github.com/heiseonline/shariff\" target=\"_blank\">Shariff</a>-Ansatz genutzt."
+msgstr "Ajoutez des boutons de médias sociaux à votre journal sans compromettre la vie privée des utilisateurs du site web, en utilisant la solution <a href=\"https://github.com/heiseonline/shariff\" target=\"_blank\">Shariff</a>."
 
 msgid "plugins.generic.shariff.settings.service"
-msgstr "Dienste"
+msgstr "Services"
 
 msgid "plugins.generic.shariff.settings.service.twitter"
 msgstr "Twitter"
@@ -99,43 +100,46 @@ msgid "plugins.generic.shariff.settings.service.vk"
 msgstr "vk"
 
 msgid "plugins.generic.shariff.settings.theme"
-msgstr "Thema"
+msgstr "Thème"
 
 msgid "plugins.generic.shariff.settings.theme.standard"
-msgstr "Standard"
+msgstr "standard"
 
 msgid "plugins.generic.shariff.settings.theme.grey"
-msgstr "Grau"
+msgstr "gris"
 
 msgid "plugins.generic.shariff.settings.theme.white"
-msgstr "Weiß"
+msgstr "blanc"
 
 msgid "plugins.generic.shariff.settings.position"
 msgstr "Position"
 
 msgid "plugins.generic.shariff.settings.position.footer"
-msgstr "Fußzeile"
+msgstr "pied de page"
 
 msgid "plugins.generic.shariff.settings.position.sidebar"
-msgstr "Seitenleiste"
+msgstr "barre latérale"
 
 msgid "plugins.generic.shariff.settings.position.submission"
-msgstr "Artikel- bzw. Buchseite"
+msgstr "page de l'article / du livre"
 
 msgid "plugins.generic.shariff.settings.orientation"
-msgstr "Orientierung"
+msgstr "Orientation"
 
 msgid "plugins.generic.shariff.settings.orientation.vertical"
-msgstr "vertikal"
+msgstr "vertical"
 
 msgid "plugins.generic.shariff.settings.orientation.horizontal"
 msgstr "horizontal"
 
 msgid "plugins.generic.shariff.settings.note"
-msgstr "Wenn Sie anzeigen möchten, wie häufig eine Seite in sozialen Netzwerken geteilt wird, entnehmen Sie die zusätzlichen Anforderungen der README-Datei und den Angaben zum <a href=\"https://github.com/heiseonline/shariff-backend-php\" target=\"_blank\">Shariff PHP Backend</a>."
+msgstr "Si vous voulez afficher la fréquence de partage d'une page sur les réseaux sociaux, veuillez consulter le <a href=\"https://github.com/heiseonline/shariff-backend-php\" target=\"_blank\">Shariff PHP Backend</a> et le fichier README du module pour connaître les autres exigences."
+
+msgid "plugins.generic.shariff.settings.service.description"
+msgstr "Ce module met en œuvre les services fournis par <a href=\"https://github.com/heiseonline/shariff/releases\" target=\"_blank\">Shariff version 3.2.1</a>. Comme la disponibilité de ces services peut changer sans préavis, il est conseillé de vérifier régulièrement la disponibilité."
 
 msgid "plugins.generic.shariff.settings.service.note"
-msgstr "<p>Dieses Plugin implementiert alle Dienste wie sie von <a href=\"https://github.com/heiseonline/shariff/releases\" target=\"_blank\">Shariff Version 3.2.1</a> zur Verfügung gestellt werden. Da sich die Verfügbarkeit dieser Dienste ohne Vorwarnung ändern kann, ist es ratsam die Verfügbarkeit regelmäßig zu überprüfen.</p><p>Bitte beachten Sie auch, dass einige Dienste nur auf speziellen Geräten oder Platformen (z.B. Smartphones) verfügbar sind. Dieses Plugin zeigt Teilen-Buttons für alle unten ausgewählen Dienste an, unabhängig von der Verfügbarkeit des Dienstes auf dem jeweiligen Endgerät.</p>"
+msgstr "Il faut également tenir compte du fait que certains services peuvent n'être disponibles que sur des appareils ou plates-formes spécifiques (par exemple, des appareils mobiles) ou avec des applications spécifiques installées (par exemple, Whatsapp). Ce module inclura des boutons de partage dans le front-end de l'OJS pour tous les services sélectionnés ci-dessous, indépendamment de la disponibilité du service sur l'appareil ou la plate-forme spécifique."
 
 msgid "plugins.generic.shariff.settings.service.shared_content.note"
-msgstr "Dieses Plugin teilt nur die URL der aktiven Seite mit dem ausgewählten Dienstleister. Die Art des vom Dienstleister angezeigten Inhaltes hängt vom Dienstleister ab und wird üblicherweise aus den Metadaten des HTML-Headers extrahiert. Bitte verifizieren Sie welche Metadaten Sie im HTML-Header teilen."
+msgstr "Ce module ne partage l'URL de la page qu'avec le fournisseur de services sélectionné. Le type de contenu présenté au public dépend du fournisseur de services sélectionné et généralement est extrait des métadonnées des en-têtes HTML. Veuillez vérifier les métadonnées que vous partagez dans votre en-tête HTML."

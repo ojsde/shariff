@@ -1,8 +1,8 @@
 {**
  * templates/shariffBlock.tpl
  *
- * Copyright (c) 2018 Free University Berlin
- * Distributed under the GNU GPL v2. For full terms see the file LICENSE.
+ * Copyright (c) 2023 Universitätsbibliothek Freie Universität Berlin
+ * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * Shariff social media buttons block.
  *}

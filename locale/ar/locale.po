@@ -119,5 +119,8 @@ msgstr "عمودية"
 msgid "plugins.generic.shariff.settings.orientation.horizontal"
 msgstr "أفقية"
 
+msgid "plugins.generic.shariff.settings.description"
+msgstr "إذا أردت عرض عدد المرات التي جرت فيها مشاركة الصفحة في مواقع التواصل الاجتماعي، لطفاً أنظر <a href=\"https://github.com/heiseonline/shariff-backend-php\" target=\"_blank\">خلفية برمجة Shariff بلغة PHP</a> مع ملف README الخاص بهذه الإضافة لمعرفة متطلبات عمل ذلك."
+
 msgid "plugins.generic.shariff.settings.note"
 msgstr "إذا أردت عرض عدد المرات التي جرت فيها مشاركة الصفحة في مواقع التواصل الاجتماعي، لطفاً أنظر <a href=\"https://github.com/heiseonline/shariff-backend-php\" target=\"_blank\">خلفية برمجة Shariff بلغة PHP</a> مع ملف README الخاص بهذه الإضافة لمعرفة متطلبات عمل ذلك."

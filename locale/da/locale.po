@@ -140,8 +140,11 @@ msgstr "Telegram"
 msgid "plugins.generic.shariff.settings.service.vk"
 msgstr "vk"
 
+msgid "plugins.generic.shariff.settings.service.description"
+msgstr "Denne plugin implementerer tjenester leveret af <a href=\"https://github.com/heiseonline/shariff/releases\" target=\"_blank\"> Shariff version 3.2.1</a>. Da tilgængeligheden af disse tjenester kan ændre sig uden varsel, tilrådes det at kontrollere tilgængeligheden regelmæssigt."
+
 msgid "plugins.generic.shariff.settings.service.note"
-msgstr "<p>Denne plugin implementerer tjenester leveret af <a href=\"https://github.com/heiseonline/shariff/releases\" target=\"_blank\"> Shariff version 3.2.1</a>. Da tilgængeligheden af disse tjenester kan ændre sig uden varsel, tilrådes det at kontrollere tilgængeligheden regelmæssigt.</p> <p> Det bør også påtænkes, at nogle tjenester muligvis kun er tilgængelige på bestemte enheder eller platforme (f.eks. mobile enheder) eller med specifikke apps installeret (f.eks. Whatsapp). Denne plugin inkluderer deleknapper i OJS-frontend for alle valgte tjenester, uafhængigt af tilgængeligheden af tjenesten på den specifikke enhed eller platform.</p>"
+msgstr "Det bør også påtænkes, at nogle tjenester muligvis kun er tilgængelige på bestemte enheder eller platforme (f.eks. mobile enheder) eller med specifikke apps installeret (f.eks. Whatsapp). Denne plugin inkluderer deleknapper i OJS-frontend for alle valgte tjenester, uafhængigt af tilgængeligheden af tjenesten på den specifikke enhed eller platform."
 
 msgid "plugins.generic.shariff.settings.service.shared_content.note"
 msgstr "Denne plugin deler kun side-URL med den valgte tjenesteudbyder. Det indhold, der præsenteres for læseren, afhænger af den valgte tjenesteudbyder og ekstraheres normalt fra HTML-headerens metadata. Kontroller derfor, hvilke metadata du deler i din HTML-header."

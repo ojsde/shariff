@@ -4,13 +4,15 @@
  * @file plugins/generic/shariff/ShariffBlockPlugin.inc.php
  *
  * Copyright (c) 2018 Center for Digital Systems (CeDiS), Freie Universität Berlin
- * Distributed under the GNU GPL v2. For full terms see the file LICENSE.
+ * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * @class ShariffBlockPlugin
  * @ingroup plugins_generic_shariff
  *
  * @brief Class for block component of shariff plugin
  */
+
+use APP\i18n\AppLocale;
 
 import('lib.pkp.classes.plugins.BlockPlugin');
 
@@ -100,31 +102,28 @@ class ShariffBlockPlugin extends BlockPlugin {
 	 */
 	function getContents($templateMgr, $request = null) {
 		$context = $request->getContext();
-		$contextId = $context->getId();
-		$plugin = $this->getShariffPlugin();
 		
-		if (strcmp($this->getShariffPlugin()->getSetting($contextId, 'selectedPosition'),'sidebar') == 0) {
+		if (strcmp($context->getData('shariffPositionSelected'),'sidebar') == 0) {
 		
     		// services
-    		$selectedServices = $plugin->getSetting($contextId, 'selectedServices');
+    		$selectedServices = $context->getData('shariffServicesSelected');
     		$preparedServices = array_map(function($arrayElement){return $arrayElement;}, $selectedServices);
     		$dataServicesString = implode(",", $preparedServices);
     		
     		// theme
-    		$selectedTheme = $plugin->getSetting($contextId, 'selectedTheme');
+    		$selectedTheme = $context->getData('shariffThemeSelected');
     
     		// orientation
-    		$selectedOrientation = $plugin->getSetting($contextId, 'selectedOrientation');
+    		$selectedOrientation = $context->getData('shariffOrientationSelected');
     
     		// get language from system
     		$locale = AppLocale::getLocale();
-    		$iso1Lang = AppLocale::getIso1FromLocale($locale);
     
     		// javascript, css and backend url
     		$requestedUrl = $request->getCompleteUrl();
     		$baseUrl = $request->getBaseUrl();
-    		$jsUrl = $baseUrl .'/'. $plugin->getPluginPath().'/shariff-3.2.1/shariff.complete.js';
-    		$cssUrl = $baseUrl .'/' . $plugin->getPluginPath() . '/' . '/shariff-3.2.1/shariff.complete.css';
+    		$jsUrl = $baseUrl .'/'. $this->getShariffPlugin()->getPluginPath().'/shariff-3.2.1/shariff.complete.js';
+    		$cssUrl = $baseUrl .'/' . $this->getShariffPlugin()->getPluginPath() . '/shariff-3.2.1/shariff.complete.css';
     		$backendUrl = $baseUrl .'/'. 'shariff-backend';
     
     		// assign variables to the templates

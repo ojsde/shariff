@@ -3,14 +3,17 @@
 /**
  * @file plugins/generic/shariff/ShariffPlugin.inc.php
  *
- * Copyright (c) 2018 Center for Digital Systems (CeDiS), Freie Universität Berlin
- * Distributed under the GNU GPL v2. For full terms see the file LICENSE.
+ * Copyright (c) 2023 Universitätsbibliothek Freie Universität Berlin
+ * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * @class ShariffPlugin
  * @ingroup plugins_generic_shariff
  *
  * @brief Shariff plugin class
  */
+use PKP\core\JSONMessage;
+use APP\notification\NotificationManager;
+use APP\i18n\AppLocale;
 
 import('lib.pkp.classes.plugins.GenericPlugin');
 
@@ -40,17 +43,14 @@ class ShariffPlugin extends GenericPlugin {
 				if ($context) {
 					$contextId = $context->getId();
 
-					// display the buttons depending in the selected position
-					switch ($this->getSetting($contextId, 'selectedPosition')) {
-						case 'footer':
-							HookRegistry::register('Templates::Common::Footer::PageFooter', array($this, 'addShariffButtons'));
-							break;
-						case 'submission':
-							HookRegistry::register('Templates::Article::Details', array($this, 'addShariffButtons'));
-							HookRegistry::register('Templates::Preprint::Details', array($this, 'addShariffButtons'));
-							HookRegistry::register('Templates::Catalog::Book::Details', array($this, 'addShariffButtons'));
-					}
+					HookRegistry::register('Template::Settings::website::appearance', array($this, 'callbackAppearanceTab')); //to enable display of plugin settings tab
+					HookRegistry::register('Schema::get::context', array($this, 'addToSchema')); // to add Shariff avriables to context schema
 
+					HookRegistry::register('Templates::Common::Footer::PageFooter', array($this, 'addShariffButtons'));
+					HookRegistry::register('Templates::Article::Details', array($this, 'addShariffButtons'));
+					HookRegistry::register('Templates::Catalog::Book::Details', array($this, 'addShariffButtons'));
+					HookRegistry::register('Templates::Preprint::Details', array($this, 'addShariffButtons'));
+					
 					// Load this plugin as a block plugin as well (for sidebar)
 					$this->import('ShariffBlockPlugin');
 					$shariffBlockPlugin = new ShariffBlockPlugin($this->getName(), $this->getPluginPath());
@@ -62,6 +62,72 @@ class ShariffPlugin extends GenericPlugin {
 				}
 			}
 			return $success;
+	}
+
+	public function addToSchema($hookName, $params) {
+		$schema =& $params[0];
+
+		$schema->properties->{"shariffServicesSelected"} = (object) [
+			'type' => 'array',
+			'apiSummary' => true,
+			'validation' => ['nullable'],
+			'items' => (object) ['type' => 'string']
+		];
+		$schema->properties->{"shariffThemeSelected"} = (object) [
+			'type' => 'string',
+			'apiSummary' => true,
+			'validation' => ['nullable'],
+		];
+		$schema->properties->{"shariffPositionSelected"} = (object) [
+			'type' => 'string',
+			'apiSummary' => true,
+			'validation' => ['nullable'],
+		];
+		$schema->properties->{"shariffOrientationSelected"} = (object) [
+			'type' => 'string',
+			'apiSummary' => true,
+			'validation' => ['nullable'],
+		];
+
+		return false;
+	}
+
+	function callbackAppearanceTab($hookName, $args) {		
+
+		# prepare data
+		$templateMgr =& $args[1];
+		$output =& $args[2];
+		$request =& Registry::get('request');
+		$context = $request->getContext();
+		$contextId = $context->getId();
+		$dispatcher = $request->getDispatcher();
+
+		# url to handle form dialog (we add our vars to the context schema)
+		$contextApiUrl = $dispatcher->url(
+			$request,
+			ROUTE_API,
+			$context->getPath(),
+			'contexts/' . $context->getId()
+		);
+		$contextUrl = $request->getRouter()->url($request, $context->getPath());
+
+		// instantinate settings form
+		$this->import('ShariffSettingsForm');
+		$shariffSettingsForm = new ShariffSettingsForm($contextApiUrl, $context->getSupportedLocaleNames(), $context);
+
+		// setup template
+		$templateMgr->setConstants([
+			'FORM_SHARIFF_SETTINGS',
+		]);
+
+		$state = $templateMgr->getTemplateVars('state');
+		$state['components'][FORM_SHARIFF_SETTINGS] = $shariffSettingsForm->getConfig();
+		$templateMgr->assign('state', $state); // In OJS 3.3 $templateMgr->setState doesn't seem to update template vars anymore
+
+		$output .= $templateMgr->display($this->getTemplateResource('settingsForm.tpl'));
+
+		// Permit other plugins to continue interacting with this hook
+		return false;
 	}
 
 	/**
@@ -87,28 +153,41 @@ class ShariffPlugin extends GenericPlugin {
 	 * @return bool
 	 */
 	function addShariffButtons($hookName, $args) {
+		$request = $this->getRequest();
+		$context = $request->getContext();
+
+		// display the buttons depending in the selected position
+		switch ($context->getData('shariffPositionSelected')) {
+			case 'footer':
+				if ($hookName != 'Templates::Common::Footer::PageFooter') return false;
+				break;
+			case 'submission':
+				if (($hookName != 'Templates::Article::Details') &&
+					($hookName !=  'Templates::Catalog::Book::Details') &&
+					($hookName !=  'Templates::Preprint::Details')) return false;
+				break;
+			default:
+				return false;
+		}
+
+		// create the template
 		$template =& $args[1];
 		$output =& $args[2];
 
-		$request = $this->getRequest();
-		$context = $request->getContext();
-		$contextId = $context->getId();
-
 		// services
-		$selectedServices = $this->getSetting($contextId, 'selectedServices');
+		$selectedServices = $context->getData('shariffServicesSelected');
 		
 		$preparedServices = array_map(function($arrayElement){return $arrayElement;}, $selectedServices);
 		$dataServicesString = implode(",", $preparedServices);
 
 		// theme
-		$selectedTheme = $this->getSetting($contextId, 'selectedTheme');
+		$selectedTheme = $context->getData('shariffThemeSelected');
 
 		// orientation
-		$selectedOrientation = $this->getSetting($contextId, 'selectedOrientation');
+		$selectedOrientation = $context->getData('shariffOrientationSelected');
 
 		// get language from system
 		$locale = AppLocale::getLocale();
-		$iso1Lang = AppLocale::getIso1FromLocale($locale);
 
 		// javascript, css and backend url
 		$requestedUrl = $request->getCompleteUrl();
@@ -118,7 +197,7 @@ class ShariffPlugin extends GenericPlugin {
 		$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/' . 'shariff-3.2.1/shariff.complete.css';
 		$backendUrl = $baseUrl .'/'. 'shariff-backend';
 
-		$selectedPositon = $this->getSetting($contextId, 'selectedPosition');
+		$selectedPositon = $context->getData('shariffPositionSelected');
 		if ($selectedPositon == 'footer') {
 		    $divWrapper = '<div class="pkp_structure_footer_wrapper"><div class="pkp_structure_footer">';
 		} elseif ($selectedPositon == 'submission') {
@@ -127,7 +206,7 @@ class ShariffPlugin extends GenericPlugin {
 		
 		$output .= '
 			<link rel="stylesheet" type="text/css" href="'.$cssUrl.'">'.$divWrapper.'
-			<div class="shariff item" data-lang="'. $iso1Lang.'"
+			<div class="shariff item" data-lang="'. str_split($locale, 2)[0] .'"
 				data-services="['.$dataServicesString.']"
 				data-mail-url="mailto:"
 				data-mail-body={url}
@@ -141,54 +220,6 @@ class ShariffPlugin extends GenericPlugin {
 			<script src="'.$jsUrl.'"></script>';
 
 		return false;
-	}
-
-	/**
-	 * @copydoc Plugin::getActions()
-	 */
-	function getActions($request, $verb) {
-		$router = $request->getRouter();
-		import('lib.pkp.classes.linkAction.request.AjaxModal');
-		return array_merge(
-			$this->getEnabled()?array(
-				new LinkAction(
-					'settings',
-					new AjaxModal(
-						$router->url($request, null, null, 'manage', null, array('verb' => 'settings', 'plugin' => $this->getName(), 'category' => 'generic')),
-						$this->getDisplayName()
-					),
-					__('manager.plugins.settings'),
-					null
-				),
-			):array(),
-			parent::getActions($request, $verb)
-		);
-	}
-
-	/**
-	 * @copydoc Plugin::manage()
-	 */
-	function manage($args, $request) {
-		switch ($request->getUserVar('verb')) {
-			case 'settings':
-				AppLocale::requireComponents(LOCALE_COMPONENT_APP_COMMON,  LOCALE_COMPONENT_PKP_MANAGER);
-				$this->import('ShariffSettingsForm');
-				$form = new ShariffSettingsForm($this, $request->getContext()->getId());
-
-				if ($request->getUserVar('save')) {
-					$form->readInputData();
-					if ($form->validate()) {
-						$form->execute();
-						$notificationManager = new NotificationManager();
-						$notificationManager->createTrivialNotification($request->getUser()->getId());
-						return new JSONMessage(true);
-					}
-				} else {
-					$form->initData();
-				}
-				return new JSONMessage(true, $form->fetch($request));
-		}
-		return parent::manage($args, $request);
 	}
 }
 

@@ -1,8 +1,8 @@
 # Shariff plugin
 
-This plugin adds social media buttons to your web site (to the footer of each page, the article page or the sidebar) without compromising the privacy of website users. It implements shariff by heise ([Github](https://github.com/heiseonline/shariff), [article](http://ct.de/shariff)) in [Open Journal Systems](https://pkp.sfu.ca/ojs/).
+This plugin adds social media buttons to your web site (to the footer of each page, the article page or the sidebar) without compromising the privacy of website users. It implements shariff by Heise Medien GmbH ([Github](https://github.com/heiseonline/shariff), [article](http://ct.de/shariff)) in [Open Journal Systems](https://pkp.sfu.ca/ojs/).
 
-This plugin has been tested with OJS version 3.2.1!
+This plugin has been tested with OJS version 3.4.0. It should also be compatible with OMP 3.4 and OPS 3.4.
 
 ## Features
 
@@ -34,9 +34,6 @@ Available social media services (as of Shariff 3.2.1) are:
 - Info
 
 
-
-![Shariff buttons](resources/shariff_buttons_example.png)
-
 Additionally an info button that links to the heise article can be added. You can also add a mail icon. 
 
 The plugin offers a selection of settings like themes, orientation and position of the social media buttons (see settings below). 
@@ -47,11 +44,11 @@ You can add the Shariff PHP Backend to display the number of likes (not tested, 
 
 ## License
 
-This plugin is licensed under the GNU General Public License v2. See the file LICENSE for the complete terms of this license.
+This plugin is licensed under the GNU General Public License v3. See the file LICENSE for the complete terms of this license.
 
 ## System Requirements
 
-This plugin is compatible with OJS version 3.2.1.
+This plugin is compatible with OJS version 3.4.0. It should also be compatible with OMP 3.4 and OPS 3.4.
 
 ## Installation
 
@@ -64,8 +61,6 @@ The following settings are available:
 - choose a provided theme for the social media buttons (standard, white, grey)
 - determine the position of the social media buttons on your journal web site (footer, sidebar or article/book page)
 - choose the orientation of the social media buttins (vertical or horizontal)
-
-![Shariff settings](resources/shariff_settings.png)
 
 ## Usage
 Install the plugin as described above, activate it and choose the settings you prefer. If you choose the sidebar option, you need to enable the new Shariff-block under management/settings/website.
@@ -86,6 +81,9 @@ Contact us via support@ojs-de.net. Find out more about the project [OJS-de.net](
 
 ## Version History
 
+* 3.4 - plugin version for OJS 3.4
+* 3.3 - plugin version for OJS 3.3
+* 3.2 - plugin version for OJS 3.2
 * 3.0 - Adaption to OJS/OMP 3.1.2, update to Shariff Version 3.2.1
 * 2.0 - Adaption to OJS/OMP 3
 * 1.0 - Shariff plugin for OJS 2
@@ -100,6 +98,7 @@ The buttons are added via template hooks:
 * Templates::Common::Footer::PageFooter
 * Templates::Article::Details 
 * Templates::Catalog::Book::Details
+* Templates::Preprint::Details
 
 To add the plugin to the sidebar, this plugin is also a [block plugin](https://github.com/ojsde/shariff/blob/master/ShariffBlockPlugin.inc.php).
 
