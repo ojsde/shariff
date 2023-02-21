@@ -7,7 +7,7 @@
 /**
  * @file plugins/generic/shariff/index.php
  *
- * Copyright (c) 2021 Universitätsbibliothek Freie Universität Berlin
+ * Copyright (c) 2023 Universitätsbibliothek Freie Universität Berlin
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * @ingroup plugins_generic_shariff

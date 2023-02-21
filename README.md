@@ -1,8 +1,8 @@
 # Shariff plugin
 
-This plugin adds social media buttons to your web site (to the footer of each page, the article page or the sidebar) without compromising the privacy of website users. It implements shariff by heise ([Github](https://github.com/heiseonline/shariff), [article](http://ct.de/shariff)) in [Open Journal Systems](https://pkp.sfu.ca/ojs/).
+This plugin adds social media buttons to your web site (to the footer of each page, the article page or the sidebar) without compromising the privacy of website users. It implements shariff by Heise Medien GmbH ([Github](https://github.com/heiseonline/shariff), [article](http://ct.de/shariff)) in [Open Journal Systems](https://pkp.sfu.ca/ojs/).
 
-This plugin has been tested with OJS version 3.3.0! It should also be compatible with OMP 3.3 and OPS 3.3.
+This plugin has been tested with OJS version 3.4.0. It should also be compatible with OMP 3.4 and OPS 3.4.
 
 ## Features
 
@@ -48,7 +48,7 @@ This plugin is licensed under the GNU General Public License v3. See the file LI
 
 ## System Requirements
 
-This plugin is compatible with OJS version 3.3.0. It should also be compatible with OMP 3.3 and OPS 3.3.
+This plugin is compatible with OJS version 3.4.0. It should also be compatible with OMP 3.4 and OPS 3.4.
 
 ## Installation
 
@@ -81,6 +81,7 @@ Contact us via support@ojs-de.net. Find out more about the project [OJS-de.net](
 
 ## Version History
 
+* 3.4 - plugin version for OJS 3.4
 * 3.3 - plugin version for OJS 3.3
 * 3.2 - plugin version for OJS 3.2
 * 3.0 - Adaption to OJS/OMP 3.1.2, update to Shariff Version 3.2.1
