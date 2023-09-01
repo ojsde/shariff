@@ -56,6 +56,7 @@ Clone this repo in your plugin folder (/plugins/generic) or download the code an
 
 ## Settings
 
+The settings form can be found unter "Website -> Appearance -> Shariff Plugin".
 The following settings are available:
 - choose the services you would like to provide on the journal pages (see list above)
 - choose a provided theme for the social media buttons (standard, white, grey)
