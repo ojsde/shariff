@@ -46,7 +46,6 @@ class ShariffSettingsForm extends FormComponent {
 	public function __construct($action, $locales, $context) {
 
 		$this->action = $action;
-		$this->successMessage = __('plugins.generic.shariff.settings.form.success', ['url' => $publicUrl]);
 		$this->locales = $locales;
 
 		$this->addGroup([
