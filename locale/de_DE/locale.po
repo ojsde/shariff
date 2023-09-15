@@ -142,3 +142,9 @@ msgstr "Bitte beachten Sie auch, dass einige Dienste nur auf speziellen Geräten
 
 msgid "plugins.generic.shariff.settings.service.shared_content.note"
 msgstr "Dieses Plugin teilt nur die URL der aktiven Seite mit dem ausgewählten Dienstleister. Die Art des vom Dienstleister angezeigten Inhaltes hängt vom Dienstleister ab und wird üblicherweise aus den Metadaten des HTML-Headers extrahiert. Bitte verifizieren Sie welche Metadaten Sie im HTML-Header teilen."
+
+msgid "plugins.generic.shariff.settings.shariffAdditionalOptions"
+msgstr "Zusätzliche Einstellungen"
+
+msgid "plugins.generic.shariff.settings.shariffEnableWCAG"
+msgstr "Benutze WCAG-konforme Farben."

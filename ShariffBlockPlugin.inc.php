@@ -124,6 +124,8 @@ class ShariffBlockPlugin extends BlockPlugin {
     		$jsUrl = $baseUrl .'/'. $this->getShariffPlugin()->getPluginPath().'/shariff-3.2.1/shariff.complete.js';
     		$cssUrl = $baseUrl .'/' . $this->getShariffPlugin()->getPluginPath() . '/shariff-3.2.1/shariff.complete.css';
     		$backendUrl = $baseUrl .'/'. 'shariff-backend';
+			$wcagCssUrl = $baseUrl .'/' . $this->getPluginPath() .'/css/wcag-themes.css';
+			$enableWCAG = $context->getData('shariffEnableWCAG');
     
     		// assign variables to the templates
     		$templateMgr->assign('dataServicesString', $dataServicesString);
@@ -134,6 +136,8 @@ class ShariffBlockPlugin extends BlockPlugin {
     		$templateMgr->assign('requestedUrl', $requestedUrl);
     		$templateMgr->assign('jsUrl', $jsUrl);
     		$templateMgr->assign('cssUrl', $cssUrl);
+			$templateMgr->assign('enableWCAG', $enableWCAG);
+			$templateMgr->assign('wcagCssUrl', $wcagCssUrl);
 		}
 
 		return parent::getContents($templateMgr, $request);

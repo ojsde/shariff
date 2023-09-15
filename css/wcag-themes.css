@@ -1,0 +1,159 @@
+/*!
+ * Created 07 September 2023  
+ * Copyright (c) 2023 Stephanie Gallo
+ * Licensed under the MIT license
+ */
+
+/*WCAG 2.1 AA Compliant Grey Theme*/
+.shariff .theme-grey .shariff-button a {
+  background-color: #707070; /*Contrast Ratio 4.54:1*/
+  color: #fff;
+}
+
+.shariff .theme-grey .shariff-button a:hover {
+  background-color: #636363; /*Contrast Ratio 6.01:1*/
+  color: #fff;
+}
+
+/*WCAG 2.1 AA Compliant White Theme*/
+.shariff .theme-white .shariff-button a {
+  background-color: #fff; /*Contrast Ratio: 12.63:1*/ 
+}
+.shariff .theme-white .shariff-button a .share_text  {
+  color: #333; /*Contrast Ratio: 12.63:1*/ 
+}
+
+/*WCAG 2.1 AA Compliant Standard Theme*/
+.shariff .theme-standard .shariff-button a {
+  border: 1px solid #333;
+  background-color: #fff; /*Contrast Ratio: 12.63:1*/ 
+  color: #333;
+}
+.shariff .theme-standard .shariff-button a:hover {
+  background-color: #eee;
+}
+
+.shariff .theme-standard .shariff-button.twitter a {
+  border-color: #55acee;
+}
+.shariff .theme-standard .shariff-button.twitter a .fab {
+  color: #55acee;
+}
+.shariff .theme-standard .shariff-button.facebook a {
+  border-color: #3b5998;
+}
+.shariff .theme-standard .shariff-button.facebook a .fab {
+  color: #3b5998;
+}
+.shariff .theme-standard .shariff-button.linkedin a {
+  border-color: #0077b5;
+}
+.shariff .theme-standard .shariff-button.linkedin a .fab {
+  color: #0077b5;
+}
+.shariff .theme-standard .shariff-button.pinterest a {
+  border-color: #bd081c;
+}
+.shariff .theme-standard .shariff-button.pinterest a .fab {
+  color: #bd081c;
+}
+.shariff .theme-standard .shariff-button.xing a {
+  border-color: #126567;
+}
+.shariff .theme-standard .shariff-button.xing a .fab {
+  color: #126567;
+}
+.shariff .theme-standard .shariff-button.whatsapp a {
+  border-color: #5cbe4a;
+}
+.shariff .theme-standard .shariff-button.whatsapp a .fab {
+  color: #5cbe4a;
+}
+.shariff .theme-standard .shariff-button.addthis a {
+  border-color: #f8694d;
+}
+.shariff .theme-standard .shariff-button.addthis a .fas {
+  color: #f8694d;
+}
+.shariff .theme-standard .shariff-button.tumblr a {
+  border-color: #36465d;
+}
+.shariff .theme-standard .shariff-button.tumblr a .fab {
+  color: #36465d;
+}
+.shariff .theme-standard .shariff-button.flattr a {
+  border-color: #7ea352;
+}
+.shariff .theme-standard .shariff-button.flattr a .far {
+  color: #7ea352;
+}
+.shariff .theme-standard .shariff-button.diaspora a,
+.shariff .theme-standard .shariff-button.mail a, 
+.shariff .theme-standard .shariff-button.print a {
+  border-color: #999;
+}
+.shariff .theme-standard .shariff-button.diaspora a .fas,
+.shariff .theme-standard .shariff-button.mail a .fas,
+.shariff .theme-standard .shariff-button.print a .fas {
+  color: #999;
+}
+.shariff .theme-standard .shariff-button.reddit a {
+  border-color: #ff4500;
+}
+.shariff .theme-standard .shariff-button.reddit a .fab {
+  color: #ff4500;
+}
+.shariff .theme-standard .shariff-button.stumbleupon a {
+  border-color: #eb4924;
+}
+.shariff .theme-standard .shariff-button.stumbleupon a .fab {
+  color: #eb4924;
+}
+.shariff .theme-standard .shariff-button.weibo a {
+  border-color: #f56770;
+}
+.shariff .theme-standard .shariff-button.weibo a .fab {
+  color: #f56770;
+}
+.shariff .theme-standard .shariff-button.qzone a {
+  border-color: #2b82d9;
+}
+.shariff .theme-standard .shariff-button.qzone a .fab {
+  color: #2b82d9;
+}
+.shariff .theme-standard .shariff-button.buffer a {
+  border-color: #3a3a3a;
+}
+.shariff .theme-standard .shariff-button.buffer a .fab {
+  color: #3a3a3a;
+}
+.shariff .theme-standard .shariff-button.flipboard a {
+  border-color: #e12828;
+}
+.shariff .theme-standard .shariff-button.flipboard a .fab {
+  color: #e12828;
+}
+.shariff .theme-standard .shariff-button.tencent-weibo a {
+  border-color: #26ace0;
+}
+.shariff .theme-standard .shariff-button.tencent-weibo a .fab {
+  color: #26ace0;
+}
+.shariff .theme-standard .shariff-button.pocket a {
+  border-color: #ef4056;
+}
+.shariff .theme-standard .shariff-button.pocket a .fab {
+  color: #ef4056;
+}
+.shariff .theme-standard .shariff-button.telegram a {
+  border-color: #08c;
+}
+.shariff .theme-standard .shariff-button.telegram a .fab {
+  color: #08c;
+}
+.shariff .theme-standard .shariff-button.vk a {
+  border-color: #5d7fa4;
+}
+.shariff .theme-standard .shariff-button.vk a .fab {
+  color: #5d7fa4;
+}

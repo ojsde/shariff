@@ -117,6 +117,14 @@ class ShariffSettingsForm extends FormComponent {
 			],
 			'value' => $context->getData('shariffOrientationSelected') ?: "horizontal",
 			'groupId' => 'shariffsettings'
+		]))
+		->addField(new FieldOptions('shariffEnableWCAG', [
+			'label' => __('plugins.generic.shariff.settings.shariffAdditionalOptions'),
+			'value' => (bool) $context->getData('shariffEnableWCAG'),
+			'options' => [
+				['value' => true, 'label' => __('plugins.generic.shariff.settings.shariffEnableWCAG')],
+			],
+			'groupId' => 'shariffsettings'
 		]));
 	}
 }

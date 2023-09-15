@@ -7,6 +7,9 @@
  * Shariff social media buttons block.
  *}
 <link rel="stylesheet" type="text/css" href="{$cssUrl|escape}">
+{if $enableWCAG}
+	<link rel="stylesheet" type="text/css" href="{$wcagCssUrl|escape}">
+{/if}
 <div class="shariff pkp_block plugins_generic_shariff" data-lang="{$iso1Lang|escape}"
 	data-services="[{$dataServicesString|escape}]"
 	data-mail-url="mailto:"

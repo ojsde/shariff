@@ -142,3 +142,9 @@ msgstr "It should also be considered that some services might only be available 
 
 msgid "plugins.generic.shariff.settings.service.shared_content.note"
 msgstr "This plugin only shares the page URL with the selected service provider. The type of content presented to the public depends on the selected service provider and is usually extracted from the HTML headers metadata. Please verify what metadata you share in your HTML header."
+
+msgid "plugins.generic.shariff.settings.shariffAdditionalOptions"
+msgstr "Additional Settings"
+
+msgid "plugins.generic.shariff.settings.shariffEnableWCAG"
+msgstr "Use WCAG complaint colours."
