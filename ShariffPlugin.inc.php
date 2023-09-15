@@ -88,6 +88,11 @@ class ShariffPlugin extends GenericPlugin {
 			'apiSummary' => true,
 			'validation' => ['nullable'],
 		];
+		$schema->properties->{"shariffEnableWCAG"} = (object) [
+			'type' => 'boolean',
+			'apiSummary' => true,
+			'validation' => ['nullable'],
+		];
 
 		return false;
 	}
@@ -194,8 +199,11 @@ class ShariffPlugin extends GenericPlugin {
 		$request = new PKPRequest();
 		$baseUrl = $request->getBaseUrl();
 		$jsUrl = $baseUrl .'/'. $this->getPluginPath().'/shariff-3.2.1/shariff.complete.js';
-		$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/' . 'shariff-3.2.1/shariff.complete.css';
+		$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/shariff-3.2.1/shariff.complete.css';
 		$backendUrl = $baseUrl .'/'. 'shariff-backend';
+		if ($context->getData('shariffEnableWCAG')) {
+			$wcagCssUrl = $baseUrl .'/' . $this->getPluginPath() .'/css/wcag-themes.css';
+		}
 
 		$selectedPositon = $context->getData('shariffPositionSelected');
 		if ($selectedPositon == 'footer') {
@@ -205,7 +213,9 @@ class ShariffPlugin extends GenericPlugin {
 		}
 		
 		$output .= '
-			<link rel="stylesheet" type="text/css" href="'.$cssUrl.'">'.$divWrapper.'
+			<link rel="stylesheet" type="text/css" href="'.$cssUrl.'">
+			<link rel="stylesheet" type="text/css" href="'.$wcagCssUrl.'">
+			'.$divWrapper.'
 			<div class="shariff item" data-lang="'. str_split($locale, 2)[0] .'"
 				data-services="['.$dataServicesString.']"
 				data-mail-url="mailto:"

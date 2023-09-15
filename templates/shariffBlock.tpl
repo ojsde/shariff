@@ -9,6 +9,9 @@
 
 {if $enableShariffBlock}
 	<link rel="stylesheet" type="text/css" href="{$cssUrl|escape}">
+	{if $enableWCAG}
+		<link rel="stylesheet" type="text/css" href="{$wcagCssUrl|escape}">
+	{/if}
 	<div class="pkp_block block_shariff">
 		<h2 class="title">{translate key="plugins.generic.shariff.share"}</h2>
 		<div class="content">

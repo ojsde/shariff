@@ -145,3 +145,9 @@ msgstr "Dieses Plugin teilt nur die URL der aktiven Seite mit dem ausgewählten 
 
 msgid "plugins.generic.shariff.share"
 msgstr "Teilen"
+
+msgid "plugins.generic.shariff.settings.shariffAdditionalOptions"
+msgstr "Zusätzliche Einstellungen"
+
+msgid "plugins.generic.shariff.settings.shariffEnableWCAG"
+msgstr "Benutze WCAG-konforme Farben."

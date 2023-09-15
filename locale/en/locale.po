@@ -145,3 +145,9 @@ msgstr "This plugin only shares the page URL with the selected service provider.
 
 msgid "plugins.generic.shariff.share"
 msgstr "Share"
+
+msgid "plugins.generic.shariff.settings.shariffAdditionalOptions"
+msgstr "Additional Settings"
+
+msgid "plugins.generic.shariff.settings.shariffEnableWCAG"
+msgstr "Use WCAG complaint colours."
