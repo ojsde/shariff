@@ -147,4 +147,4 @@ msgid "plugins.generic.shariff.settings.shariffAdditionalOptions"
 msgstr "Additional Settings"
 
 msgid "plugins.generic.shariff.settings.shariffEnableWCAG"
-msgstr "Use WCAG complaint colours."
+msgstr "Use WCAG compliant colours."
