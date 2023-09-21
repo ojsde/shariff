@@ -36,7 +36,7 @@ Available social media services (as of Shariff 3.2.1) are:
 
 Additionally an info button that links to the heise article can be added. You can also add a mail icon. 
 
-The plugin offers a selection of settings like themes, orientation and position of the social media buttons (see settings below). 
+The plugin offers a selection of settings like themes, orientation and position of the social media buttons (see settings below) accessible via "Website -> Appearance". 
 
 The plugins will be displayed in the language of the website.
 
@@ -56,6 +56,7 @@ Clone this repo in your plugin folder (/plugins/generic) or download the code an
 
 ## Settings
 
+The settings form can be found unter "Website -> Appearance -> Shariff Plugin".
 The following settings are available:
 - choose the services you would like to provide on the journal pages (see list above)
 - choose a provided theme for the social media buttons (standard, white, grey)
