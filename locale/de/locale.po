@@ -150,4 +150,16 @@ msgid "plugins.generic.shariff.settings.shariffAdditionalOptions"
 msgstr "Zusätzliche Einstellungen"
 
 msgid "plugins.generic.shariff.settings.shariffEnableWCAG"
-msgstr "Benutze WCAG-konforme Farben."
+msgstr "WCAG Konformität"
+
+msgid "plugins.generic.shariff.settings.shariffEnableWCAG.description"
+msgstr "Benutze WCAG-konforme Farbkontraste."
+
+msgid "plugins.generic.shariff.settings.shariffEnableWCAG.heise.description"
+msgstr "Benutze klassische Farbkontraste."
+
+msgid "plugins.generic.shariff.settings.shariffShowBlockHeading"
+msgstr "Shariff-Block Titel"
+
+msgid "plugins.generic.shariff.settings.shariffShowBlockHeading.description"
+msgstr "Zeige eien Block-Titel über dem Shariff-block an (zur besseren Integration mit bestimmten graphischen Themen, benötigt eventuell zusätzliches css)."

@@ -123,10 +123,12 @@ class ShariffBlockPlugin extends BlockPlugin {
     		$requestedUrl = $request->getCompleteUrl();
     		$baseUrl = $request->getBaseUrl();
     		$jsUrl = $baseUrl .'/'. $this->getShariffPlugin()->getPluginPath().'/shariff-3.2.1/shariff.complete.js';
-    		$cssUrl = $baseUrl .'/' . $this->getShariffPlugin()->getPluginPath() . '/shariff-3.2.1/shariff.complete.css';
+    		$shariffCssUrl = $baseUrl .'/' . $this->getShariffPlugin()->getPluginPath() . '/shariff-3.2.1/shariff.complete.css';
     		$backendUrl = $baseUrl .'/'. 'shariff-backend';
+			$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/css/shariff.css';
 			$wcagCssUrl = $baseUrl .'/' . $this->getPluginPath() .'/css/wcag-themes.css';
 			$enableWCAG = $context->getData('shariffEnableWCAG');
+			$showBlockHeading = $context->getData('shariffShowBlockHeading');
     
     		// assign variables to the templates
     		$templateMgr->assign('dataServicesString', $dataServicesString);
@@ -136,10 +138,11 @@ class ShariffBlockPlugin extends BlockPlugin {
     		$templateMgr->assign('iso1Lang', $iso1Lang);
     		$templateMgr->assign('requestedUrl', $requestedUrl);
     		$templateMgr->assign('jsUrl', $jsUrl);
+			$templateMgr->assign('shariffCssUrl', $shariffCssUrl);
     		$templateMgr->assign('cssUrl', $cssUrl);
 			$templateMgr->assign('enableWCAG', $enableWCAG);
 			$templateMgr->assign('wcagCssUrl', $wcagCssUrl);
-    		$templateMgr->assign('enableShariffBlock', true);
+			$templateMgr->assign('showBlockHeading', $showBlockHeading);
 		}
 
 		return parent::getContents($templateMgr, $request);

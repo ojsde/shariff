@@ -118,10 +118,20 @@ class ShariffSettingsForm extends FormComponent {
 			'groupId' => 'shariffsettings'
 		]))
 		->addField(new FieldOptions('shariffEnableWCAG', [
-			'label' => __('plugins.generic.shariff.settings.shariffAdditionalOptions'),
-			'value' => (bool) $context->getData('shariffEnableWCAG'),
+			'label' => __('plugins.generic.shariff.settings.shariffEnableWCAG'),
+			'value' => $context->getData('shariffEnableWCAG')===NULL?true:(bool)$context->getData('shariffEnableWCAG'),
+			'type' => 'radio',
 			'options' => [
-				['value' => true, 'label' => __('plugins.generic.shariff.settings.shariffEnableWCAG')],
+				['value' => true, 'label' => __('plugins.generic.shariff.settings.shariffEnableWCAG.description')],
+				['value' => false, 'label' => __('plugins.generic.shariff.settings.shariffEnableWCAG.heise.description')],
+			],
+			'groupId' => 'shariffsettings'
+		]))
+		->addField(new FieldOptions('shariffShowBlockHeading', [
+			'label' => __('plugins.generic.shariff.settings.shariffShowBlockHeading'),
+			'value' => (bool) $context->getData('shariffShowBlockHeading'),
+			'options' => [
+				['value' => true, 'label' => __('plugins.generic.shariff.settings.shariffShowBlockHeading.description')],
 			],
 			'groupId' => 'shariffsettings'
 		]));

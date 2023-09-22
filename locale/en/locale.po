@@ -150,4 +150,16 @@ msgid "plugins.generic.shariff.settings.shariffAdditionalOptions"
 msgstr "Additional Settings"
 
 msgid "plugins.generic.shariff.settings.shariffEnableWCAG"
-msgstr "Use WCAG complaint colours."
+msgstr "WCAG Compliance"
+
+msgid "plugins.generic.shariff.settings.shariffEnableWCAG.description"
+msgstr "Use WCAG compliant colour contrast."
+
+msgid "plugins.generic.shariff.settings.shariffEnableWCAG.heise.description"
+msgstr "Use classic colour contrast."
+
+msgid "plugins.generic.shariff.settings.shariffShowBlockHeading"
+msgstr "Shariff-Block Heading"
+
+msgid "plugins.generic.shariff.settings.shariffShowBlockHeading.description"
+msgstr "Show a block heading above the Shariff-block (for better integration with certian themes, may require additional css)."
