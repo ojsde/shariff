@@ -206,8 +206,16 @@ class ShariffPlugin extends GenericPlugin {
 			// get language from system
 			$locale = AppLocale::getLocale();
 
+            $publicationSharingLink = $context->getData('shariffPublicationSharingLink');
+            if ($publicationSharingLink == 'doiUrl') {
+                $publication = $template->getTemplateVars('currentPublication');
+                if ($publication && $publication->getData('doiObject')) {
+                    $doiUrl = $publication->getData('doiObject')->getResolvingUrl();
+                }
+            }
+
 			// javascript, css and backend url
-			$requestedUrl = $request->getCompleteUrl();
+			$requestedUrl = $doiUrl ?: $request->getCompleteUrl();
 			$request = new PKPRequest();
 			$baseUrl = $request->getBaseUrl();
 			$jsUrl = $baseUrl .'/'. $this->getPluginPath().'/shariff-3.2.1/shariff.complete.js';

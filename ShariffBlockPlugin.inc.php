@@ -88,7 +88,7 @@ class ShariffBlockPlugin extends BlockPlugin {
 	 * @copydoc BlockPlugin::getBlockTemplateFilename()
 	 */
 	function getBlockTemplateFilename() {
-		// Return the shariff block template.		
+		// Return the shariff block template.
 	    $plugin = $this->getShariffPlugin();
 	    return (method_exists($plugin, 'getTemplateResource') ? '' : 'templates'.DIRECTORY_SEPARATOR) . 'shariffBlock.tpl';
 	}
@@ -102,25 +102,33 @@ class ShariffBlockPlugin extends BlockPlugin {
 	 */
 	function getContents($templateMgr, $request = null) {
 		$context = $request->getContext();
-		
+
 		if (strcmp($context->getData('shariffPositionSelected'),'sidebar') == 0) {
-		
+
     		// services
     		$selectedServices = $context->getData('shariffServicesSelected');
     		$preparedServices = array_map(function($arrayElement){return $arrayElement;}, $selectedServices);
     		$dataServicesString = implode(",", $preparedServices);
-    		
+
     		// theme
     		$selectedTheme = $context->getData('shariffThemeSelected');
-    
+
     		// orientation
     		$selectedOrientation = $context->getData('shariffOrientationSelected');
-    
+
     		// get language from system
     		$locale = AppLocale::getLocale();
-    
+
+            $publicationSharingLink = $context->getData('shariffPublicationSharingLink');
+            if ($publicationSharingLink == 'doiUrl') {
+                $publication = $templateMgr->getTemplateVars('currentPublication');
+                if ($publication && $publication->getData('doiObject')) {
+                    $doiUrl = $publication->getData('doiObject')->getResolvingUrl();
+                }
+            }
+
     		// javascript, css and backend url
-    		$requestedUrl = $request->getCompleteUrl();
+    		$requestedUrl = $doiUrl ?: $request->getCompleteUrl();
     		$baseUrl = $request->getBaseUrl();
     		$jsUrl = $baseUrl .'/'. $this->getShariffPlugin()->getPluginPath().'/shariff-3.2.1/shariff.complete.js';
     		$shariffCssUrl = $baseUrl .'/' . $this->getShariffPlugin()->getPluginPath() . '/shariff-3.2.1/shariff.complete.css';
@@ -129,7 +137,7 @@ class ShariffBlockPlugin extends BlockPlugin {
 			$wcagCssUrl = $baseUrl .'/' . $this->getPluginPath() .'/css/wcag-themes.css';
 			$enableWCAG = $context->getData('shariffEnableWCAG');
 			$showBlockHeading = $context->getData('shariffShowBlockHeading');
-    
+
     		// assign variables to the templates
     		$templateMgr->assign('dataServicesString', $dataServicesString);
     		$templateMgr->assign('selectedTheme', $selectedTheme);
