@@ -20,7 +20,7 @@ define('FORM_SHARIFF_SETTINGS', 'shariffSettings');
 
 /**
  * A form for implementing shariff settings.
- * 
+ *
  * @class ShariffSettingsForm
  * @brief Class implemnting ShariffSettingsForm
  */
@@ -49,7 +49,7 @@ class ShariffSettingsForm extends FormComponent {
 		$this->locales = $locales;
 
 		$this->addGroup([
-			'id' => 'shariffsettings',	
+			'id' => 'shariffsettings',
 		], [])
 		->addField(new FieldOptions('shariffServicesSelected', [
 			'label' => __('plugins.generic.shariff.settings.service'),
@@ -133,6 +133,16 @@ class ShariffSettingsForm extends FormComponent {
 			'options' => [
 				['value' => true, 'label' => __('plugins.generic.shariff.settings.shariffShowBlockHeading.description')],
 			],
+			'groupId' => 'shariffsettings'
+		]))
+        ->addField(new FieldOptions('shariffPublicationSharingLink', [
+			'label' => __('plugins.generic.shariff.settings.publicationSharingLink'),
+			'type' => 'radio',
+			'options' => [
+				['value' => 'publicationUrl', 'label' => __('plugins.generic.shariff.settings.publicationSharingLink.publicationUrl')],
+				['value' => 'doiUrl', 'label' => __('plugins.generic.shariff.settings.publicationSharingLink.doiUrl')],
+			],
+			'value' => $context->getData('shariffPublicationSharingLink') ?: "publicationUrl",
 			'groupId' => 'shariffsettings'
 		]));
 	}
