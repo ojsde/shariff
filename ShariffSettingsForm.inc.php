@@ -135,16 +135,16 @@ class ShariffSettingsForm extends FormComponent {
 			],
 			'groupId' => 'shariffsettings'
 		]))
-        ->addField(new FieldOptions('shariffPublicationSharingLink', [
-            'label' => __('plugins.generic.shariff.settings.publicationSharingLink'),
-            'type' => 'radio',
-            'options' => [
-                ['value' => 'publicationUrl', 'label' => __('plugins.generic.shariff.settings.publicationSharingLink.publicationUrl')],
-                ['value' => 'doiUrl', 'label' => __('plugins.generic.shariff.settings.publicationSharingLink.doiUrl')],
-            ],
-            'value' => $context->getData('shariffPublicationSharingLink') ?: "publicationUrl",
-            'groupId' => 'shariffsettings'
-        ]));
+		->addField(new FieldOptions('shariffPublicationSharingLink', [
+			'label' => __('plugins.generic.shariff.settings.publicationSharingLink'),
+			'type' => 'radio',
+			'options' => [
+				['value' => 'publicationUrl', 'label' => __('plugins.generic.shariff.settings.publicationSharingLink.publicationUrl')],
+				['value' => 'doiUrl', 'label' => __('plugins.generic.shariff.settings.publicationSharingLink.doiUrl')],
+			],
+			'value' => $context->getData('shariffPublicationSharingLink') ?: "publicationUrl",
+			'groupId' => 'shariffsettings'
+		]));
 	}
 }
 ?>

@@ -119,13 +119,13 @@ class ShariffBlockPlugin extends BlockPlugin {
     		// get language from system
     		$locale = AppLocale::getLocale();
 
-            $publicationSharingLink = $context->getData('shariffPublicationSharingLink');
-            if ($publicationSharingLink == 'doiUrl') {
-                $publication = $templateMgr->getTemplateVars('currentPublication');
-                if ($publication && $publication->getData('doiObject')) {
-                    $doiUrl = $publication->getData('doiObject')->getResolvingUrl();
-                }
-            }
+		$publicationSharingLink = $context->getData('shariffPublicationSharingLink');
+		if ($publicationSharingLink == 'doiUrl') {
+			$publication = $templateMgr->getTemplateVars('currentPublication');
+			if ($publication && $publication->getData('doiObject')) {
+				$doiUrl = $publication->getData('doiObject')->getResolvingUrl();
+			}
+		}
 
     		// javascript, css and backend url
     		$requestedUrl = $doiUrl ?: $request->getCompleteUrl();

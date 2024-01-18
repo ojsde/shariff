@@ -98,7 +98,7 @@ class ShariffPlugin extends GenericPlugin {
 			'apiSummary' => true,
 			'validation' => ['nullable'],
 		];
-        $schema->properties->{"shariffPublicationSharingLink"} = (object) [
+		$schema->properties->{"shariffPublicationSharingLink"} = (object) [
 			'type' => 'string',
 			'apiSummary' => true,
 			'validation' => ['nullable'],
@@ -206,13 +206,13 @@ class ShariffPlugin extends GenericPlugin {
 			// get language from system
 			$locale = AppLocale::getLocale();
 
-            $publicationSharingLink = $context->getData('shariffPublicationSharingLink');
-            if ($publicationSharingLink == 'doiUrl') {
-                $publication = $template->getTemplateVars('currentPublication');
-                if ($publication && $publication->getData('doiObject')) {
-                    $doiUrl = $publication->getData('doiObject')->getResolvingUrl();
-                }
-            }
+			$publicationSharingLink = $context->getData('shariffPublicationSharingLink');
+			if ($publicationSharingLink == 'doiUrl') {
+				$publication = $template->getTemplateVars('currentPublication');
+				if ($publication && $publication->getData('doiObject')) {
+					$doiUrl = $publication->getData('doiObject')->getResolvingUrl();
+				}
+			}
 
 			// javascript, css and backend url
 			$requestedUrl = $doiUrl ?: $request->getCompleteUrl();
