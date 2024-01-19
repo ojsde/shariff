@@ -139,3 +139,12 @@ msgstr "<p>Esse plugin implementa serviços fornecidos por <a href=\"https://git
 
 msgid "plugins.generic.shariff.settings.service.shared_content.note"
 msgstr "Esse plugin compartilha a URL da página apenas com o serviço selecionado. O tipo de conteúdo mostrado ao público depende do serviço selecionado e normalmente é extraído do cabeçalho HTML dos metadados. Por favor, verifique quais metadados você compartilha no seu cabeçalho HTML."
+
+msgid "plugins.generic.shariff.settings.publicationLink"
+msgstr "Link de compartilhamento da publicação"
+
+msgid "plugins.generic.shariff.settings.publicationLink.publicationUrl"
+msgstr "URL da publicação"
+
+msgid "plugins.generic.shariff.settings.publicationLink.doiUrl"
+msgstr "URL DOI da publicação (caso disponível)"

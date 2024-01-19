@@ -50,7 +50,7 @@ class ShariffPlugin extends GenericPlugin {
 					HookRegistry::register('Templates::Article::Details', array($this, 'addShariffButtons'));
 					HookRegistry::register('Templates::Catalog::Book::Details', array($this, 'addShariffButtons'));
 					HookRegistry::register('Templates::Preprint::Details', array($this, 'addShariffButtons'));
-					
+
 					// Load this plugin as a block plugin as well (for sidebar)
 					$this->import('ShariffBlockPlugin');
 					$shariffBlockPlugin = new ShariffBlockPlugin($this->getName(), $this->getPluginPath());
@@ -98,11 +98,16 @@ class ShariffPlugin extends GenericPlugin {
 			'apiSummary' => true,
 			'validation' => ['nullable'],
 		];
+		$schema->properties->{"shariffPublicationSharingLink"} = (object) [
+			'type' => 'string',
+			'apiSummary' => true,
+			'validation' => ['nullable'],
+		];
 
 		return false;
 	}
 
-	function callbackAppearanceTab($hookName, $args) {		
+	function callbackAppearanceTab($hookName, $args) {
 
 		# prepare data
 		$templateMgr =& $args[1];
@@ -186,7 +191,7 @@ class ShariffPlugin extends GenericPlugin {
 
 		// services
 		$selectedServices = $context->getData('shariffServicesSelected');
-		
+
 		$preparedServices = array_map(function($arrayElement){return $arrayElement;}, $selectedServices);
 		$dataServicesString = implode(",", $preparedServices);
 
@@ -201,8 +206,16 @@ class ShariffPlugin extends GenericPlugin {
 			// get language from system
 			$locale = AppLocale::getLocale();
 
+			$publicationSharingLink = $context->getData('shariffPublicationSharingLink');
+			if ($publicationSharingLink == 'doiUrl') {
+				$publication = $template->getTemplateVars('currentPublication');
+				if ($publication && $publication->getData('doiObject')) {
+					$doiUrl = $publication->getData('doiObject')->getResolvingUrl();
+				}
+			}
+
 			// javascript, css and backend url
-			$requestedUrl = $request->getCompleteUrl();
+			$requestedUrl = $doiUrl ?: $request->getCompleteUrl();
 			$request = new PKPRequest();
 			$baseUrl = $request->getBaseUrl();
 			$jsUrl = $baseUrl .'/'. $this->getPluginPath().'/shariff-3.2.1/shariff.complete.js';
@@ -230,7 +243,7 @@ class ShariffPlugin extends GenericPlugin {
 					$blockHeading='<h3 class="label">'.__('plugins.generic.shariff.share').'</h3>';
 				}
 			}
-			
+
 			// put it together
 			$output .= '
 				<link rel="stylesheet" type="text/css" href="'.$cssUrl.'">
