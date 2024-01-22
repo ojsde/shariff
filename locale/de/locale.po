@@ -163,3 +163,12 @@ msgstr "Shariff-Block Titel"
 
 msgid "plugins.generic.shariff.settings.shariffShowBlockHeading.description"
 msgstr "Zeige eien Block-Titel über dem Shariff-block an (zur besseren Integration mit bestimmten graphischen Themen, benötigt eventuell zusätzliches css)."
+
+msgid "plugins.generic.shariff.settings.publicationSharingLink"
+msgstr "Url die geteilt werden soll"
+
+msgid "plugins.generic.shariff.settings.publicationSharingLink.publicationUrl"
+msgstr "URL der Artikelseite"
+
+msgid "plugins.generic.shariff.settings.publicationSharingLink.doiUrl"
+msgstr "DOI-URL (wenn verfügbar)"

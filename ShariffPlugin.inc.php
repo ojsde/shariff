@@ -253,7 +253,7 @@ class ShariffPlugin extends GenericPlugin {
 				<div class="shariff item" data-lang="'. str_split($locale, 2)[0] .'"
 					data-services="['.$dataServicesString.']"
 					data-mail-url="mailto:"
-					data-mail-body={url}
+					data-mail-body={$requestedUrl|escape}
 					data-backend-url="'.$backendUrl.'"
 					data-theme="'.$selectedTheme.'"
 					data-orientation="'.$selectedOrientation.'"
