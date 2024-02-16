@@ -162,7 +162,7 @@ msgid "plugins.generic.shariff.settings.shariffShowBlockHeading"
 msgstr "Shariff-Block Heading"
 
 msgid "plugins.generic.shariff.settings.shariffShowBlockHeading.description"
-msgstr "Show a block heading above the Shariff-block (for better integration with certian themes, may require additional css)."
+msgstr "Show a block heading above the Shariff-block (for better integration with certain themes, may require additional css)."
 
 msgid "plugins.generic.shariff.settings.publicationSharingLink"
 msgstr "Publication Sharing Link"

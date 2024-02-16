@@ -121,7 +121,7 @@ msgid "plugins.generic.shariff.settings.position.sidebar"
 msgstr "barre latérale"
 
 msgid "plugins.generic.shariff.settings.position.submission"
-msgstr "page de l'article / du livre"
+msgstr "page de la publication"
 
 msgid "plugins.generic.shariff.settings.orientation"
 msgstr "Orientation"
@@ -140,3 +140,36 @@ msgstr "<p>Ce module met en œuvre les services fournis par <a href=\"https://gi
 
 msgid "plugins.generic.shariff.settings.service.shared_content.note"
 msgstr "Ce module ne partage l'URL de la page qu'avec le fournisseur de services sélectionné. Le type de contenu présenté au public dépend du fournisseur de services sélectionné et généralement est extrait des métadonnées des en-têtes HTML. Veuillez vérifier les métadonnées que vous partagez dans votre en-tête HTML."
+
+msgid "plugins.generic.shariff.settings.service.description"
+msgstr "Ce plugiciel implémente les services tels que fournis par <a href="https://github.com/heiseonline/shariff/releases\" target="_blank">Shariff version 3.2.1</a>. Comme ces services peuvent changer sans préavis, il est recommandé d’en vérifier la disponibilité régulièrement."
+
+msgid "plugins.generic.shariff.share"
+msgstr "Share"
+
+msgid "plugins.generic.shariff.settings.shariffAdditionalOptions"
+msgstr "Configurations additionnelles"
+
+msgid "plugins.generic.shariff.settings.shariffEnableWCAG"
+msgstr "Conformité WCAG"
+
+msgid "plugins.generic.shariff.settings.shariffEnableWCAG.description"
+msgstr "Utiliser des contrastes de couleur conformes WCAG."
+
+msgid "plugins.generic.shariff.settings.shariffEnableWCAG.heise.description"
+msgstr "Utiliser des contrastes de couleur classique."
+
+msgid "plugins.generic.shariff.settings.shariffShowBlockHeading"
+msgstr "Titre du Shariff-Block"
+
+msgid "plugins.generic.shariff.settings.shariffShowBlockHeading.description"
+msgstr "Affiche un bloc de titre au-dessus du Shariff-block (pour une meilleure intégration avec certains thèmes visuels. Peut requérir du code CSS additionnel)
+
+msgid "plugins.generic.shariff.settings.publicationSharingLink"
+msgstr "Lien de partage de la publication"
+
+msgid "plugins.generic.shariff.settings.publicationSharingLink.publicationUrl"
+msgstr "URL de la publication"
+
+msgid "plugins.generic.shariff.settings.publicationSharingLink.doiUrl"
+msgstr "URL du DOI de la publication (si disponible)"
