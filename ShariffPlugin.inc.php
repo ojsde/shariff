@@ -218,8 +218,8 @@ class ShariffPlugin extends GenericPlugin {
 			$requestedUrl = $doiUrl ?: $request->getCompleteUrl();
 			$request = new PKPRequest();
 			$baseUrl = $request->getBaseUrl();
-			$jsUrl = $baseUrl .'/'. $this->getPluginPath().'/shariff-3.2.1/shariff.complete.js';
-			$shariffCssUrl = $baseUrl .'/' . $this->getPluginPath() . '/shariff-3.2.1/shariff.complete.css';
+			$jsUrl = $baseUrl .'/'. $this->getPluginPath().'/shariff-3.3.0/shariff.complete.js';
+			$shariffCssUrl = $baseUrl .'/' . $this->getPluginPath() . '/shariff-3.3.0/shariff.complete.css';
 			$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/css/shariff.css';
 			$backendUrl = $baseUrl .'/'. 'shariff-backend';
 			if ($context->getData('shariffEnableWCAG')===NULL?true:(bool)$context->getData('shariffEnableWCAG')) {
