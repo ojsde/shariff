@@ -130,8 +130,8 @@ class ShariffBlockPlugin extends BlockPlugin {
     		// javascript, css and backend url
     		$requestedUrl = $doiUrl ?: $request->getCompleteUrl();
     		$baseUrl = $request->getBaseUrl();
-    		$jsUrl = $baseUrl .'/'. $this->getShariffPlugin()->getPluginPath().'/shariff-3.2.1/shariff.complete.js';
-    		$shariffCssUrl = $baseUrl .'/' . $this->getShariffPlugin()->getPluginPath() . '/shariff-3.2.1/shariff.complete.css';
+    		$jsUrl = $baseUrl .'/'. $this->getShariffPlugin()->getPluginPath().'/shariff-3.3.0/shariff.complete.js';
+    		$shariffCssUrl = $baseUrl .'/' . $this->getShariffPlugin()->getPluginPath() . '/shariff-3.3.0/shariff.complete.css';
     		$backendUrl = $baseUrl .'/'. 'shariff-backend';
 			$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/css/shariff.css';
 			$wcagCssUrl = $baseUrl .'/' . $this->getPluginPath() .'/css/wcag-themes.css';
