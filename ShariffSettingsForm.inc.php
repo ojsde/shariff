@@ -75,7 +75,7 @@ class ShariffSettingsForm extends FormComponent {
 				['value' => 'print', 'label' => __('plugins.generic.shariff.settings.service.print')],
 				['value' => 'buffer', 'label' => __('plugins.generic.shariff.settings.service.buffer')],
 				['value' => 'flipboard', 'label' => __('plugins.generic.shariff.settings.service.flipboard')],
-				['value' => 'tencent', 'label' => __('plugins.generic.shariff.settings.service.tencentweibo')],
+				// ['value' => 'tencent', 'label' => __('plugins.generic.shariff.settings.service.tencentweibo')],
 				['value' => 'pocket', 'label' => __('plugins.generic.shariff.settings.service.pocket')],
 				['value' => 'telegram', 'label' => __('plugins.generic.shariff.settings.service.telegram')],
 				['value' => 'vk', 'label' => __('plugins.generic.shariff.settings.service.vk')],
