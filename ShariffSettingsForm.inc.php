@@ -20,7 +20,7 @@ define('FORM_SHARIFF_SETTINGS', 'shariffSettings');
 
 /**
  * A form for implementing shariff settings.
- * 
+ *
  * @class ShariffSettingsForm
  * @brief Class implemnting ShariffSettingsForm
  */
@@ -49,7 +49,7 @@ class ShariffSettingsForm extends FormComponent {
 		$this->locales = $locales;
 
 		$this->addGroup([
-			'id' => 'shariffsettings',	
+			'id' => 'shariffsettings',
 		], [])
 		->addField(new FieldOptions('shariffServicesSelected', [
 			'label' => __('plugins.generic.shariff.settings.service'),
@@ -75,7 +75,7 @@ class ShariffSettingsForm extends FormComponent {
 				['value' => 'print', 'label' => __('plugins.generic.shariff.settings.service.print')],
 				['value' => 'buffer', 'label' => __('plugins.generic.shariff.settings.service.buffer')],
 				['value' => 'flipboard', 'label' => __('plugins.generic.shariff.settings.service.flipboard')],
-				['value' => 'tencent', 'label' => __('plugins.generic.shariff.settings.service.tencentweibo')],
+				// ['value' => 'tencent', 'label' => __('plugins.generic.shariff.settings.service.tencentweibo')],
 				['value' => 'pocket', 'label' => __('plugins.generic.shariff.settings.service.pocket')],
 				['value' => 'telegram', 'label' => __('plugins.generic.shariff.settings.service.telegram')],
 				['value' => 'vk', 'label' => __('plugins.generic.shariff.settings.service.vk')],
@@ -115,6 +115,34 @@ class ShariffSettingsForm extends FormComponent {
 				['value' => 'vertical', 'label' => __('plugins.generic.shariff.settings.orientation.vertical')],
 			],
 			'value' => $context->getData('shariffOrientationSelected') ?: "horizontal",
+			'groupId' => 'shariffsettings'
+		]))
+		->addField(new FieldOptions('shariffEnableWCAG', [
+			'label' => __('plugins.generic.shariff.settings.shariffEnableWCAG'),
+			'value' => $context->getData('shariffEnableWCAG')===NULL?true:(bool)$context->getData('shariffEnableWCAG'),
+			'type' => 'radio',
+			'options' => [
+				['value' => true, 'label' => __('plugins.generic.shariff.settings.shariffEnableWCAG.description')],
+				['value' => false, 'label' => __('plugins.generic.shariff.settings.shariffEnableWCAG.heise.description')],
+			],
+			'groupId' => 'shariffsettings'
+		]))
+		->addField(new FieldOptions('shariffShowBlockHeading', [
+			'label' => __('plugins.generic.shariff.settings.shariffShowBlockHeading'),
+			'value' => (bool) $context->getData('shariffShowBlockHeading'),
+			'options' => [
+				['value' => true, 'label' => __('plugins.generic.shariff.settings.shariffShowBlockHeading.description')],
+			],
+			'groupId' => 'shariffsettings'
+		]))
+		->addField(new FieldOptions('shariffPublicationSharingLink', [
+			'label' => __('plugins.generic.shariff.settings.publicationSharingLink'),
+			'type' => 'radio',
+			'options' => [
+				['value' => 'publicationUrl', 'label' => __('plugins.generic.shariff.settings.publicationSharingLink.publicationUrl')],
+				['value' => 'doiUrl', 'label' => __('plugins.generic.shariff.settings.publicationSharingLink.doiUrl')],
+			],
+			'value' => $context->getData('shariffPublicationSharingLink') ?: "publicationUrl",
 			'groupId' => 'shariffsettings'
 		]));
 	}

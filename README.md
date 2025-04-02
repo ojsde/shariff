@@ -1,12 +1,12 @@
 # Shariff plugin
 
-This plugin adds social media buttons to your web site (to the footer of each page, the article page or the sidebar) without compromising the privacy of website users. It implements shariff by Heise Medien GmbH ([Github](https://github.com/heiseonline/shariff), [article](http://ct.de/shariff)) in [Open Journal Systems](https://pkp.sfu.ca/ojs/).
+This plugin adds social media buttons to your web site (to the footer of each page, the article page or the sidebar) without compromising the privacy of website users. It implements shariff by Heise Medien GmbH ([Github](https://github.com/heiseonline/shariff), [article](http://ct.de/shariff), [npm](https://www.npmjs.com/package/shariff)) in [Open Journal Systems](https://pkp.sfu.ca/ojs/).
 
-This plugin has been tested with OJS version 3.4.0. It should also be compatible with OMP 3.4 and OPS 3.4.
+This plugin has been tested with OJS version 3.4.0-3. It should also be compatible with OMP 3.4 and OPS 3.4.
 
 ## Features
 
-Available social media services (as of Shariff 3.2.1) are:
+Available social media services (as of Shariff 3.3.0) are:
 
 - Twitter
 - Facebook
@@ -27,16 +27,14 @@ Available social media services (as of Shariff 3.2.1) are:
 - Print
 - Buffer
 - Flipboard
-- Tencent-Weibo
 - Pocket
 - Telegram
 - vk
 - Info
 
-
 Additionally an info button that links to the heise article can be added. You can also add a mail icon. 
 
-The plugin offers a selection of settings like themes, orientation and position of the social media buttons (see settings below) accessible via "Website -> Appearance". 
+The plugin offers a selection of settings like themes, orientation and position of the social media buttons (see settings below) accessible via "Website -> Appearance". As of plugin version 3.3.1 WCAG conformant buttons are available and are enbaled by default.
 
 The plugins will be displayed in the language of the website.
 
@@ -52,7 +50,7 @@ This plugin is compatible with OJS version 3.4.0. It should also be compatible w
 
 ## Installation
 
-Clone this repo in your plugin folder (/plugins/generic) or download the code and tar.gz it and upload it via the gui (Website Settings > Plugins).
+The pugin is available via the OJS plugin gallery. You can also clone this repo to your plugin folder (/plugins/generic) or download the code and tar.gz it and upload it via the gui (Website Settings > Plugins).
 
 ## Settings
 
@@ -62,6 +60,7 @@ The following settings are available:
 - choose a provided theme for the social media buttons (standard, white, grey)
 - determine the position of the social media buttons on your journal web site (footer, sidebar or article/book page)
 - choose the orientation of the social media buttins (vertical or horizontal)
+- disable WCAG conformant social media buttons (enabled by default, this option is for backward compatibility only and might be removed in the future)
 
 ## Usage
 Install the plugin as described above, activate it and choose the settings you prefer. If you choose the sidebar option, you need to enable the new Shariff-block under management/settings/website.
@@ -82,6 +81,8 @@ Contact us via support@ojs-de.net. Find out more about the project [OJS-de.net](
 
 ## Version History
 
+* 3.4.4 Update Shariff 3.3.0 - thanks to lepidus
+* 3.3.1, 3.4.2 - provides WCAG 2 conformant social media buttons - thanks to staff at University of Oklahoma Libraries 
 * 3.4 - plugin version for OJS 3.4
 * 3.3 - plugin version for OJS 3.3
 * 3.2 - plugin version for OJS 3.2
@@ -91,7 +92,7 @@ Contact us via support@ojs-de.net. Find out more about the project [OJS-de.net](
 
 ## Technical Documentation
 
-This plugin works for OJS and OMP 3 (the code is the same). The [shariff solution by heise](https://github.com/heiseonline/shariff) (version v3.2.1) is included in the plugin code (MIT License). It adds the social media buttons using html, css and js. The plugin uses hooks to add content, no existing templates are being overwritten. No database access is needed.
+This plugin works for OJS and OMP 3 (the code is the same). The [shariff solution by heise online](https://github.com/heiseonline/shariff) (version v3.2.1) is included in the plugin code (MIT License). It adds the social media buttons using html, css and js. The plugin uses hooks to add content, no existing templates are being overwritten. No database access is needed.
 
 ### Hooks
 

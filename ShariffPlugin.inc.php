@@ -50,7 +50,7 @@ class ShariffPlugin extends GenericPlugin {
 					HookRegistry::register('Templates::Article::Details', array($this, 'addShariffButtons'));
 					HookRegistry::register('Templates::Catalog::Book::Details', array($this, 'addShariffButtons'));
 					HookRegistry::register('Templates::Preprint::Details', array($this, 'addShariffButtons'));
-					
+
 					// Load this plugin as a block plugin as well (for sidebar)
 					$this->import('ShariffBlockPlugin');
 					$shariffBlockPlugin = new ShariffBlockPlugin($this->getName(), $this->getPluginPath());
@@ -88,11 +88,26 @@ class ShariffPlugin extends GenericPlugin {
 			'apiSummary' => true,
 			'validation' => ['nullable'],
 		];
+		$schema->properties->{"shariffEnableWCAG"} = (object) [
+			'type' => 'boolean',
+			'apiSummary' => true,
+			'validation' => ['nullable'],
+		];
+		$schema->properties->{"shariffShowBlockHeading"} = (object) [
+			'type' => 'boolean',
+			'apiSummary' => true,
+			'validation' => ['nullable'],
+		];
+		$schema->properties->{"shariffPublicationSharingLink"} = (object) [
+			'type' => 'string',
+			'apiSummary' => true,
+			'validation' => ['nullable'],
+		];
 
 		return false;
 	}
 
-	function callbackAppearanceTab($hookName, $args) {		
+	function callbackAppearanceTab($hookName, $args) {
 
 		# prepare data
 		$templateMgr =& $args[1];
@@ -176,48 +191,78 @@ class ShariffPlugin extends GenericPlugin {
 
 		// services
 		$selectedServices = $context->getData('shariffServicesSelected');
-		
+
 		$preparedServices = array_map(function($arrayElement){return $arrayElement;}, $selectedServices);
 		$dataServicesString = implode(",", $preparedServices);
 
-		// theme
-		$selectedTheme = $context->getData('shariffThemeSelected');
+		if ($dataServicesString != "") {
 
-		// orientation
-		$selectedOrientation = $context->getData('shariffOrientationSelected');
+			// theme
+			$selectedTheme = $context->getData('shariffThemeSelected');
 
-		// get language from system
-		$locale = AppLocale::getLocale();
+			// orientation
+			$selectedOrientation = $context->getData('shariffOrientationSelected');
 
-		// javascript, css and backend url
-		$requestedUrl = $request->getCompleteUrl();
-		$request = new PKPRequest();
-		$baseUrl = $request->getBaseUrl();
-		$jsUrl = $baseUrl .'/'. $this->getPluginPath().'/shariff-3.2.1/shariff.complete.js';
-		$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/' . 'shariff-3.2.1/shariff.complete.css';
-		$backendUrl = $baseUrl .'/'. 'shariff-backend';
+			// get language from system
+			$locale = AppLocale::getLocale();
 
-		$selectedPositon = $context->getData('shariffPositionSelected');
-		if ($selectedPositon == 'footer') {
-		    $divWrapper = '<div class="pkp_structure_footer_wrapper"><div class="pkp_structure_footer">';
-		} elseif ($selectedPositon == 'submission') {
-		    $divWrapper = '<div class="shariffblock"><div>';
+			$publicationSharingLink = $context->getData('shariffPublicationSharingLink');
+			if ($publicationSharingLink == 'doiUrl') {
+				$publication = $template->getTemplateVars('currentPublication');
+				if ($publication && $publication->getData('doiObject')) {
+					$doiUrl = $publication->getData('doiObject')->getResolvingUrl();
+				}
+			}
+
+			// javascript, css and backend url
+			$requestedUrl = $doiUrl ?: $request->getCompleteUrl();
+			$request = new PKPRequest();
+			$baseUrl = $request->getBaseUrl();
+			$jsUrl = $baseUrl .'/'. $this->getPluginPath().'/shariff-3.3.0/shariff.complete.js';
+			$shariffCssUrl = $baseUrl .'/' . $this->getPluginPath() . '/shariff-3.3.0/shariff.complete.css';
+			$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/css/shariff.css';
+			$backendUrl = $baseUrl .'/'. 'shariff-backend';
+			if ($context->getData('shariffEnableWCAG')===NULL?true:(bool)$context->getData('shariffEnableWCAG')) {
+				$wcagCssUrl = $baseUrl .'/' . $this->getPluginPath() .'/css/wcag-themes.css';
+			}
+
+			// prepare position
+			$selectedPositon = $context->getData('shariffPositionSelected');
+			if ($selectedPositon == 'footer') {
+				$divWrapper = '<div class="pkp_structure_footer_wrapper"><div class="pkp_structure_footer">';
+			} elseif ($selectedPositon == 'submission') {
+				$divWrapper = '<div class="item shariffblock"><div>';
+			}
+
+			// prepare block heading
+			$blockHeading = "";
+			if ($context->getData('shariffShowBlockHeading')) {
+				if ($selectedPositon == 'submission') {
+					$blockHeading='<section class="sub_item"><h2 class="label">'.__('plugins.generic.shariff.share').'</h2></section>';
+				} elseif ($selectedPositon == 'footer') {
+					$blockHeading='<h3 class="label">'.__('plugins.generic.shariff.share').'</h3>';
+				}
+			}
+
+			// put it together
+			$output .= '
+				<link rel="stylesheet" type="text/css" href="'.$cssUrl.'">
+				<link rel="stylesheet" type="text/css" href="'.$shariffCssUrl.'">
+				<link rel="stylesheet" type="text/css" href="'.$wcagCssUrl.'">
+				'.$divWrapper.$blockHeading.'
+				<div class="shariff item" data-lang="'. str_split($locale, 2)[0] .'"
+					data-services="['.$dataServicesString.']"
+					data-mail-url="mailto:"
+					data-mail-body="'.$requestedUrl.'"
+					data-backend-url="'.$backendUrl.'"
+					data-theme="'.$selectedTheme.'"
+					data-orientation="'.$selectedOrientation.'"
+					data-url="'. $requestedUrl .'">
+				</div>
+				</div>
+				</div>
+				<script src="'.$jsUrl.'"></script>';
 		}
-		
-		$output .= '
-			<link rel="stylesheet" type="text/css" href="'.$cssUrl.'">'.$divWrapper.'
-			<div class="shariff item" data-lang="'. str_split($locale, 2)[0] .'"
-				data-services="['.$dataServicesString.']"
-				data-mail-url="mailto:"
-				data-mail-body={url}
-				data-backend-url="'.$backendUrl.'"
-				data-theme="'.$selectedTheme.'"
-				data-orientation="'.$selectedOrientation.'"
-				data-url="'. $requestedUrl .'">
-			</div>
-            </div>
-            </div>
-			<script src="'.$jsUrl.'"></script>';
 
 		return false;
 	}
