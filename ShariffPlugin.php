@@ -86,8 +86,8 @@ class ShariffPlugin extends GenericPlugin {
 			'management',
 			'settings',
 			['website'],
-			null,
-			'shariffPlugin' // TODO @RS Anchor for tab: With the anchor the link can be opened in a new tab but doesn't work when clicked directly
+			[''],
+			'shariffPlugin'
 		)), __('manager.plugins.settings')));
         return $actions;
     }

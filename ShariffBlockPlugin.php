@@ -63,15 +63,6 @@ class ShariffBlockPlugin extends BlockPlugin {
 		return __('plugins.generic.shariff.block.description');
 	}
 
-	// TODO @RS remove
-	// /**
-	//  * Get the supported contexts (e.g. BLOCK_CONTEXT_...) for this block.
-	//  * @return array
-	//  */
-	// function getSupportedContexts() {
-	// 	return array(BLOCK_CONTEXT_SIDEBAR);
-	// }
-
 	/**
 	 * Get the shariff plugin
 	 * @return ShariffPlugin
