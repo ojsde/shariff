@@ -11,11 +11,16 @@
  *
  * @brief Shariff plugin class
  */
-use PKP\core\JSONMessage;
-use APP\notification\NotificationManager;
-use APP\i18n\AppLocale;
 
-import('lib.pkp.classes.plugins.GenericPlugin');
+namespace APP\plugins\generic\shariff;
+
+use APP\core\Application;
+use PKP\facades\Locale;
+use PKP\plugins\GenericPlugin;
+use PKP\plugins\Hook;
+use PKP\plugins\PluginRegistry;
+use PKP\linkAction\LinkAction;
+use PKP\linkAction\request\RedirectAction;
 
 class ShariffPlugin extends GenericPlugin {
 	/**
@@ -43,16 +48,15 @@ class ShariffPlugin extends GenericPlugin {
 				if ($context) {
 					$contextId = $context->getId();
 
-					HookRegistry::register('Template::Settings::website::appearance', array($this, 'callbackAppearanceTab')); //to enable display of plugin settings tab
-					HookRegistry::register('Schema::get::context', array($this, 'addToSchema')); // to add Shariff avriables to context schema
+					Hook::add('Template::Settings::website::appearance', array($this, 'callbackAppearanceTab')); //to enable display of plugin settings tab
+					Hook::add('Schema::get::context', array($this, 'addToSchema')); // to add Shariff avriables to context schema
 
-					HookRegistry::register('Templates::Common::Footer::PageFooter', array($this, 'addShariffButtons'));
-					HookRegistry::register('Templates::Article::Details', array($this, 'addShariffButtons'));
-					HookRegistry::register('Templates::Catalog::Book::Details', array($this, 'addShariffButtons'));
-					HookRegistry::register('Templates::Preprint::Details', array($this, 'addShariffButtons'));
+					Hook::add('Templates::Common::Footer::PageFooter', array($this, 'addShariffButtons'));
+					Hook::add('Templates::Article::Details', array($this, 'addShariffButtons'));
+					Hook::add('Templates::Catalog::Book::Details', array($this, 'addShariffButtons'));
+					Hook::add('Templates::Preprint::Details', array($this, 'addShariffButtons'));
 
 					// Load this plugin as a block plugin as well (for sidebar)
-					$this->import('ShariffBlockPlugin');
 					$shariffBlockPlugin = new ShariffBlockPlugin($this->getName(), $this->getPluginPath());
 					PluginRegistry::register(
 						'blocks',
@@ -63,6 +67,30 @@ class ShariffPlugin extends GenericPlugin {
 			}
 			return $success;
 	}
+
+    /**
+     * @copydoc Plugin::getActions()
+     */
+    public function getActions($request, $verb): array
+    {
+        $actions = parent::getActions($request, $verb);
+        if (!$this->getEnabled()) {
+            return $actions;
+        }
+
+		$dispatcher = $request->getDispatcher();
+        array_unshift($actions, new LinkAction('settings', new RedirectAction($dispatcher->url(
+			$request,
+			Application::ROUTE_PAGE,
+			null,
+			'management',
+			'settings',
+			['website'],
+			null,
+			'shariffPlugin' // TODO @RS Anchor for tab: With the anchor the link can be opened in a new tab but doesn't work when clicked directly
+		)), __('manager.plugins.settings')));
+        return $actions;
+    }
 
 	public function addToSchema($hookName, $params) {
 		$schema =& $params[0];
@@ -112,7 +140,7 @@ class ShariffPlugin extends GenericPlugin {
 		# prepare data
 		$templateMgr =& $args[1];
 		$output =& $args[2];
-		$request =& Registry::get('request');
+		$request =& Application::get()->getRequest();
 		$context = $request->getContext();
 		$contextId = $context->getId();
 		$dispatcher = $request->getDispatcher();
@@ -120,14 +148,13 @@ class ShariffPlugin extends GenericPlugin {
 		# url to handle form dialog (we add our vars to the context schema)
 		$contextApiUrl = $dispatcher->url(
 			$request,
-			ROUTE_API,
+			Application::ROUTE_API,
 			$context->getPath(),
 			'contexts/' . $context->getId()
 		);
 		$contextUrl = $request->getRouter()->url($request, $context->getPath());
 
 		// instantinate settings form
-		$this->import('ShariffSettingsForm');
 		$shariffSettingsForm = new ShariffSettingsForm($contextApiUrl, $context->getSupportedLocaleNames(), $context);
 
 		// setup template
@@ -204,7 +231,7 @@ class ShariffPlugin extends GenericPlugin {
 			$selectedOrientation = $context->getData('shariffOrientationSelected');
 
 			// get language from system
-			$locale = AppLocale::getLocale();
+			$locale = Locale::getLocale();
 
 			$publicationSharingLink = $context->getData('shariffPublicationSharingLink');
 			if ($publicationSharingLink == 'doiUrl') {
@@ -216,7 +243,6 @@ class ShariffPlugin extends GenericPlugin {
 
 			// javascript, css and backend url
 			$requestedUrl = $doiUrl ?: $request->getCompleteUrl();
-			$request = new PKPRequest();
 			$baseUrl = $request->getBaseUrl();
 			$jsUrl = $baseUrl .'/'. $this->getPluginPath().'/shariff-3.3.0/shariff.complete.js';
 			$shariffCssUrl = $baseUrl .'/' . $this->getPluginPath() . '/shariff-3.3.0/shariff.complete.css';

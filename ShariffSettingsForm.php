@@ -11,6 +11,7 @@
  *
  * @brief Form for managers to modify shariff plugin settings
  */
+namespace APP\plugins\generic\shariff;
 
 use \PKP\components\forms\FormComponent;
 use \PKP\components\forms\FieldText;

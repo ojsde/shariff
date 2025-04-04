@@ -12,9 +12,11 @@
  * @brief Class for block component of shariff plugin
  */
 
-use APP\i18n\AppLocale;
+namespace APP\plugins\generic\shariff;
 
-import('lib.pkp.classes.plugins.BlockPlugin');
+use PKP\facades\Locale;
+use PKP\plugins\BlockPlugin;
+use PKP\plugins\PluginRegistry;
 
 class ShariffBlockPlugin extends BlockPlugin {
 	/** @var string Name an Path of parent plugin */
@@ -61,13 +63,14 @@ class ShariffBlockPlugin extends BlockPlugin {
 		return __('plugins.generic.shariff.block.description');
 	}
 
-	/**
-	 * Get the supported contexts (e.g. BLOCK_CONTEXT_...) for this block.
-	 * @return array
-	 */
-	function getSupportedContexts() {
-		return array(BLOCK_CONTEXT_SIDEBAR);
-	}
+	// TODO @RS remove
+	// /**
+	//  * Get the supported contexts (e.g. BLOCK_CONTEXT_...) for this block.
+	//  * @return array
+	//  */
+	// function getSupportedContexts() {
+	// 	return array(BLOCK_CONTEXT_SIDEBAR);
+	// }
 
 	/**
 	 * Get the shariff plugin
@@ -87,7 +90,7 @@ class ShariffBlockPlugin extends BlockPlugin {
 	/**
 	 * @copydoc BlockPlugin::getBlockTemplateFilename()
 	 */
-	function getBlockTemplateFilename() {
+	function getBlockTemplateFilename():string {
 		// Return the shariff block template.
 	    $plugin = $this->getShariffPlugin();
 	    return (method_exists($plugin, 'getTemplateResource') ? '' : 'templates'.DIRECTORY_SEPARATOR) . 'shariffBlock.tpl';
@@ -117,7 +120,7 @@ class ShariffBlockPlugin extends BlockPlugin {
     		$selectedOrientation = $context->getData('shariffOrientationSelected');
 
     		// get language from system
-    		$locale = AppLocale::getLocale();
+    		$locale = Locale::getLocale();
 
 		$publicationSharingLink = $context->getData('shariffPublicationSharingLink');
 		if ($publicationSharingLink == 'doiUrl') {
@@ -143,7 +146,7 @@ class ShariffBlockPlugin extends BlockPlugin {
     		$templateMgr->assign('selectedTheme', $selectedTheme);
     		$templateMgr->assign('selectedOrientation', $selectedOrientation);
     		$templateMgr->assign('backendUrl', $backendUrl);
-    		$templateMgr->assign('iso1Lang', $iso1Lang);
+    		$templateMgr->assign('iso1Lang', $locale);
     		$templateMgr->assign('requestedUrl', $requestedUrl);
     		$templateMgr->assign('jsUrl', $jsUrl);
 			$templateMgr->assign('shariffCssUrl', $shariffCssUrl);
