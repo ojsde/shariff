@@ -135,7 +135,7 @@ msgid "plugins.generic.shariff.settings.note"
 msgstr "Wenn Sie anzeigen möchten, wie häufig eine Seite in sozialen Netzwerken geteilt wird, entnehmen Sie die zusätzlichen Anforderungen der README-Datei und den Angaben zum <a href=\"https://github.com/heiseonline/shariff-backend-php\" target=\"_blank\">Shariff PHP Backend</a>."
 
 msgid "plugins.generic.shariff.settings.service.description"
-msgstr "Dieses Plugin implementiert alle Dienste wie sie von <a href=\"https://github.com/heiseonline/shariff/releases\" target=\"_blank\">Shariff Version 3.2.1</a> zur Verfügung gestellt werden. Da sich die Verfügbarkeit dieser Dienste ohne Vorwarnung ändern kann, ist es ratsam die Verfügbarkeit regelmäßig zu überprüfen."
+msgstr "Dieses Plugin implementiert alle Dienste wie sie von <a href=\"https://github.com/heiseonline/shariff/releases\" target=\"_blank\">Shariff Version 3.3.1</a> zur Verfügung gestellt werden. Da sich die Verfügbarkeit dieser Dienste ohne Vorwarnung ändern kann, ist es ratsam die Verfügbarkeit regelmäßig zu überprüfen."
 
 msgid "plugins.generic.shariff.settings.service.note"
 msgstr "Bitte beachten Sie auch, dass einige Dienste nur auf speziellen Geräten oder Platformen (z.B. Smartphones) verfügbar sind. Dieses Plugin zeigt Teilen-Buttons für alle unten ausgewählen Dienste an, unabhängig von der Verfügbarkeit des Dienstes auf dem jeweiligen Endgerät."

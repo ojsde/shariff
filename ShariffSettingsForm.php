@@ -14,7 +14,6 @@
 namespace APP\plugins\generic\shariff;
 
 use \PKP\components\forms\FormComponent;
-use \PKP\components\forms\FieldText;
 use \PKP\components\forms\FieldOptions;
 
 define('FORM_SHARIFF_SETTINGS', 'shariffSettings');
@@ -49,6 +48,31 @@ class ShariffSettingsForm extends FormComponent {
 		$this->action = $action;
 		$this->locales = $locales;
 
+		$options = [
+			['value' => 'twitter', 'label' => __('plugins.generic.shariff.settings.service.twitter')],
+			['value' => 'facebook', 'label' => __('plugins.generic.shariff.settings.service.facebook')],
+			['value' => 'linkedin', 'label' => __('plugins.generic.shariff.settings.service.linkedin')],
+			['value' => 'pinterest', 'label' => __('plugins.generic.shariff.settings.service.pinterest')],
+			['value' => 'xing', 'label' => __('plugins.generic.shariff.settings.service.xing')],
+			['value' => 'whatsapp', 'label' => __('plugins.generic.shariff.settings.service.whatsapp')],
+			['value' => 'tumblr', 'label' => __('plugins.generic.shariff.settings.service.tumblr')],
+			['value' => 'flattr', 'label' => __('plugins.generic.shariff.settings.service.flattr')],
+			['value' => 'diaspora', 'label' => __('plugins.generic.shariff.settings.service.diaspora')],
+			['value' => 'reddit', 'label' => __('plugins.generic.shariff.settings.service.reddit')],
+			['value' => 'stumbleupon', 'label' => __('plugins.generic.shariff.settings.service.stumbleupon')],
+			['value' => 'threema', 'label' => __('plugins.generic.shariff.settings.service.threema')],
+			['value' => 'weibo', 'label' => __('plugins.generic.shariff.settings.service.weibo')],
+			['value' => 'qzone', 'label' => __('plugins.generic.shariff.settings.service.qzone')],
+			['value' => 'mail', 'label' => __('plugins.generic.shariff.settings.service.mail')],
+			['value' => 'print', 'label' => __('plugins.generic.shariff.settings.service.print')],
+			['value' => 'buffer', 'label' => __('plugins.generic.shariff.settings.service.buffer')],
+			['value' => 'flipboard', 'label' => __('plugins.generic.shariff.settings.service.flipboard')],
+			['value' => 'pocket', 'label' => __('plugins.generic.shariff.settings.service.pocket')],
+			['value' => 'telegram', 'label' => __('plugins.generic.shariff.settings.service.telegram')],
+			['value' => 'vk', 'label' => __('plugins.generic.shariff.settings.service.vk')],
+			['value' => 'info', 'label' => __('plugins.generic.shariff.settings.service.info')]
+		];
+
 		$this->addGroup([
 			'id' => 'shariffsettings',
 		], [])
@@ -56,32 +80,7 @@ class ShariffSettingsForm extends FormComponent {
 			'label' => __('plugins.generic.shariff.settings.service'),
 			'tooltip' => __('plugins.generic.shariff.settings.service.shared_content.note') . "<br>" . __('plugins.generic.shariff.settings.service.note'),
 			'description' => __('plugins.generic.shariff.settings.service.description'),
-			'options' => [
-				['value' => 'twitter', 'label' => __('plugins.generic.shariff.settings.service.twitter')],
-				['value' => 'facebook', 'label' => __('plugins.generic.shariff.settings.service.facebook')],
-				['value' => 'linkedin', 'label' => __('plugins.generic.shariff.settings.service.linkedin')],
-				['value' => 'pinterest', 'label' => __('plugins.generic.shariff.settings.service.pinterest')],
-				['value' => 'xing', 'label' => __('plugins.generic.shariff.settings.service.xing')],
-				['value' => 'whatsapp', 'label' => __('plugins.generic.shariff.settings.service.whatsapp')],
-				['value' => 'addthis', 'label' => __('plugins.generic.shariff.settings.service.addthis')],
-				['value' => 'tumblr', 'label' => __('plugins.generic.shariff.settings.service.tumblr')],
-				['value' => 'flattr', 'label' => __('plugins.generic.shariff.settings.service.flattr')],
-				['value' => 'diaspora', 'label' => __('plugins.generic.shariff.settings.service.diaspora')],
-				['value' => 'reddit', 'label' => __('plugins.generic.shariff.settings.service.reddit')],
-				['value' => 'stumbleupon', 'label' => __('plugins.generic.shariff.settings.service.stumbleupon')],
-				['value' => 'threema', 'label' => __('plugins.generic.shariff.settings.service.threema')],
-				['value' => 'weibo', 'label' => __('plugins.generic.shariff.settings.service.weibo')],
-				['value' => 'qzone', 'label' => __('plugins.generic.shariff.settings.service.qzone')],
-				['value' => 'mail', 'label' => __('plugins.generic.shariff.settings.service.mail')],
-				['value' => 'print', 'label' => __('plugins.generic.shariff.settings.service.print')],
-				['value' => 'buffer', 'label' => __('plugins.generic.shariff.settings.service.buffer')],
-				['value' => 'flipboard', 'label' => __('plugins.generic.shariff.settings.service.flipboard')],
-				// ['value' => 'tencent', 'label' => __('plugins.generic.shariff.settings.service.tencentweibo')],
-				['value' => 'pocket', 'label' => __('plugins.generic.shariff.settings.service.pocket')],
-				['value' => 'telegram', 'label' => __('plugins.generic.shariff.settings.service.telegram')],
-				['value' => 'vk', 'label' => __('plugins.generic.shariff.settings.service.vk')],
-				['value' => 'info', 'label' => __('plugins.generic.shariff.settings.service.info')]
-			],
+			'options' => $options,
 			'value' => $context->getData('shariffServicesSelected') ?: [],
 			'isOrderable' => true,
 			'groupId' => 'shariffsettings'

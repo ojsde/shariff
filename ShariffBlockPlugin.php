@@ -18,6 +18,8 @@ use PKP\facades\Locale;
 use PKP\plugins\BlockPlugin;
 use PKP\plugins\PluginRegistry;
 
+define('SHARIFF_VERSION', '3.3.1');
+
 class ShariffBlockPlugin extends BlockPlugin {
 	/** @var string Name an Path of parent plugin */
 	var $parentPluginName;
@@ -124,8 +126,8 @@ class ShariffBlockPlugin extends BlockPlugin {
     		// javascript, css and backend url
     		$requestedUrl = $doiUrl ?: $request->getCompleteUrl();
     		$baseUrl = $request->getBaseUrl();
-    		$jsUrl = $baseUrl .'/'. $this->getShariffPlugin()->getPluginPath().'/shariff-3.3.0/shariff.complete.js';
-    		$shariffCssUrl = $baseUrl .'/' . $this->getShariffPlugin()->getPluginPath() . '/shariff-3.3.0/shariff.complete.css';
+    		$jsUrl = $baseUrl .'/'. $this->getShariffPlugin()->getPluginPath().'/shariff-'.SHARIFF_VERSION.'/shariff.complete.js';
+    		$shariffCssUrl = $baseUrl .'/' . $this->getShariffPlugin()->getPluginPath() . '/shariff-'.SHARIFF_VERSION.'/shariff.complete.css';
     		$backendUrl = $baseUrl .'/'. 'shariff-backend';
 			$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/css/shariff.css';
 			$wcagCssUrl = $baseUrl .'/' . $this->getPluginPath() .'/css/wcag-themes.css';

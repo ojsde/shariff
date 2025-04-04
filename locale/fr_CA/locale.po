@@ -136,7 +136,7 @@ msgid "plugins.generic.shariff.settings.note"
 msgstr "Si vous voulez afficher la fréquence de partage d'une page sur les réseaux sociaux, veuillez consulter le <a href=\"https://github.com/heiseonline/shariff-backend-php\" target=\"_blank\">Shariff PHP Backend</a> et le fichier README du module pour connaître les autres exigences."
 
 msgid "plugins.generic.shariff.settings.service.description"
-msgstr "Ce plugiciel implémente les services fournis par <a href=\"https://github.com/heiseonline/shariff/releases\ target=\"_blank\">Shariff version 3.2.1</a>. Comme la disponibilité de ces services peut changer sans préavis, il est conseillé de vérifier régulièrement leur disponibilité."
+msgstr "Ce plugiciel implémente les services fournis par <a href=\"https://github.com/heiseonline/shariff/releases\ target=\"_blank\">Shariff version 3.3.1</a>. Comme la disponibilité de ces services peut changer sans préavis, il est conseillé de vérifier régulièrement leur disponibilité."
 
 msgid "plugins.generic.shariff.settings.service.note"
 msgstr "Il faut également prendre en compte que certains services peuvent être disponibles uniquement sur des appareils ou des plateformes spécifiques (par exemple, les appareils mobiles) ou avec des applications spécifiques installées (par exemple, WhatsApp). Ce plugiciel ajoutera des boutons de partage dans l'interface frontale d'OJS pour tous les services sélectionnés ci-dessous, indépendamment de la disponibilité du service sur l'appareil ou la plateforme spécifique."

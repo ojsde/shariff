@@ -135,7 +135,7 @@ msgid "plugins.generic.shariff.settings.note"
 msgstr "If you would like to display the numbers how often a page is shared in social media, please see the <a href=\"https://github.com/heiseonline/shariff-backend-php\" target=\"_blank\">Shariff PHP Backend</a> and the plugin README file for further requirements."
 
 msgid "plugins.generic.shariff.settings.service.description"
-msgstr "This plugin implements services as provided by <a href=\"https://github.com/heiseonline/shariff/releases\" target=\"_blank\">Shariff version 3.2.1</a>. As availability of these services might change without notice, it is advisable to verify availability on a regular basis."
+msgstr "This plugin implements services as provided by <a href=\"https://github.com/heiseonline/shariff/releases\" target=\"_blank\">Shariff version 3.3.1</a>. As availability of these services might change without notice, it is advisable to verify availability on a regular basis."
 
 msgid "plugins.generic.shariff.settings.service.note"
 msgstr "It should also be considered that some services might only be available on specific devices or platforms (e.g. mobile devices) or with specific apps installed (e.g. Whatsapp). This plugin will include share buttons into the OJS frontend for all services selected below, independent of the availability of the service on the specific device or platform."

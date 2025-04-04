@@ -136,13 +136,13 @@ msgid "plugins.generic.shariff.settings.note"
 msgstr "Si vous voulez afficher la fréquence de partage d'une page sur les réseaux sociaux, veuillez consulter le <a href=\"https://github.com/heiseonline/shariff-backend-php\" target=\"_blank\">Shariff PHP Backend</a> et le fichier README du module pour connaître les autres exigences."
 
 msgid "plugins.generic.shariff.settings.service.note"
-msgstr "<p>Ce module met en œuvre les services fournis par <a href=\"https://github.com/heiseonline/shariff/releases\" target=\"_blank\">Shariff version 3.2.1</a>. Comme la disponibilité de ces services peut changer sans préavis, il est conseillé de vérifier régulièrement la disponibilité.</p> <p>Il faut également tenir compte du fait que certains services peuvent n'être disponibles que sur des appareils ou plates-formes spécifiques (par exemple, des appareils mobiles) ou avec des applications spécifiques installées (par exemple, Whatsapp). Ce module inclura des boutons de partage dans le front-end de l'OJS pour tous les services sélectionnés ci-dessous, indépendamment de la disponibilité du service sur l'appareil ou la plate-forme spécifique.</p>"
+msgstr "<p>Ce module met en œuvre les services fournis par <a href=\"https://github.com/heiseonline/shariff/releases\" target=\"_blank\">Shariff version 3.3.1</a>. Comme la disponibilité de ces services peut changer sans préavis, il est conseillé de vérifier régulièrement la disponibilité.</p> <p>Il faut également tenir compte du fait que certains services peuvent n'être disponibles que sur des appareils ou plates-formes spécifiques (par exemple, des appareils mobiles) ou avec des applications spécifiques installées (par exemple, Whatsapp). Ce module inclura des boutons de partage dans le front-end de l'OJS pour tous les services sélectionnés ci-dessous, indépendamment de la disponibilité du service sur l'appareil ou la plate-forme spécifique.</p>"
 
 msgid "plugins.generic.shariff.settings.service.shared_content.note"
 msgstr "Ce module ne partage l'URL de la page qu'avec le fournisseur de services sélectionné. Le type de contenu présenté au public dépend du fournisseur de services sélectionné et généralement est extrait des métadonnées des en-têtes HTML. Veuillez vérifier les métadonnées que vous partagez dans votre en-tête HTML."
 
 msgid "plugins.generic.shariff.settings.service.description"
-msgstr "Ce plugiciel implémente les services tels que fournis par <a href="https://github.com/heiseonline/shariff/releases\" target="_blank">Shariff version 3.2.1</a>. Comme ces services peuvent changer sans préavis, il est recommandé d’en vérifier la disponibilité régulièrement."
+msgstr "Ce plugiciel implémente les services tels que fournis par <a href="https://github.com/heiseonline/shariff/releases\" target="_blank">Shariff version 3.3.1</a>. Comme ces services peuvent changer sans préavis, il est recommandé d’en vérifier la disponibilité régulièrement."
 
 msgid "plugins.generic.shariff.share"
 msgstr "Share"
