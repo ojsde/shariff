@@ -1,0 +1,177 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-08-31T13:22:07+00:00\n"
+"PO-Revision-Date: 2020-08-31T13:22:07+00:00\n"
+"Language: fi\n"
+
+msgid "plugins.generic.shariff.displayName"
+msgstr "Shariff-lisäosa"
+
+msgid "plugins.generic.shariff.description"
+msgstr "Lisää sivustolle sosiaalisen median painikkeita vaarantamatta käyttäjien yksityisyyttä käyttämällä <a href=\"https://github.com/heiseonline/shariff\" target=\"_blank\">Shariff</a>-toimintoa."
+
+msgid "plugins.generic.shariff.block.displayName"
+msgstr "Shariff-lohkolisäosa"
+
+msgid "plugins.generic.shariff.block.description"
+msgstr "Lisää sivustolle sosiaalisen median painikkeita vaarantamatta käyttäjien yksityisyyttä käyttämällä <a href=\"https://github.com/heiseonline/shariff\" target=\"_blank\">Shariff</a>-toimintoa."
+
+msgid "plugins.generic.shariff.settings.service"
+msgstr "Palvelut"
+
+msgid "plugins.generic.shariff.settings.service.twitter"
+msgstr "Twitter"
+
+msgid "plugins.generic.shariff.settings.service.facebook"
+msgstr "Facebook"
+
+msgid "plugins.generic.shariff.settings.service.linkedin"
+msgstr "LinkedIn"
+
+msgid "plugins.generic.shariff.settings.service.pinterest"
+msgstr "Pinterest"
+
+msgid "plugins.generic.shariff.settings.service.xing"
+msgstr "XING"
+
+msgid "plugins.generic.shariff.settings.service.whatsapp"
+msgstr "WhatsApp"
+
+msgid "plugins.generic.shariff.settings.service.addthis"
+msgstr "AddThis"
+
+msgid "plugins.generic.shariff.settings.service.tumblr"
+msgstr "Tumblr"
+
+msgid "plugins.generic.shariff.settings.service.flattr"
+msgstr "Flattr"
+
+msgid "plugins.generic.shariff.settings.service.diaspora"
+msgstr "diaspora*"
+
+msgid "plugins.generic.shariff.settings.service.reddit"
+msgstr "Reddit"
+
+msgid "plugins.generic.shariff.settings.service.stumbleupon"
+msgstr "StumbleUpon"
+
+msgid "plugins.generic.shariff.settings.service.threema"
+msgstr "Threema"
+
+msgid "plugins.generic.shariff.settings.service.weibo"
+msgstr "Weibo"
+
+msgid "plugins.generic.shariff.settings.service.tencentweibo"
+msgstr "Tencent-Weibo"
+
+msgid "plugins.generic.shariff.settings.service.qzone"
+msgstr "Qzone"
+
+msgid "plugins.generic.shariff.settings.service.buffer"
+msgstr "Buffer"
+
+msgid "plugins.generic.shariff.settings.service.mail"
+msgstr "Sähköposti"
+
+msgid "plugins.generic.shariff.settings.service.print"
+msgstr "Tulosta"
+
+msgid "plugins.generic.shariff.settings.service.info"
+msgstr "Info"
+
+msgid "plugins.generic.shariff.settings.service.flipboard"
+msgstr "Flipboard"
+
+msgid "plugins.generic.shariff.settings.service.pocket"
+msgstr "Pocket"
+
+msgid "plugins.generic.shariff.settings.service.telegram"
+msgstr "Telegram"
+
+msgid "plugins.generic.shariff.settings.service.vk"
+msgstr "VK"
+
+msgid "plugins.generic.shariff.settings.theme"
+msgstr "Teema"
+
+msgid "plugins.generic.shariff.settings.theme.standard"
+msgstr "perusteema"
+
+msgid "plugins.generic.shariff.settings.theme.grey"
+msgstr "harmaa"
+
+msgid "plugins.generic.shariff.settings.theme.white"
+msgstr "valkoinen"
+
+msgid "plugins.generic.shariff.settings.position"
+msgstr "Sijainti"
+
+msgid "plugins.generic.shariff.settings.position.footer"
+msgstr "alatunniste"
+
+msgid "plugins.generic.shariff.settings.position.sidebar"
+msgstr "sivupalkki"
+
+msgid "plugins.generic.shariff.settings.position.submission"
+msgstr "julkaisusivu"
+
+msgid "plugins.generic.shariff.settings.orientation"
+msgstr "Suunta"
+
+msgid "plugins.generic.shariff.settings.orientation.vertical"
+msgstr "pystysuora"
+
+msgid "plugins.generic.shariff.settings.orientation.horizontal"
+msgstr "vaakasuora"
+
+msgid "plugins.generic.shariff.settings.note"
+msgstr "Jos haluat näyttää kuinka monta kertaa sivua on jaettu sosiaalisessa mediassa, katso <a href=\"https://github.com/heiseonline/shariff-backend-php\" target=\"_blank\">Shariff PHP Backend</a> ja lisäosan README-tiedosto lisävaatimuksia varten."
+
+msgid "plugins.generic.shariff.settings.service.description"
+msgstr "Tämä lisäosa näyttää palvelut, jotka löytyvät <a href=\"https://github.com/heiseonline/shariff/releases\" target=\"_blank\">Shariff-versiosta 3.3.1</a>. Koska palveluiden saatavuus voi muuttua ilman ennakkoilmoitusta, on suositeltavaa tarkistaa saatavuus säännöllisesti."
+
+msgid "plugins.generic.shariff.settings.service.note"
+msgstr "On myös huomioitava, että jotkin palvelut saattavat olla käytettävissä vain tietyillä laitteilla tai alustoilla (esim. mobiililaitteet) tai jos tietyt sovellukset on asennettu (esim. WhatsApp). Tämä lisäosa lisää jakopainikkeet käyttöliittymään kaikille alla valituille palveluille riippumatta siitä, onko palvelu saatavilla tietyllä laitteella tai alustalla."
+
+msgid "plugins.generic.shariff.settings.service.shared_content.note"
+msgstr "Tämä lisäosa jakaa vain sivun URL-osoitteen valitulle palveluntarjoajalle. Julkisuuteen näytettävä sisältö riippuu valitusta palveluntarjoajasta ja se poimitaan yleensä HTML-otsakkeiden metatiedoista. Tarkista mitä metatietoja jaat HTML-otsakkeissa."
+
+msgid "plugins.generic.shariff.share"
+msgstr "Jaa"
+
+msgid "plugins.generic.shariff.settings.shariffAdditionalOptions"
+msgstr "Lisäasetukset"
+
+msgid "plugins.generic.shariff.settings.shariffEnableWCAG"
+msgstr "WCAG-yhteensopivuus"
+
+msgid "plugins.generic.shariff.settings.shariffEnableWCAG.description"
+msgstr "Käytä WCAG-standardin mukaista värikontrastia."
+
+msgid "plugins.generic.shariff.settings.shariffEnableWCAG.heise.description"
+msgstr "Käytä klassista värikontrastia."
+
+msgid "plugins.generic.shariff.settings.shariffShowBlockHeading"
+msgstr "Shariff-lohkon otsikko"
+
+msgid "plugins.generic.shariff.settings.shariffShowBlockHeading.description"
+msgstr "Näytä otsikko Shariff-lohkon yläpuolella (parempi yhteensopivuus joidenkin teemojen kanssa, saattaa vaatia CSS-tyylien muokkaamista)."
+
+msgid "plugins.generic.shariff.settings.publicationSharingLink"
+msgstr "Publication Sharing Link"
+msgstr "Sisällön jakolinkki"
+
+msgid "plugins.generic.shariff.settings.publicationSharingLink.publicationUrl"
+msgstr "Publication URL"
+msgstr "Sisällön URL"
+
+msgid "plugins.generic.shariff.settings.publicationSharingLink.doiUrl"
+msgstr "Publication DOI URL (if available)"
+msgstr "Sisällön DOI (jos saatavilla)"
