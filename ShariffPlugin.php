@@ -46,7 +46,6 @@ class ShariffPlugin extends GenericPlugin {
 				$request = $this->getRequest();
 				$context = $request->getContext();
 				if ($context) {
-					$contextId = $context->getId();
 
 					Hook::add('Template::Settings::website::appearance', array($this, 'callbackAppearanceTab')); //to enable display of plugin settings tab
 					Hook::add('Schema::get::context', array($this, 'addToSchema')); // to add Shariff avriables to context schema
@@ -142,7 +141,6 @@ class ShariffPlugin extends GenericPlugin {
 		$output =& $args[2];
 		$request =& Application::get()->getRequest();
 		$context = $request->getContext();
-		$contextId = $context->getId();
 		$dispatcher = $request->getDispatcher();
 
 		# url to handle form dialog (we add our vars to the context schema)
@@ -152,7 +150,6 @@ class ShariffPlugin extends GenericPlugin {
 			$context->getPath(),
 			'contexts/' . $context->getId()
 		);
-		$contextUrl = $request->getRouter()->url($request, $context->getPath());
 
 		// instantinate settings form
 		$shariffSettingsForm = new ShariffSettingsForm($contextApiUrl, $context->getSupportedLocaleNames(), $context);
@@ -164,11 +161,10 @@ class ShariffPlugin extends GenericPlugin {
 
 		$state = $templateMgr->getTemplateVars('state');
 		$state['components'][FORM_SHARIFF_SETTINGS] = $shariffSettingsForm->getConfig();
-		$templateMgr->assign('state', $state); // In OJS 3.3 $templateMgr->setState doesn't seem to update template vars anymore
+		$templateMgr->assign('state', $state);
 
 		$output .= $templateMgr->display($this->getTemplateResource('settingsForm.tpl'));
 
-		// Permit other plugins to continue interacting with this hook
 		return false;
 	}
 
@@ -198,15 +194,15 @@ class ShariffPlugin extends GenericPlugin {
 		$request = $this->getRequest();
 		$context = $request->getContext();
 
-		// display the buttons depending in the selected position
+		// display the buttons depending on the selected position
 		switch ($context->getData('shariffPositionSelected')) {
 			case 'footer':
 				if ($hookName != 'Templates::Common::Footer::PageFooter') return false;
 				break;
 			case 'submission':
 				if (($hookName != 'Templates::Article::Details') &&
-					($hookName !=  'Templates::Catalog::Book::Details') &&
-					($hookName !=  'Templates::Preprint::Details')) return false;
+					($hookName != 'Templates::Catalog::Book::Details') &&
+					($hookName != 'Templates::Preprint::Details')) return false;
 				break;
 			default:
 				return false;
