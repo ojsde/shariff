@@ -14,7 +14,10 @@
 
 namespace APP\plugins\generic\shariff;
 
+define('SHARIFF_VERSION', '3.3.1');
+
 use APP\core\Application;
+use APP\template\TemplateManager;
 use PKP\facades\Locale;
 use PKP\plugins\GenericPlugin;
 use PKP\plugins\Hook;
@@ -55,13 +58,42 @@ class ShariffPlugin extends GenericPlugin {
 					Hook::add('Templates::Catalog::Book::Details', array($this, 'addShariffButtons'));
 					Hook::add('Templates::Preprint::Details', array($this, 'addShariffButtons'));
 
-					// Load this plugin as a block plugin as well (for sidebar)
-					$shariffBlockPlugin = new ShariffBlockPlugin($this->getName(), $this->getPluginPath());
-					PluginRegistry::register(
-						'blocks',
-						$shariffBlockPlugin,
-						$this->getPluginPath()
-					);
+					Hook::add('TemplateManager::display', function($hookName, $args) {
+						// This needs to be done within the display hook, because OJS only loads our context varaiables after the plugin is registered
+						// and we need them to decide whether to load other resources
+						$templateMgr = $args[0];
+						
+						$request = Application::get()->getRequest();
+						$context = $request->getContext();
+						$baseUrl = $request->getBaseUrl();
+
+						if ($context->getData('shariffEnableWCAG')===NULL?true:(bool)$context->getData('shariffEnableWCAG')) {
+							$wcagCssUrl = $baseUrl .'/' . $this->getPluginPath() .'/css/wcag-themes.css';
+							$templateMgr->addStyleSheet('shariffPluginStylesWCAGCSS', $wcagCssUrl);
+						}
+
+						if (strcmp($context->getData('shariffPositionSelected'),'sidebar') == 0) {
+							// Load this plugin as a block plugin as well (for sidebar)
+							$shariffBlockPlugin = new ShariffBlockPlugin($this->getName(), $this->getPluginPath());
+							PluginRegistry::register(
+								'blocks',
+								$shariffBlockPlugin,
+								$this->getPluginPath()
+							);
+						}
+					});
+
+					// load standard resources
+					$baseUrl = $request->getBaseUrl();
+					$templateMgr = TemplateManager::getManager($request);
+					$jsUrl = $baseUrl .'/'. $this->getPluginPath().'/shariff-'.SHARIFF_VERSION.'/shariff.complete.js';
+					$templateMgr->addJavaScript('shariffPluginJavascriptShariff', $jsUrl);
+
+					$shariffCssUrl = $baseUrl .'/' . $this->getPluginPath() . '/shariff-'.SHARIFF_VERSION.'/shariff.complete.css';
+					$templateMgr->addStyleSheet('shariffPluginStylesShariff', $shariffCssUrl);
+
+					$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/css/shariff.css';
+					$templateMgr->addStyleSheet('shariffPluginStylesCSS', $cssUrl);
 				}
 			}
 			return $success;
@@ -181,7 +213,7 @@ class ShariffPlugin extends GenericPlugin {
 	 * @copydoc Plugin::getTemplatePath()
 	 */
 	function getTemplatePath($inCore = false) {
-		return parent::getTemplatePath($inCore) . 'templates/';
+		return parent::getTemplatePath($inCore);
 	}
 
 	/**
@@ -237,53 +269,23 @@ class ShariffPlugin extends GenericPlugin {
 				}
 			}
 
-			// javascript, css and backend url
-			$requestedUrl = $doiUrl ?: $request->getCompleteUrl();
+			// urls
 			$baseUrl = $request->getBaseUrl();
-			$jsUrl = $baseUrl .'/'. $this->getPluginPath().'/shariff-'.SHARIFF_VERSION.'/shariff.complete.js';
-			$shariffCssUrl = $baseUrl .'/' . $this->getPluginPath() . '/shariff-'.SHARIFF_VERSION.'/shariff.complete.css';
-			$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/css/shariff.css';
+			$requestedUrl = $doiUrl ?: $request->getCompleteUrl();
 			$backendUrl = $baseUrl .'/'. 'shariff-backend';
-			if ($context->getData('shariffEnableWCAG')===NULL?true:(bool)$context->getData('shariffEnableWCAG')) {
-				$wcagCssUrl = $baseUrl .'/' . $this->getPluginPath() .'/css/wcag-themes.css';
-			}
+			
+			// assign variables to the templates
+			$templateMgr = TemplateManager::getManager($request);
+    		$templateMgr->assign('dataServicesString', $dataServicesString);
+    		$templateMgr->assign('selectedTheme', $selectedTheme);
+			$templateMgr->assign('shariffPostionSelected', $context->getData('shariffPositionSelected'));
+    		$templateMgr->assign('selectedOrientation', $selectedOrientation);
+    		$templateMgr->assign('backendUrl', $backendUrl);
+    		$templateMgr->assign('iso1Lang', $locale);
+    		$templateMgr->assign('requestedUrl', $requestedUrl);
+			$templateMgr->assign('showBlockHeading', $context->getData('shariffShowBlockHeading'));
 
-			// prepare position
-			$selectedPositon = $context->getData('shariffPositionSelected');
-			if ($selectedPositon == 'footer') {
-				$divWrapper = '<div class="pkp_structure_footer_wrapper"><div class="pkp_structure_footer">';
-			} elseif ($selectedPositon == 'submission') {
-				$divWrapper = '<div class="item shariffblock"><div>';
-			}
-
-			// prepare block heading
-			$blockHeading = "";
-			if ($context->getData('shariffShowBlockHeading')) {
-				if ($selectedPositon == 'submission') {
-					$blockHeading='<section class="sub_item"><h2 class="label">'.__('plugins.generic.shariff.share').'</h2></section>';
-				} elseif ($selectedPositon == 'footer') {
-					$blockHeading='<h3 class="label">'.__('plugins.generic.shariff.share').'</h3>';
-				}
-			}
-
-			// put it together
-			$output .= '
-				<link rel="stylesheet" type="text/css" href="'.$cssUrl.'">
-				<link rel="stylesheet" type="text/css" href="'.$shariffCssUrl.'">
-				<link rel="stylesheet" type="text/css" href="'.$wcagCssUrl.'">
-				'.$divWrapper.$blockHeading.'
-				<div class="shariff item" data-lang="'. str_split($locale, 2)[0] .'"
-					data-services="['.$dataServicesString.']"
-					data-mail-url="mailto:"
-					data-mail-body="'.$requestedUrl.'"
-					data-backend-url="'.$backendUrl.'"
-					data-theme="'.$selectedTheme.'"
-					data-orientation="'.$selectedOrientation.'"
-					data-url="'. $requestedUrl .'">
-				</div>
-				</div>
-				</div>
-				<script src="'.$jsUrl.'"></script>';
+			$output .= $templateMgr->fetch($this->getTemplateResource('shariff.tpl'));
 		}
 
 		return false;

@@ -18,8 +18,6 @@ use PKP\facades\Locale;
 use PKP\plugins\BlockPlugin;
 use PKP\plugins\PluginRegistry;
 
-define('SHARIFF_VERSION', '3.3.1');
-
 class ShariffBlockPlugin extends BlockPlugin {
 	/** @var string Name an Path of parent plugin */
 	var $parentPluginName;
@@ -115,24 +113,17 @@ class ShariffBlockPlugin extends BlockPlugin {
     		// get language from system
     		$locale = Locale::getLocale();
 
-		$publicationSharingLink = $context->getData('shariffPublicationSharingLink');
-		if ($publicationSharingLink == 'doiUrl') {
-			$publication = $templateMgr->getTemplateVars('currentPublication');
-			if ($publication && $publication->getData('doiObject')) {
-				$doiUrl = $publication->getData('doiObject')->getResolvingUrl();
+			$publicationSharingLink = $context->getData('shariffPublicationSharingLink');
+			if ($publicationSharingLink == 'doiUrl') {
+				$publication = $templateMgr->getTemplateVars('currentPublication');
+				if ($publication && $publication->getData('doiObject')) {
+					$doiUrl = $publication->getData('doiObject')->getResolvingUrl();
+				}
 			}
-		}
-
-    		// javascript, css and backend url
+			
+			// urls
     		$requestedUrl = $doiUrl ?: $request->getCompleteUrl();
-    		$baseUrl = $request->getBaseUrl();
-    		$jsUrl = $baseUrl .'/'. $this->getShariffPlugin()->getPluginPath().'/shariff-'.SHARIFF_VERSION.'/shariff.complete.js';
-    		$shariffCssUrl = $baseUrl .'/' . $this->getShariffPlugin()->getPluginPath() . '/shariff-'.SHARIFF_VERSION.'/shariff.complete.css';
-    		$backendUrl = $baseUrl .'/'. 'shariff-backend';
-			$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/css/shariff.css';
-			$wcagCssUrl = $baseUrl .'/' . $this->getPluginPath() .'/css/wcag-themes.css';
-			$enableWCAG = $context->getData('shariffEnableWCAG');
-			$showBlockHeading = $context->getData('shariffShowBlockHeading');
+    		$backendUrl = $request->getBaseUrl() .'/'. 'shariff-backend';
 
     		// assign variables to the templates
     		$templateMgr->assign('dataServicesString', $dataServicesString);
@@ -141,12 +132,7 @@ class ShariffBlockPlugin extends BlockPlugin {
     		$templateMgr->assign('backendUrl', $backendUrl);
     		$templateMgr->assign('iso1Lang', $locale);
     		$templateMgr->assign('requestedUrl', $requestedUrl);
-    		$templateMgr->assign('jsUrl', $jsUrl);
-			$templateMgr->assign('shariffCssUrl', $shariffCssUrl);
-    		$templateMgr->assign('cssUrl', $cssUrl);
-			$templateMgr->assign('enableWCAG', $enableWCAG);
-			$templateMgr->assign('wcagCssUrl', $wcagCssUrl);
-			$templateMgr->assign('showBlockHeading', $showBlockHeading);
+			$templateMgr->assign('showBlockHeading', $context->getData('shariffShowBlockHeading'));
 		}
 
 		return parent::getContents($templateMgr, $request);
