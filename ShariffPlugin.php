@@ -71,17 +71,15 @@ class ShariffPlugin extends GenericPlugin {
 							$wcagCssUrl = $baseUrl .'/' . $this->getPluginPath() .'/css/wcag-themes.css';
 							$templateMgr->addStyleSheet('shariffPluginStylesWCAGCSS', $wcagCssUrl);
 						}
-
-						if (strcmp($context->getData('shariffPositionSelected'),'sidebar') == 0) {
-							// Load this plugin as a block plugin as well (for sidebar)
-							$shariffBlockPlugin = new ShariffBlockPlugin($this->getName(), $this->getPluginPath());
-							PluginRegistry::register(
-								'blocks',
-								$shariffBlockPlugin,
-								$this->getPluginPath()
-							);
-						}
 					});
+
+					// Load this plugin as a block plugin as well (for sidebar)
+					$shariffBlockPlugin = new ShariffBlockPlugin($this->getName(), $this->getPluginPath());
+					PluginRegistry::register(
+						'blocks',
+						$shariffBlockPlugin,
+						$this->getPluginPath()
+					);
 
 					// load standard resources
 					$baseUrl = $request->getBaseUrl();
