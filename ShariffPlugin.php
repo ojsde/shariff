@@ -269,8 +269,9 @@ class ShariffPlugin extends GenericPlugin {
 
 			// urls
 			$baseUrl = $request->getBaseUrl();
-			$requestedUrl = $doiUrl ?: $request->getCompleteUrl();
-			$backendUrl = $baseUrl .'/'. 'shariff-backend';
+			$requestedUrl = htmlspecialchars($doiUrl ?: $request->getCompleteUrl(), ENT_QUOTES, 'UTF-8');
+			$backendPath = BASE_SYS_DIR . '/shariff-backend';
+			$backendUrl = is_dir($backendPath) ? $baseUrl . '/shariff-backend' : null;
 			
 			// assign variables to the templates
 			$templateMgr = TemplateManager::getManager($request);
