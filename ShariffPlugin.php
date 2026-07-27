@@ -19,6 +19,7 @@ define('SHARIFF_VERSION', '3.3.1');
 use APP\core\Application;
 use APP\template\TemplateManager;
 use PKP\facades\Locale;
+use PKP\i18n\LocaleConversion;
 use PKP\plugins\GenericPlugin;
 use PKP\plugins\Hook;
 use PKP\plugins\PluginRegistry;
@@ -256,8 +257,10 @@ class ShariffPlugin extends GenericPlugin {
 			// orientation
 			$selectedOrientation = $context->getData('shariffOrientationSelected');
 
-			// get language from system
-			$locale = Locale::getLocale();
+			// get language from system; Shariff expects an ISO 639-1 code, so locales
+			// such as "pt_BR" have to be reduced to "pt" (otherwise Shariff falls back to English)
+			$currentLocale = Locale::getLocale();
+			$locale = LocaleConversion::getIso1FromLocale($currentLocale) ?: substr($currentLocale, 0, 2);
 
 			$publicationSharingLink = $context->getData('shariffPublicationSharingLink');
 			if ($publicationSharingLink == 'doiUrl') {
