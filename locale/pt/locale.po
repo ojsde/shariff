@@ -2,26 +2,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"Last-Translator: OJSBR <support@ojsbr.com>\n"
+"Language-Team: Portuguese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2020-08-31T13:22:07+00:00\n"
-"PO-Revision-Date: 2020-08-31T13:22:07+00:00\n"
-"Language: \n"
+"PO-Revision-Date: 2026-07-27T00:00:00+00:00\n"
+"Language: pt\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "plugins.generic.shariff.displayName"
 msgstr "Plugin Shariff"
 
 msgid "plugins.generic.shariff.description"
-msgstr "Adiciona botões de redes sociais ao seu site sem comprometer a privacidade dos usuários. Para isso, utiliza a ferramenta <a href=\"https://github.com/heiseonline/shariff\" target=\"_blank\">Shariff</a>."
+msgstr "Adiciona botões de redes sociais ao seu site sem comprometer a privacidade dos utilizadores. Para tal, utiliza a ferramenta <a href=\"https://github.com/heiseonline/shariff\" target=\"_blank\">Shariff</a>."
 
 msgid "plugins.generic.shariff.block.displayName"
 msgstr "Plugin de bloco Shariff"
 
 msgid "plugins.generic.shariff.block.description"
-msgstr "Adiciona botões de redes sociais ao seu site sem comprometer a privacidade dos usuários. Para isso, utiliza a ferramenta <a href=\"https://github.com/heiseonline/shariff\" target=\"_blank\">Shariff</a>."
+msgstr "Adiciona botões de redes sociais ao seu site sem comprometer a privacidade dos utilizadores. Para tal, utiliza a ferramenta <a href=\"https://github.com/heiseonline/shariff\" target=\"_blank\">Shariff</a>."
 
 msgid "plugins.generic.shariff.settings.service"
 msgstr "Serviços"
@@ -81,7 +82,7 @@ msgid "plugins.generic.shariff.settings.service.mail"
 msgstr "E-mail"
 
 msgid "plugins.generic.shariff.settings.service.print"
-msgstr "Impressão"
+msgstr "Imprimir"
 
 msgid "plugins.generic.shariff.settings.service.info"
 msgstr "Mais informações"
@@ -105,7 +106,7 @@ msgid "plugins.generic.shariff.settings.theme.standard"
 msgstr "padrão"
 
 msgid "plugins.generic.shariff.settings.theme.grey"
-msgstr "cinza"
+msgstr "cinzento"
 
 msgid "plugins.generic.shariff.settings.theme.white"
 msgstr "branco"
@@ -120,7 +121,7 @@ msgid "plugins.generic.shariff.settings.position.sidebar"
 msgstr "barra lateral"
 
 msgid "plugins.generic.shariff.settings.position.submission"
-msgstr "página da submissão"
+msgstr "página da publicação"
 
 msgid "plugins.generic.shariff.settings.orientation"
 msgstr "Orientação"
@@ -132,19 +133,43 @@ msgid "plugins.generic.shariff.settings.orientation.horizontal"
 msgstr "horizontal"
 
 msgid "plugins.generic.shariff.settings.note"
-msgstr "Se desejar exibir os números da frequência com que uma página é compartilhada nas mídias sociais, consulte <a href =\"https://github.com/heiseonline/shariff-backend-php\" target=\"_blank\">Shariff PHP Backend</a> e o arquivo README do plugin para requisitos adicionais."
+msgstr "Se pretender apresentar o número de vezes que uma página é partilhada nas redes sociais, consulte o <a href=\"https://github.com/heiseonline/shariff-backend-php\" target=\"_blank\">Shariff PHP Backend</a> e o ficheiro README do plugin para conhecer os requisitos adicionais."
+
+msgid "plugins.generic.shariff.settings.service.description"
+msgstr "Este plugin implementa os serviços disponibilizados pelo <a href=\"https://github.com/heiseonline/shariff/releases\" target=\"_blank\">Shariff versão 3.3.1</a>. Uma vez que a disponibilidade destes serviços pode mudar sem aviso prévio, é aconselhável verificá-la regularmente."
 
 msgid "plugins.generic.shariff.settings.service.note"
-msgstr "<p>Esse plugin implementa serviços fornecidos por <a href=\"https://github.com/heiseonline/shariff/releases\" target=\"_blank\">Shariff version 3.3.1</a>. Como a disponibilidade desses serviços pode mudar sem aviso prévio, é aconselhável verificar a disponibilidade regularmente.</p> <p> Também deve ser considerado que alguns serviços podem estar disponíveis apenas em dispositivos ou plataformas específicas (como dispositivos móveis) ou com aplicativos específicos instalados (como WhatsApp). Este plugin incluirá botões de compartilhamento no frontend da aplicação para todos os serviços selecionados abaixo, independentemente da disponibilidade do serviço no dispositivo ou plataforma específica.</p>"
+msgstr "Deve também ter em conta que alguns serviços podem estar disponíveis apenas em determinados dispositivos ou plataformas (como dispositivos móveis) ou com aplicações específicas instaladas (como o WhatsApp). Este plugin irá incluir botões de partilha no frontend do OJS para todos os serviços selecionados abaixo, independentemente da disponibilidade do serviço no dispositivo ou plataforma específica."
 
 msgid "plugins.generic.shariff.settings.service.shared_content.note"
-msgstr "Esse plugin compartilha a URL da página apenas com o serviço selecionado. O tipo de conteúdo mostrado ao público depende do serviço selecionado e normalmente é extraído do cabeçalho HTML dos metadados. Por favor, verifique quais metadados você compartilha no seu cabeçalho HTML."
+msgstr "Este plugin partilha apenas o URL da página com o serviço selecionado. O tipo de conteúdo apresentado ao público depende do serviço selecionado e é normalmente extraído dos metadados do cabeçalho HTML. Verifique que metadados partilha no seu cabeçalho HTML."
 
-msgid "plugins.generic.shariff.settings.publicationLink"
-msgstr "Link de compartilhamento da publicação"
+msgid "plugins.generic.shariff.share"
+msgstr "Partilhar"
 
-msgid "plugins.generic.shariff.settings.publicationLink.publicationUrl"
+msgid "plugins.generic.shariff.settings.shariffAdditionalOptions"
+msgstr "Definições adicionais"
+
+msgid "plugins.generic.shariff.settings.shariffEnableWCAG"
+msgstr "Conformidade com as WCAG"
+
+msgid "plugins.generic.shariff.settings.shariffEnableWCAG.description"
+msgstr "Utilizar contraste de cores em conformidade com as WCAG."
+
+msgid "plugins.generic.shariff.settings.shariffEnableWCAG.heise.description"
+msgstr "Utilizar o contraste de cores clássico."
+
+msgid "plugins.generic.shariff.settings.shariffShowBlockHeading"
+msgstr "Título do bloco Shariff"
+
+msgid "plugins.generic.shariff.settings.shariffShowBlockHeading.description"
+msgstr "Apresentar um título por cima do bloco Shariff (para melhor integração com determinados temas; pode exigir CSS adicional)."
+
+msgid "plugins.generic.shariff.settings.publicationSharingLink"
+msgstr "Ligação de partilha da publicação"
+
+msgid "plugins.generic.shariff.settings.publicationSharingLink.publicationUrl"
 msgstr "URL da publicação"
 
-msgid "plugins.generic.shariff.settings.publicationLink.doiUrl"
-msgstr "URL DOI da publicação (caso disponível)"
+msgid "plugins.generic.shariff.settings.publicationSharingLink.doiUrl"
+msgstr "URL DOI da publicação (se disponível)"
