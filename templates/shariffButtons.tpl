@@ -3,7 +3,7 @@
         data-services="[{$dataServicesString|escape}]"
         data-mail-url="mailto:"
         data-mail-body="{$requestedUrl|escape}"
-        data-backend-url="{$backendUrl|escape}"
+		{if $backendUrl}data-backend-url="{$backendUrl|escape}"{/if}
         data-theme="{$selectedTheme|escape}"
         data-orientation="{$selectedOrientation|escape}"
         data-url="{$requestedUrl|escape}">

@@ -126,7 +126,9 @@ class ShariffBlockPlugin extends BlockPlugin {
 			
 			// urls
     		$requestedUrl = $doiUrl ?: $request->getCompleteUrl();
-    		$backendUrl = $request->getBaseUrl() .'/'. 'shariff-backend';
+			$backendUrl = is_dir(BASE_SYS_DIR . DIRECTORY_SEPARATOR . 'shariff-backend')
+				? $request->getBaseUrl() . '/' . 'shariff-backend'
+				: null;
 
     		// assign variables to the templates
     		$templateMgr->assign('dataServicesString', $dataServicesString);
