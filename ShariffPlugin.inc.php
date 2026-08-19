@@ -221,7 +221,10 @@ class ShariffPlugin extends GenericPlugin {
 			$jsUrl = $baseUrl .'/'. $this->getPluginPath().'/shariff-3.3.0/shariff.complete.js';
 			$shariffCssUrl = $baseUrl .'/' . $this->getPluginPath() . '/shariff-3.3.0/shariff.complete.css';
 			$cssUrl = $baseUrl .'/' . $this->getPluginPath() . '/css/shariff.css';
-			$backendUrl = $baseUrl .'/'. 'shariff-backend';
+			$backendUrl = is_dir(BASE_SYS_DIR . DIRECTORY_SEPARATOR . 'shariff-backend')
+				? $baseUrl . '/' . 'shariff-backend'
+				: null;
+			$backendAttribute = $backendUrl ? ' data-backend-url="' . $backendUrl . '"' : '';
 			if ($context->getData('shariffEnableWCAG')===NULL?true:(bool)$context->getData('shariffEnableWCAG')) {
 				$wcagCssUrl = $baseUrl .'/' . $this->getPluginPath() .'/css/wcag-themes.css';
 			}
@@ -253,8 +256,7 @@ class ShariffPlugin extends GenericPlugin {
 				<div class="shariff item" data-lang="'. str_split($locale, 2)[0] .'"
 					data-services="['.$dataServicesString.']"
 					data-mail-url="mailto:"
-					data-mail-body="'.$requestedUrl.'"
-					data-backend-url="'.$backendUrl.'"
+					data-mail-body="'.$requestedUrl.'"'.$backendAttribute.'
 					data-theme="'.$selectedTheme.'"
 					data-orientation="'.$selectedOrientation.'"
 					data-url="'. $requestedUrl .'">
